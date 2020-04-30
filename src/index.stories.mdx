@@ -1,0 +1,148 @@
+<!-- Packages -->
+import { Meta } from '@storybook/addon-docs/blocks' 
+
+<!-- Initialize -->
+<Meta title='Getting Started/Welcome' />
+
+# WoodmontJS
+
+<br/>
+
+## Overview
+
+[Introduction](#introduction)  
+[Usage](#usage)  
+[Github Repository](https://woodmontjs.modelb.now.sh/repo)  
+
+## Introduction
+
+WoodmontJS is a component and utility module library written in JavaScript.
+
+This project was built with [Storybook][2]. For more information about building
+component libraries with Storybook, visit [Design Systems for Developers][3] from the [Learn Storybook][4] docs.
+
+[1]: https://www.learnstorybook.com/design-systems-for-developers/react/en/introduction/
+[2]: https://storybook.js.org/
+[3]: https://www.learnstorybook.com/design-systems-for-developers
+[4]: https://www.learnstorybook.com
+
+## Usage
+
+Components are developed in [React][1]; stories and documentation are written in
+[MDX][2] using [Storybook Docs][3].
+
+[1]: https://reactjs.org/
+[2]: https://mdxjs.com/
+[3]: https://github.com/storybookjs/storybook/tree/master/addons/docs
+
+### Architecture
+
+Components are organized according to the [Atomic Design Methodology][1].
+
+[1]: https://atomicdesign.bradfrost.com/chapter-2/
+
+### Sass
+
+Stylesheets are written in [Sass][1]. Sass is a CSS preprocessor used
+to add variables, functions, placeholders, mixins, and more to CSS development.
+
+[1]: https://sass-lang.com/
+
+### Installation
+
+Before installing the design system package, you'll need to install React. Visit
+[Getting Started][1] from the React docs to learn more about installing React in
+your project. After you've installed React, run the following command:
+
+```bash
+  npm i @modelbcompany/woodmontjs@latest
+```
+
+[1]: https://reactjs.org/docs/getting-started.html
+
+#### Transpiling ES6 Modules
+
+Components and other modules are written in ES6 and need to be transpiled before
+using them in a project. 
+
+Add the following to your [Babel configuration][1]:
+
+```javascript
+{
+  exclude: /node_modules\/(?!@modelbcompany/woodmontjs)/
+}
+```
+
+**Example `babel.config.js`**
+
+```javascript
+/**
+ * @file Project Wide Babel Configuration
+ * @see {@link https://babeljs.io/docs/en/config-files}
+ */
+
+module.exports = api => {
+  api.cache(true)
+
+  return {
+    ignore: [
+      './node_modules/*',
+      './public/*',
+      './src/assets/*'
+    ],
+    exclude: /node_modules\/(?!@modelbcompany/woodmontjs)/,
+    plugins: [
+      '@babel/plugin-proposal-throw-expressions'
+    ],
+    presets: [
+      '@babel/preset-env',
+      '@babel/preset-react'
+    ]
+  }
+}
+```
+
+##### Gatsby
+
+If you're using Gatsby, add the following to your `gatsby-config.js`:
+
+```javascript
+{
+  plugins: [
+    {
+      resolve: 'gatsby-plugin-compile-es6-packages',
+      options: {
+        modules: ['@modelbcompany/woodmontjs']
+      }
+    }
+  ]
+}
+```
+
+**Example `gatsby-config.js`**
+
+```javascript
+// Metadata
+const metadata = require('./config/metadata.json')
+
+/**
+ * @file Gatsby Site Configuration
+ * @see {@link https://www.gatsbyjs.org/docs/gatsby-config/}
+ */
+
+module.exports = {
+  siteMetadata: {
+    ...metadata, siteUrl: dev ? 'http://localhost:3000' : metadata.siteUrl
+  },
+  plugins: [
+    {
+      resolve: 'gatsby-plugin-compile-es6-packages',
+      options: {
+        modules: ['@modelbcompany/woodmontjs']
+      }
+    }
+  ]
+}
+```
+
+[1]: https://babeljs.io/docs/en/configuration

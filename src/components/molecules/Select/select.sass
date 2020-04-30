@@ -1,0 +1,73 @@
+// -----------------------------------------------------------------------------
+// Select variables, functions, mixins, placeholders, and styles
+// @group Select
+// -----------------------------------------------------------------------------
+
+// Variables
+
+// Functions
+
+// Mixins
+
+// Placeholders
+
+/// Select component styles
+/// @require {function} size
+/// @require {mixin} background-color
+/// @require {mixin} color
+/// @require {mixin} constrain
+/// @require {mixin} font-size
+/// @require {mixin} is-borderless
+/// @require {mixin} no-margin
+/// @require {mixin} relative
+/// @require {mixin} size
+/// @require {variable} $black
+/// @require {variable} $grey-300
+/// @require {variable} $magic-number
+/// @require {variable} $transparent
+/// @require {variable} $white
+%Select
+  +background-color($white)
+
+  +font-size(12)
+
+  +no-margin
+
+  +relative
+
+  +size(max-content)
+
+  border: size(2) solid $grey-300
+
+  select
+    +background-color($transparent)
+
+    +color
+
+    +constrain(size($magic-number * 15))
+
+    +constrain(size($magic-number * 1.1875), height)
+
+    +event
+
+    +is-borderless
+
+    +sticky(null, 0, null, null)
+
+    appearance: none
+    padding: size($magic-number / 4) size($magic-number / 3)
+    z-index: $magic-number
+
+// Styles
+
+// Select
+.adm-select
+  @extend %Select
+
+// Responsive Styles
+
+// Desktop
+
+// Tablet
+
+// Mobile

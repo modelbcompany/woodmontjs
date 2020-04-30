@@ -1,0 +1,118 @@
+// -----------------------------------------------------------------------------
+// Button variables, functions, mixins, placeholders, and styles
+// @group Button
+// @see https://css-tricks.com/slightly-careful-sub-elements-clickable-things/
+// -----------------------------------------------------------------------------
+
+// Variables
+
+/// Button padding
+/// @require {function} size
+/// @require {variable} $magic-number
+/// @require {variable} $magic-number-50p
+/// @type {List}
+$btn-padding: size($magic-number / 3) size($magic-number-50p)
+
+// Functions
+
+// Mixins
+
+/// Icon Button component styles
+/// @require {mixin} is-transparent
+/// @param {String} $context [null]
+=is-icon-btn($context: null)
+  @if $context == null
+    +is-transparent
+
+  @content
+
+/// Common transparent button properties
+/// @require {mixin} background-color
+/// @require {mixin} no-padding
+/// @require {variable} $transparent
+/// @param {Boolean} $bi [false] - If true, add !important to background-color
+/// @param {Boolean} $pi [false] - If true, add !important to no-padding
+=is-transparent($bi: false, $pi: false)
+  +background-color($transparent, $bi)
+
+  +no-padding($pi)
+
+// Placeholders
+
+/// Button component styles
+/// @example <Button>I'm a button!</Button>
+/// @require {function} size
+/// @require {mixin} background-color
+/// @require {mixin} color
+/// @require {mixin} display-flex
+/// @require {mixin} font-size
+/// @require {mixin} is-disabled
+/// @require {mixin} is-borderless
+/// @require {mixin} is-flex-centered
+/// @require {mixin} is-icon-btn
+/// @require {mixin} is-transparent
+/// @require {mixin} is-white-text
+/// @require {mixin} no-breaking
+/// @require {mixin} no-padding
+/// @require {mixin} set-bkg-color-and-hover
+/// @require {mixin} transition
+/// @require {variable} $btn-padding
+/// @require {variable} $grey-200
+/// @require {variable} $grey-300
+/// @require {variable} $grey-600
+/// @require {variable} $magic-number
+/// @require {variable} $pp-default-navy
+/// @require {variable} $secondary-font-family
+/// @require {variable} $transparent
+%Button
+  +color($grey-600, $grey-200)
+
+  +display-flex(inline-flex)
+
+  +font-size(16)
+
+  +is-borderless
+
+  +is-flex-centered
+
+  +no-breaking
+
+  +transition(all, 0.25s, ease-in-out)
+
+  cursor: pointer
+  font-family: $secondary-font-family
+  outline: none
+  padding: $btn-padding
+
+  > *
+    pointer-events: none
+
+  &[disabled]
+    +is-white-text
+
+    +set-bkg-color-and-hover($grey-300)
+
+  &[data-icon]
+    +is-icon-btn
+
+  &.is-navy
+    +is-white-text
+
+    +set-bkg-color-and-hover($pp-default-navy)
+
+  &.is-transparent
+    +is-transparent
+
+// Styles
+
+// Button
+.ada-button
+  @extend %Button
+
+// Responsive Styles
+
+// Desktop
+
+// Tablet
+
+// Mobile

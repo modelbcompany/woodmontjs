@@ -1,0 +1,9 @@
+# ESLint Ignore - https://eslint.org/docs/user-guide/configuring#eslintignore
+
+.cache
+docs/*
+package.json
+package-lock.json
+public
+node_modules/
+src/assets/*

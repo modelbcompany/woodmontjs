@@ -1,0 +1,58 @@
+// -----------------------------------------------------------------------------
+// Column variables, functions, mixins, placeholders, and styles
+// @group Column
+// -----------------------------------------------------------------------------
+
+// Variables
+
+// Functions
+
+/// Specifies the size of the grid lines.
+/// Think of it like setting the width of the gutters between the columns.
+/// @require {variable} $grid-layout
+/// @param {variable} $breakpoint - Breakpoint to set grid-column-gap
+/// @return {Function}
+@function grid-column-margin($breakpoint)
+  $grid-config: map-get($grid-layout, $breakpoint)
+
+  $grid-column-width: map-get($grid-config, 'column-width')
+  $grid-gutter-width: map-get($grid-config, 'gutter-width')
+
+  @return size($grid-column-width + $grid-gutter-width)
+
+// Mixins
+
+/// Styles for Columns containing images
+/// @require {mixin} is-flex-centered
+=has-image
+  +is-flex-centered
+
+  position: relative
+
+// Placeholders
+
+/// Column component styles
+/// @require {mixin} display-flex
+/// @require {mixin} flex-column
+/// @require {mixin} has-image
+%Column
+  +display-flex
+
+  +flex-column
+
+  &.has-image
+    +has-image
+
+// Styles
+
+// Column
+.adm-column
+  @extend %Column
+
+// Responsive Styles
+
+// Desktop
+
+// Tablet
+
+// Mobile

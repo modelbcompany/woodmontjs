@@ -1,0 +1,41 @@
+// -----------------------------------------------------------------------------
+// Flexbox Helper Classes
+// -----------------------------------------------------------------------------
+
+// Defines the element as a flex container.
+// It enables a flex context for all its direct children.
+.display-flex
+  +display-flex
+
+// Defines the element as an inline flex container.
+// It enables a flex context for all its direct children.
+.display-inline-flex
+  +display-flex(inline-flex)
+
+// This defines the direction flex items are placed in the flex container.
+// Items will be layed out top to bottom, and centered on both axises.
+.flex-centered-columns
+  +flex-centered-columns
+
+// This defines the direction flex items are placed in the flex container.
+// Items will be layed out left to right, and centered on both axises.
+.flex-centered-columns
+  +flex-centered-columns
+
+// This establishes the main-axis, thus defining the direction flex items are
+// placed in the flex container. Items will be layed out top to bottom.
+.flex-column
+  +flex-column
+
+// This establishes the main-axis, thus defining the direction flex items are
+// placed in the flex container. Items will be layed out left to right.
+.flex-row
+  +flex-row
+
+// Center flexbox items on main axis and distrbute space between elements
+.flex-spread
+  +flex-spread
+
+// Centers flexbox items on the mainn and cross axises.
+.is-flex-centered
+  +is-flex-centered

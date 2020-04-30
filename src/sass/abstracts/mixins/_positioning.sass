@@ -1,0 +1,62 @@
+// -----------------------------------------------------------------------------
+// Positioning mixins
+// @group mixins-positioning
+// -----------------------------------------------------------------------------
+
+/// Shorthand for absolute positioning.
+/// @require {mixin} position
+/// @param {List} $args - Offsets
+/// @example SCSS - Stretch an item over its parent.
+///  @include absolute($top: 0, $right: 0, $bottom: 0, $left: 0)
+=absolute($args...)
+  @if $args
+    +position(absolute, $args...)
+  @else
+    +position(absolute)
+
+/// Shorthand for fixed positioning.
+/// @require {mixin} position
+/// @param {List} $args - Offsets
+/// @example scss
+///  @include fixed($top: 0, $right: 0, $bottom: 0, $left: 0)
+=fixed($args...)
+  @if $args
+    +position(fixed, $args...)
+  @else
+    +position(fixed)
+
+/// Shorthand for positioning.
+/// @access private
+/// @param {String} $position - Position type - `absolute` |`fixed` | `relative`
+/// @param {Length} $top [null] - Top offset
+/// @param {Length} $right [null] - Right offset
+/// @param {Length} $bottom [null] - Bottom offset
+/// @param {Length} $left [null] - Left offset
+=position($position, $top: null, $right: null, $bottom: null, $left: null)
+  bottom: $bottom
+  left: $left
+  position: $position
+  right: $right
+  top: $top
+
+/// Shorthand for relative positioning.
+/// @require {mixin} position
+/// @param {List} $args - Offsets
+/// @example scss
+///  @include relative($top: 0, $right: 0, $bottom: 0, $left: 0)
+=relative($args...)
+  @if $args
+    +position(relative, $args...)
+  @else
+    +position(relative)
+
+/// Shorthand for sticky positioning.
+/// @require {mixin} position
+/// @param {List} $args - Offsets
+/// @example scss
+///  @include sticky($top: 0, $right: 0, $bottom: 0, $left: 0)
+=sticky($args...)
+  @if $args
+    +position(sticky, $args...)
+  @else
+    +position(sticky)

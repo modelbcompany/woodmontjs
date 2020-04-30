@@ -1,0 +1,99 @@
+// -----------------------------------------------------------------------------
+// Typography mixins
+// @group mixins-typography
+// -----------------------------------------------------------------------------
+
+/// Adds an after effect to text.
+/// @require {function} size
+/// @require {function} absolute
+/// @require {variable} $magic-number
+/// @require {variable} $pp-sustainability
+/// @param {Color} $color - Background color of ::after element
+/// @param {Number} $height - Height of ::after element
+/// @param {Number} $padding - Bottom padding of main element
+/// @param {Number} $padding - Bottom margin of main element
+/// @param {Number} $width - Width of ::after element
+=after-effects($color, $height, $padding, $margin, $width)
+  margin-bottom: $margin
+  padding-bottom: $padding
+  position: relative
+
+  &::after
+    +absolute(null, null, 0, 0)
+
+    background-color: $color
+    content: ' '
+    display: inline-block
+    height: $height
+    width: $width
+
+    @content
+
+/// Text alignment helper
+/// @param {String} $alignment - Text alignment
+/// @param {Boolean} $important [false] - If true, add !important
+=align-text($alignment, $important: false)
+  text-align: if($important, $alignment !important, $alignment)
+
+/// Converts @see @param $size into to em or rem units
+/// After converting, the font-size will be set
+/// @require {function} size
+/// @require {variable} $magic-number
+/// @param {Number} $size [$magic-number] - Value to convert in pixels
+/// @param {Boolean} $important [false] - If true, add !important
+/// @param {String} $unit [rem] - Unit to convert to
+=font-size($size: $magic-number, $important: false, $unit: rem)
+  font-size: if($important, size($size, $unit) !important, size($size, $unit))
+
+/// font-style helper
+/// @param {String} $style - font-style
+/// @param {Boolean} $important [false] - If true, add !important
+=font-style($style, $important: false)
+  font-style: if($important, $style !important, $style)
+
+/// font-weight helper
+/// @param {String} $weight [400] - font-weight
+/// @param {Boolean} $important [false] - If true, add !important
+=font-weight($weight: 400, $important: false)
+  font-weight: if($important, $weight !important, $weight)
+
+/// text-transform helper
+/// @param {String} $transform - text-transform
+/// @param {Boolean} $important [false] - If true, add !important
+=text-transform($transform, $important: false)
+  text-transform: if($important, $transform !important, $transform)
+
+/// white-space helper
+/// @param {String} $space - white-space
+/// @param {Boolean} $important [false] - If true, add !important
+=white-space($space, $important: false)
+  white-space: if($important, $space !important, $space)
+
+/// Makes text black
+/// @require {mixin} text-color
+/// @require {variable} $black
+/// @param {Boolean} $important [false] - If true, add !important
+=is-black-text($important: false)
+  +text-color($black, $important)
+
+/// Center align text
+/// @param {Boolean} $important [false] - If true, add !important
+=is-center-aligned-text($important: false)
+  +align-text(center, $important)
+
+/// Makes text uppercase
+/// @param {Boolean} $important [false] - If true, add !important
+=is-uppercase($important: false)
+  +text-transform(uppercase, $important)
+
+/// Makes text white
+/// @require {mixin} text-color
+/// @require {variable} $white
+/// @param {Boolean} $important [false] - If true, add !important
+=is-white-text($important: false)
+  +text-color($white, $important)
+
+/// Prevents a text element from breaking onto the next line
+/// @param {Boolean} $important [false] - If true, add !important
+=no-breaking($important: false)
+  +white-space(nowrap, $important)

@@ -1,0 +1,148 @@
+// -----------------------------------------------------------------------------
+// Span variables, functions, mixins, placeholders, and styles
+// @group Span
+// -----------------------------------------------------------------------------
+
+// Variables
+
+// Functions
+
+// Mixins
+
+/// Badge styles
+/// @require {function} size
+/// @require {mixin} color
+/// @require {mixin} display-flex
+/// @require {mixin} font-size
+/// @require {mixin} font-weight
+/// @require {mixin} height
+/// @require {mixin} is-flex-centered
+/// @require {mixin} no-breaking
+/// @require {mixin} width
+/// @require {variable} $grey-200
+/// @require {variable} $grey-500
+/// @require {variable} $magic-number
+/// @require {variable} $magic-number-50p
+/// @require {variable} $primary-font-family
+/// @require {variable} $sp-default-blue
+/// @param {String} $context [null]
+=is-badge($context: null)
+  @if $context == null
+    +color($grey-500, $grey-200)
+
+    +display-flex(inline-flex)
+
+    +font-size(11)
+
+    +font-weight(500)
+
+    +height(size($magic-number))
+
+    +is-flex-centered
+
+    +no-breaking
+
+    +width(size($magic-number * 3))
+
+    font-family: $primary-font-family
+    padding: 0 size($magic-number)
+
+  @content
+
+/// Circular Badge styles
+/// @require {mixin} color
+/// @require {mixin} font-size
+/// @require {mixin} is-circle
+/// @require {variable} $grey-400
+/// @require {variable} $magic-number
+/// @require {variable} $white
+/// @param {Number} $size [$magic-number * 1.25] Circle size
+=is-circular-badge($size: $magic-number * 1.25)
+  +color($white, $grey-400)
+
+  +font-size(10)
+
+  +is-circle($size, important)
+
+  +no-padding(important)
+
+/// Additional Icon styles
+/// @require {function} size
+/// @require {mixin} absolute
+/// @require {variable} $magic-number
+/// @param {String} $context [null]
+=is-icon($context: null)
+  @if $context == adm-select
+    +absolute(10%, size($magic-number / 6), null, null)
+
+  @content
+
+/// Wrapper styles
+/// @require {mixin} display-flex
+/// @require {mixin} flex-spread
+/// @param {String} $context [null]
+=is-wrapper($context: null)
+  @if $context == null
+    +display-flex(inline-flex)
+
+  @content
+
+// Placeholders
+
+/// Span component styles
+/// @require {mixin} display-flex
+%Span
+  display: inline-block
+
+  &[data-icon]
+    +display-flex(inline-flex)
+
+    +is-flex-centered
+
+/// Icon component styles
+/// @require {function} size
+/// @require {variable} $magic-number
+%Icon
+  $spacing: size($magic-number * 0.375)
+
+  +width(auto, unset, none)
+
+  font-family: 'Material Icons Outlined' !important
+  margin-right: $spacing
+
+  &[data-position='right']
+    margin-left: $spacing
+    margin-right: 0
+
+// Styles
+
+// Span
+.ada-span
+  @extend %Span
+
+.ada-paragraph .ada-span
+  +font-weight(600)
+
+.wrapper
+  +is-wrapper
+
+.badge
+  +is-badge
+
+.badge.is-circle
+  +is-circular-badge
+
+// Icon
+.icon
+  @extend %Icon
+
+.adm-select .icon
+  +is-icon(adm-select)
+
+// Responsive Styles
+
+// Desktop
+
+// Tablet
+
+// Mobile

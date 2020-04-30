@@ -1,0 +1,27 @@
+<!-- Packages -->
+import { Props } from '@storybook/addon-docs/blocks'
+
+<!-- Components -->
+import Select from '.'
+
+<!-- Mock Data -->
+import OptionsMock from './__mocks__/Options.mock'
+
+# Select
+
+`<div>` element with the class `adm-select`.
+
+Inside of the container, a native `<select>` element will be rendered, as well
+a custom dropdown `Icon`.
+
+Props passed to this component will be passed to the native `<select>` element,
+**NOT** the outer `<div>` element.
+
+**https://developer.mozilla.org/docs/Web/HTML/Element/select**  
+**https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html**  
+
+<Preview>
+  <Select aria-label='Default select' data-options={OptionsMock} />
+</Preview>
+
+<Props components={{ Select }} />

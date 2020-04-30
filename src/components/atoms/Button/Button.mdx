@@ -1,0 +1,90 @@
+<!-- Packages -->
+import { Props } from '@storybook/addon-docs/blocks'
+
+<!-- Components -->
+import { Button }  from '.'
+
+<!-- Config -->
+import {
+  DROPDOWN_BUTTON_DEFAULTS,
+  SMOOTH_SCROLL_BUTTON_DEFAULTS
+} from '../../../config/constants'
+
+# Button
+
+`<button>` element with the class `ada-button`.
+
+**https://developer.mozilla.org/docs/Web/HTML/Element/button**
+
+<Preview>
+  <Button>
+    Button text
+  </Button>
+</Preview>
+
+<Props components={{ Button }} />
+
+## Usage
+
+<br/>
+
+### Dropdown
+
+`Button` component where `name=dropdown`.
+
+<Preview>
+  <Button name={DROPDOWN_BUTTON_DEFAULTS.name}>
+    Dropdown
+  </Button>
+</Preview>
+
+### Icon
+
+`Button` component where `data-icon` contains `Icon` component properties.
+
+<Preview>
+  <Button data-icon={{ children: 'arrow_drop_down' }} />
+
+  <Button
+    data-icon={{ 'aria-label': 'Scroll to top', children: 'arrow_upward' }}
+  />
+
+  <Button data-icon={{ children: 'chevron_left' }} />
+
+  <Button data-icon={{ children: 'chevron_right' }} />
+
+  <Button data-icon={{ 'aria-label': 'Close sidebar', children: 'close' }} />
+
+  <Button data-icon={{ 'aria-label': 'Open sidebar', children: 'menu' }} />
+
+  <Button data-icon={{ 'aria-label': 'Try again', children: 'refresh' }} />
+
+  <Button data-icon={{ 'aria-label': 'Swap order', children: 'swap_vert' }} />
+</Preview>
+
+#### Smooth Scroll
+
+`Button` component where `name=smooth_scroll`.
+
+When clicked, this page will scroll to the top of the element selected by the
+`value.to` property at a speed of `value.duration` milliseconds.
+
+<Preview>
+  <Button name='smooth_scroll'>
+    Smooth scroll button
+  </Button>
+</Preview>
+
+##### Scroll To Top
+
+`Button` component where
+
+- `name=smooth_scroll`
+- `data-icon={ 'aria-label': 'Scroll to top', children: 'arrow_upward' }`
+
+<Preview>
+  <Button
+    name='smooth_scroll'
+    data-icon={{ 'aria-label': 'Scroll to top', children: 'arrow_upward' }}
+  />
+</Preview>

@@ -1,0 +1,40 @@
+// -----------------------------------------------------------------------------
+// Core Variables
+// @group variables-base
+// -----------------------------------------------------------------------------
+
+/// Asset path
+/// @type {String}
+$base-url: '../../../assets/'
+
+/// Grid column width
+/// @type {Number}
+$grid-column-width: 98
+
+/// Twelve
+/// @type {Number}
+$one-dozen: 12
+
+/// Thirteen
+/// @require {variable} $one-dozen
+/// @type {Number}
+$bakers-dozen: $one-dozen + 1
+
+/// Number to use in calculations
+/// @type {Number}
+$magic-number: 24
+
+/// 25% of $magic-number
+/// @require {variable} $magic-number
+/// @type {Number}
+$magic-number-25p: $magic-number * 0.25
+
+/// 50% of $magic-number
+/// @require {variable} $magic-number
+/// @type {Number}
+$magic-number-50p: $magic-number * 0.5
+
+/// 75% of $magic-number
+/// @require {variable} $magic-number
+/// @type {Number}
+$magic-number-75p: $magic-number * 0.75

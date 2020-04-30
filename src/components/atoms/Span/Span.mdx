@@ -1,0 +1,106 @@
+<!-- Packages -->
+import { Props } from '@storybook/addon-docs/blocks'
+
+<!-- Components -->
+import { Span, Icon } from '.'
+
+# Span
+
+`<span>` element with the class `ada-span`.
+
+**https://developer.mozilla.org/docs/Web/HTML/Element/span**
+
+<Preview>
+  <Span>Span content</Span>
+</Preview>
+
+<Props components={{ Span, Icon }} />
+
+## Usage
+
+<br/>
+
+### Badge
+
+`Span` component with the class `badge`.
+
+<Preview>
+  <Span>
+    Badge text
+  </Span>
+</Preview>
+
+#### Circular Badge
+
+`Span` component with the classes `badge` and `is-circle`.
+
+<Preview>
+  <Span className='badge is-circle'>
+    0
+  </Span>
+</Preview>
+
+### Components
+
+<hr/>
+
+#### Icon
+
+**https://material-ui.com/components/icons/#icon-font-icons**
+
+##### Accessibility
+
+An `Icon` has two use cases:
+
+- **Decorative**: These icons are only used for visual or branding
+  reinforcement. If they were removed from the page, users would still understand and be able to use your page.
+
+- **Semantic**: These icons are only used to convey meaning. This includes icons
+  without text next to them used as interactive controls — buttons, form
+  elements, toggles, etc. Icons without text next to them should use the
+  `aria-label` attribute.
+
+Reference: https://material-ui.com/components/icons/#accessibility
+
+##### Material Icons
+
+https://material.io/resources/icons/?style=outline
+
+<Preview>
+  <Icon aria-label='More options'>arrow_drop_down</Icon>
+  <Icon aria-label='Scroll to top'>arrow_upward</Icon>
+  <Icon aria-label='Previous'>chevron_left</Icon>
+  <Icon aria-label='Next'>chevron_right</Icon>
+  <Icon aria-label='Close sidebar'>close</Icon>
+  <Icon aria-label='Open menu'>menu</Icon>
+  <Icon aria-label='Try again'>refresh</Icon>
+  <Icon aria-label='Sort by name'>swap_vert</Icon>
+  <Icon data-outlined aria-label='Cancel'>cancel</Icon>
+</Preview>
+
+##### Font Awesome
+
+https://fontawesome.com/icons?m=free
+
+<Preview>
+  <Icon className='fas fa-spinner fa-spin' />
+  <Icon className='fas fa-credit-card' aria-label='View budget' />
+  <Icon className='fas fa-bolt' />
+  <Icon className='fas fa-tasks' aria-label='View deliverables' />
+  <Icon className='fas fa-grin-alt' aria-hidden />
+  <Icon className='fas fa-seedling' aria-label='View growth' />
+  <Icon className='fas fa-tools' aria-hidden />
+</Preview>
+
+###### Brand Icons
+
+https://fontawesome.com/icons?s=brands
+
+<Preview>
+  <Icon className='fab fa-instagram' aria-label='To Instagram' />
+  <Icon className='fab fa-twitter' aria-label='To Twitter' />
+  <Icon className='fab fa-facebook-f' aria-label='To Facebook' />
+  <Icon className='fab fa-linkedin' aria-label='To LinkedIn' />
+  <Icon className='fab fa-github' aria-label='To GitHub' />
+  <Icon className='fab fa-google-drive' aria-label='To Google Drive' />
+</Preview>

@@ -1,0 +1,36 @@
+<!-- Packages -->
+import { Props } from '@storybook/addon-docs/blocks'
+
+<!-- Components -->
+import Image from '.'
+
+# Image
+
+`<img>` element with the class `ada-image`.
+
+**https://developer.mozilla.org/docs/Web/HTML/Element/img**
+
+<Preview>
+  <Image
+    alt='Storybook badge'
+    src='https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg'
+  />
+</Preview>
+
+<Props components={{ Image }} />
+
+## Usage
+
+<br/>
+
+### React Logo
+
+Renders a spinning [React](https://reactjs.org) logo.
+
+<Preview id='react-logo-preview'>
+  <Image
+    src='/assets/images/react-logo.svg'
+    alt='React logo'
+    className='react-logo-spin'
+  />
+</Preview>

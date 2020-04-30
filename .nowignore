@@ -1,0 +1,9 @@
+# Directories
+.github
+.vscode
+/docs
+
+# Files
+.gitignore
+package-lock.json
+prepublish.js

@@ -1,0 +1,78 @@
+// -----------------------------------------------------------------------------
+// Link variables, functions, mixins, placeholders, and styles
+// @group Link
+// -----------------------------------------------------------------------------
+
+// Variables
+
+/// Dropdown Button, Dropdown, and Link padding
+/// @require {function} size
+/// @require {variable} $magic-number-50p
+/// @type {Number}
+$dropdown-element-padding: size($magic-number-50p)
+
+// Functions
+
+// Mixins
+
+/// Action Link component styles
+/// @require {mixin} font-weight
+=is-action-link
+  +font-weight(500)
+
+/// Icon Link styles
+/// @require {mixin} display-flex
+/// @require {mixin} is-flex-centered
+=is-icon-link
+  +display-flex(inline-flex)
+
+  +is-flex-centered
+
+/// Active state styles
+/// @example <Link className='is-active'>
+/// @require {mixin} font-weight
+=state-active
+  +font-weight(800)
+
+// Placeholders
+
+/// Link component styles
+/// @require {mixin} color
+/// @require {mixin} event
+/// @require {mixin} font-size
+/// @require {mixin} font-weight
+/// @require {mixin} state-active
+/// @require {variable} $secondary-font-family
+%Link
+  +color
+
+  +event
+    +font-weight(600)
+
+    &.is-active
+      +state-active
+
+
+  +font-size(16)
+
+  font-family: $secondary-font-family
+
+  &.is-active
+    +state-active
+
+// Styles
+
+// Link
+.ada-link
+  @extend %Link
+
+.ada-link[data-icon='[object Object]']
+  +is-icon-link
+
+// Responsive Styles
+
+// Desktop
+
+// Tablet
+
+// Mobile

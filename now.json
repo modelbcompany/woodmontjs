@@ -1,0 +1,44 @@
+{
+  "name": "woodmontjs",
+  "version": 2,
+  "alias": "woodmontjs.modelb.now.sh",
+  "github": {
+    "autoAlias": true,
+    "enabled": true,
+    "silent": false
+  },
+  "scope": "modelb",
+  "env": {},
+  "build": {
+    "env": {
+      "NODE_VERSION": "12"
+    }
+  },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "regions": [
+    "iad1"
+  ],
+  "public": true,
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/ref/storybook-config",
+      "destination": "https://medium.com/storybookjs/declarative-storybook-configuration-49912f77b78",
+      "statusCode": 308
+    },
+    {
+      "source": "/repo",
+      "destination": "https://github.com/modelbcompany/woodmontjs",
+      "statusCode": 308
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+// -----------------------------------------------------------------------------
+/// Paragraph variables, functions, mixins, placeholders, and styles
+// @group Paragraph
+// -----------------------------------------------------------------------------
+
+// Variables
+
+// Functions
+
+// Mixins
+
+/// Bucket text styles
+/// @require {mixin} font-size
+/// @require {mixin} font-weight
+/// @require {mixin} respond-to
+/// @require {variable} $breakpoint-1024
+/// @require {variable} $magic-number
+/// @require {variable} $magic-number-50p
+=is-bucket-text
+  &:first-of-type
+    +font-size(20)
+
+    +font-weight(600, important)
+
+    +respond-to($breakpoint-1024)
+      +font-size(18)
+
+
+    margin-bottom: size($magic-number-50p)
+
+  &:last-of-type
+    +font-size(18)
+
+    +font-weight(300, important)
+
+    +respond-to($breakpoint-1024)
+      +font-size(16)
+
+      margin-bottom: size($magic-number-50p)
+
+
+    margin-bottom: size($magic-number)
+
+/// TableData text styles
+/// @require {mixin} font-size
+/// @require {mixin} is-black-text
+=is-table-data-text
+  +font-weight(500)
+
+  +font-size(14)
+
+  +is-black-text(important)
+
+// Placeholders
+
+/// Paragragh
+/// @require {mixin} font-size
+/// @require {variable} $grey-600
+%Paragraph
+  +font-size(16)
+
+  color: $grey-600
+
+// Styles
+
+// Paragraph
+.ada-paragraph
+  @extend %Paragraph
+
+  &.table-data-text
+    +is-table-data-text
+
+.ada-td > .ada-paragraph
+  +is-table-data-text
+
+.bucket .ada-paragraph
+  +is-bucket-text
+
+// Responsive Styles
+
+// Desktop
+
+// Tablet
+
+// Mobile

@@ -1,0 +1,40 @@
+// -----------------------------------------------------------------------------
+// Option variables, functions, mixins, placeholders, and styles
+// @group Option
+// -----------------------------------------------------------------------------
+
+// Variables
+
+// Functions
+
+// Mixins
+
+// Placeholders
+
+/// Option component styles
+/// @require {mixin} event
+/// @require {mixin} text-color
+/// @require {variable} $black
+/// @require {variable} $secondary-font-family
+%Option
+  +event
+    cursor: pointer
+
+
+  +text-color($black)
+
+  font-family: $secondary-font-family
+
+// Styles
+
+// Option
+.ada-option
+  @extend %Option
+
+// Responsive Styles
+
+// Desktop
+
+// Tablet
+
+// Mobile

@@ -1,0 +1,52 @@
+<!-- Packages -->
+import { Props } from '@storybook/addon-docs/blocks'
+
+<!-- Components -->
+import { Link } from '.'
+
+# Link
+
+`<a>` element with the class `ada-link`.
+
+If `data-router=true`, a Reach Router `Link` will be rendered instead.
+
+**https://developer.mozilla.org/docs/Web/HTML/Element/a**  
+**https://reach.tech/router/api/Link**
+
+<Preview>
+  <Link>
+    Link text
+  </Link>
+</Preview>
+
+<Props components={{ Link }} />
+
+## Usage
+
+<br/>
+
+### Icon Link
+
+Render a `Link` component with an `Icon` beside the text.
+
+<Preview>
+  <Link data-icon={{ children: 'link' }}>
+    Link Text
+  </Link>
+</Preview>
+
+#### Action Link
+
+`Link` component with the following properties:
+
+- `className='action-link'`
+- `data-icon={ children: 'keyboard_arrow_right', 'data-position': 'right' }`.
+
+<Preview>
+  <Link 
+    className='action-link' 
+    data-icon={{ children: 'keyboard_arrow_right', 'data-position': 'right' }}
+  >
+    Action Link
+  </Link>
+</Preview>

@@ -1,0 +1,127 @@
+{
+  "name": "@modelbcompany/woodmontjs",
+  "version": "1.0.0-beta",
+  "description": "React component and JS utility function library, originally built to support the development of a new Floor Plans page and online scheduling feature on the 8001 Woodmont landing page.",
+  "keywords": [
+    "component library",
+    "front end development",
+    "react",
+    "sass",
+    "storybook",
+    "storybook-addon-docs",
+    "ui development",
+    "utility functions"
+  ],
+  "homepage": "https://github.com/modelbcompany/woodmontjs#README",
+  "bugs": {
+    "url": "https://github.com/modelbcompany/woodmontjs/issues",
+    "email": "lexus.drumgold@modelb.com"
+  },
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Lexus Drumgold",
+    "email": "lexus.drumgold@modelb.com",
+    "url": "https://modelb.com"
+  },
+  "main": "src/index.js",
+  "repository": "git://github.com/modelbcompany/woodmontjs.git",
+  "scripts": {
+    "preinstall": "rm -rf node_modules/ package-lock.json",
+    "lint:js": "eslint ./*.js ./.storybook/*.js ./src/*.js ./src/**/*.js ./src/components/**/**/*.js --fix --ext .js,.jsx  --no-ignore",
+    "lint:sass": "sass-lint --config .sass-lint.yml --verbose --no-exit",
+    "lint": "run-p lint:*",
+    "predev": "npm run lint",
+    "dev": "start-storybook -s ./public -p 3000 --ci",
+    "dev:debug": "start-storybook -s ./public -p 3000 --ci --debug-webpack",
+    "pretest": "NODE_ENV=test",
+    "test": "jest --detectOpenHandles --passWithNoTests",
+    "prebuild": "npm run lint && rm -rf ./build",
+    "build": "build-storybook -o build --docs",
+    "postbuild:docs": "build-storybook -o build/storybook",
+    "postbuild:public": "cp -R public/assets build && cp -R public/assets build/storybook",
+    "postbuild": "run-s postbuild:*",
+    "prestart": "npm test && npm run build",
+    "start": "serve ./build",
+    "now-build": "npm run prestart"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.9.12",
+    "jquery": "^3.5.0",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
+    "@babel/plugin-proposal-throw-expressions": "^7.8.3",
+    "@babel/preset-env": "^7.9.6",
+    "@reach/router": "^1.3.3",
+    "@storybook/addon-a11y": "^5.3.18",
+    "@storybook/addon-actions": "^5.3.18",
+    "@storybook/addon-backgrounds": "^5.3.18",
+    "@storybook/addon-console": "^1.2.1",
+    "@storybook/addon-docs": "^5.3.18",
+    "@storybook/addon-knobs": "^5.3.18",
+    "@storybook/addon-links": "^5.3.18",
+    "@storybook/addon-viewport": "^5.3.18",
+    "@storybook/addons": "^5.3.18",
+    "@storybook/cli": "^5.3.18",
+    "@storybook/react": "^5.3.18",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.4",
+    "@testing-library/user-event": "^10.1.0",
+    "@whitespace/storybook-addon-html": "^1.2.1",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.5.1",
+    "babel-loader": "^8.1.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-config-standard-jsx": "^8.1.0",
+    "eslint-config-standard-react": "^9.2.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^25.5.2",
+    "node-sass": "^4.14.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-preset-env": "^6.7.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-element-to-jsx-string": "^14.3.1",
+    "react-is": "16.13.1",
+    "react-test-renderer": "16.13.1",
+    "sass-lint": "^1.13.1",
+    "sass-loader": "7.3.1",
+    "serve": "^11.3.0"
+  },
+  "peerDependencies": {
+    "@reach/router": "^1.3.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "private": true,
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "sasslintConfig": "./sass-lint.yml"
+}
