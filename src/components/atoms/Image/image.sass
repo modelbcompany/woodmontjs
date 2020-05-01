@@ -11,19 +11,21 @@
 
 // Placeholders
 
+/// Image component styles
+%Image
+  +is-full-width
+
 // Styles
 
 // Image
+.ada-image
+  @extend %Image
+
 .ada-image
   .react-logo-spin
     +constrain(50%)
 
     pointer-events: none
-
-// AppHeader
-.app-header
-  .logo-symbol
-    +height(100%)
 
 // Responsive Styles
 

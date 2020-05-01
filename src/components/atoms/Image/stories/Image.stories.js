@@ -8,6 +8,7 @@ import Image from '..'
 // Metadata
 import {
   ImageStoryParams,
+  FloorplanImageStoryParams,
   ReactLogoStoryParams
 } from '../metadata/Image.meta'
 
@@ -33,6 +34,24 @@ export const Default = () => (
     src={text('src', 'https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg')}
   />
 )
+
+/**
+ * @link Floorplan @link Image story.
+ *
+ * @returns {Image}
+ */
+export const FloorplanImage = () => (
+  <Image
+    alt={text('alt', 'Unit #106 floorplan')}
+    className={`floorplan-img ${text('className')}`}
+    src={text('src', '/assets/images/Floorplan2.jpg')}
+  />
+)
+
+FloorplanImage.story = {
+  name: 'Floorplan',
+  parameters: FloorplanImageStoryParams
+}
 
 /**
  * React logo @link Image story.

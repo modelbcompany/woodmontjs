@@ -25,6 +25,13 @@ export const ImageStoryParams = {
 }
 
 /**
+ * Storybook parameters for the @link Floorplan @link Image story.
+ *
+ * @namespace FloorplanImageStoryParams
+ */
+export const FloorplanImageStoryParams = {}
+
+/**
  * Storybook parameters for the React Logo @link Image story.
  *
  * @namespace ReactLogoStoryParams
