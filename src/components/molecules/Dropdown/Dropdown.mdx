@@ -4,6 +4,12 @@ import { Props } from '@storybook/addon-docs/blocks'
 <!-- Components -->
 import Dropdown from '.'
 
+<!-- Config -->
+import { FloorPlanSearchFormDropdownProps } from '../../../config'
+
+<!-- Utility Functions -->
+import { getDropdownProps } from '../../../utils/react.utils'
+
 # Dropdown
 
 `<div>` element with the class `adm-dropdown`.
@@ -20,6 +26,30 @@ import Dropdown from '.'
 
 - `className='floor-plan-search-form-dropdown'`
 
+<br/>
+
+#### Bedrooms
+
 <Preview>
-  {/*  */}
+  <Dropdown {...getDropdownProps(FloorPlanSearchFormDropdownProps.Bedrooms)} />
+</Preview>
+
+#### Bathrooms
+
+<Preview>
+  <Dropdown {...getDropdownProps(FloorPlanSearchFormDropdownProps.Bathrooms)} />
+</Preview>
+
+#### Move In Date
+
+<Preview>
+  <Dropdown
+    {...getDropdownProps(FloorPlanSearchFormDropdownProps.MoveInDate)} 
+  />
+</Preview>
+
+#### Max Price
+
+<Preview>
+  <Dropdown {...getDropdownProps(FloorPlanSearchFormDropdownProps.MaxPrice)} />
 </Preview>

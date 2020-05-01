@@ -25,7 +25,7 @@ import './dropdown.sass'
  */
 export const Dropdown = ({ 'data-button': pb, ...props }) => {
   const attributes = useAttributes(props, 'adm-dropdown')
-  const { children } = useIcon(props)
+  const { children } = useIcon(attributes)
   const { handleDropdown, open } = useDropdown()
 
   return (

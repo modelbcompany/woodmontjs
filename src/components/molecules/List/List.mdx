@@ -4,6 +4,9 @@ import { Props } from '@storybook/addon-docs/blocks'
 <!-- Components -->
 import { List } from '.'
 
+<!-- Config -->
+import { FloorPlanSearchFormDropdownItems } from '../../../config'
+
 <!-- Mock Data -->
 import DropdownListMock from './__mocks__/DropdownList.mock'
 import ListMock from './__mocks__/List.mock'
@@ -27,8 +30,50 @@ import ListMock from './__mocks__/List.mock'
 
 ### Dropdown
 
-`List` component with the class `dropdown-list`.
+- `className='dropdown-list'`
 
 <Preview>
   <List className='dropdown-list' data-items={DropdownListMock} />
+</Preview>
+
+#### FloorPlanSearchForm
+
+- `className='dropdown-list floor-plan-search-form-dropdown-list'`
+
+<br/>
+
+##### Bedrooms
+
+<Preview>
+  <List 
+    className='dropdown-list floor-plan-search-form-dropdown-list'
+    data-items={FloorPlanSearchFormDropdownItems.Bedrooms} 
+  />
+</Preview>
+
+##### Bathrooms
+
+<Preview>
+  <List 
+    className='dropdown-list floor-plan-search-form-dropdown-list'
+    data-items={FloorPlanSearchFormDropdownItems.Bathrooms} 
+  />
+</Preview>
+
+##### Move In Date
+
+<Preview>
+  <List 
+    className='dropdown-list floor-plan-search-form-dropdown-list'
+    data-items={FloorPlanSearchFormDropdownItems.MoveInDate} 
+  />
+</Preview>
+
+##### Max Price
+
+<Preview>
+  <List 
+    className='dropdown-list floor-plan-search-form-dropdown-list'
+    data-items={FloorPlanSearchFormDropdownItems.MaxPrice} 
+  />
 </Preview>

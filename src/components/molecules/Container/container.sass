@@ -9,6 +9,24 @@
 
 // Mixins
 
+/// Content container styles
+/// @require {mixin} height
+/// @require {mixin} no-margin
+/// @require {mixin} sticky
+/// @require {mixin} width
+/// @param {String} $context [null] - Selector context
+=is-content-container($context: null)
+  @if $context == null
+    // @todo
+  @else if $context == adm-dropdown
+    +height(auto, unset, none)
+
+    +no-margin
+
+    +width(100%)
+
+  @content
+
 /// Default page layout styles
 /// @require {mixin} constrain
 /// @require {mixin} is-stretched
@@ -51,6 +69,9 @@
 // Container
 .adm-container
   @extend %Container
+
+.dropdown-content
+  +is-content-container(adm-dropdown)
 
 .layout-container
   +is-layout-container

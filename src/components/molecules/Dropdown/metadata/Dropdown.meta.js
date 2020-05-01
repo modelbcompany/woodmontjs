@@ -26,5 +26,10 @@ export const DropdownStoryParams = {
  * Storybook parameters for the @link FloorPlanSearchForm @link Dropdown story.
  *
  * @namespace FloorPlanSearchFormDropdownStoryParams
+ * @property {object} knobs - Storybook Knobs config
  */
-export const FloorPlanSearchFormDropdownStoryParams = {}
+export const FloorPlanSearchFormDropdownStoryParams = {
+  knobs: {
+    disabled: false
+  }
+}

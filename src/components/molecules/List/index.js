@@ -2,9 +2,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// Components
-import Item from '../Item'
-
 // Hooks
 import { useAttributes, useItems } from '../../../hooks'
 
@@ -75,10 +72,13 @@ List.propTypes = {
   /**
    * Array of `Item` component **properties** or components.
    */
-  'data-items': PropTypes.oneOf([
-    PropTypes.arrayOf(PropTypes.instanceOf(Item)),
-    PropTypes.arrayOf(PropTypes.shape(Item.__docgenInfo.props))
-  ]),
+  'data-items': PropTypes.arrayOf(PropTypes.shape({
+    children: PropTypes.node,
+    className: PropTypes.string,
+    'data-*': PropTypes.any,
+    id: PropTypes.string,
+    title: PropTypes.string
+  })),
 
   /**
    * Determines the type of list rendered.

@@ -25,6 +25,20 @@ export const createCollection = (component, data = []) => {
 }
 
 /**
+ * Returns an object containing @link Dropdown properties.
+ *
+ * @param children will be converted into a component instance.
+ *
+ * @param {object} props - @link Dropdown component data
+ * @param {ReactElementSkeleton} children - React Element
+ * @param {Object} children.props - HTML element or component properties
+ * @param {string} children.type - HTML tag or component name
+ */
+export const getDropdownProps = ({ children, ...rest }) => {
+  return Object.freeze({ ...rest, children: createElement(children) })
+}
+
+/**
  * Creates a React DOM or Component Element.
  *
  * An element is an object describing a component instance or DOM node and its

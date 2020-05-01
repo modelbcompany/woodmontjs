@@ -33,6 +33,7 @@ $dropdown-element-border: size(1) solid $grey-200
 /// @require {mixin} is-hidden
 /// @require {mixin} reset-list-element
 /// @require {mixin} sticky
+/// @require {mixin} width
 /// @require {variable} $dropdown-element-border
 /// @require {variable} $grey-200
 /// @require {variable} $transparent
@@ -73,8 +74,8 @@ $dropdown-element-border: size(1) solid $grey-200
 
     &.is-collapsed
       +transition(all, 0.375s, ease-in-out)
-  @else if $context == adm-dropdown
-    // @todo
+  @else if $context == dropdown-content
+    +width(100%)
 
 // Placeholders
 
@@ -84,93 +85,22 @@ $dropdown-element-border: size(1) solid $grey-200
 %List
   @todo
 
-/// Buckets component styles
-/// @require {mixin} display-flex
-%Buckets
-  +display-flex
-
-/// Menu component styles
-/// @require {mixin} constrain
-/// @require {mixin} display-flex
-/// @require {mixin} flex-column
-/// @require {mixin} is-dropdown-list
-/// @require {mixin} is-flex-centered
-/// @require {mixin} reset-list-element
-/// @require {mixin} width
-%Menu
-  +display-flex
-
-  +is-flex-centered
-
-  +reset-list-element
-
-  +width(max-content, unset, none)
-
-  &.dashboard-menu
-    +constrain(100%)
-
-  &.dropdown-menu
-    +is-dropdown-list
-
-  &.sidebar-menu
-    +flex-column
-
-    &[data-position='right']
-      align-items: flex-end
-
-/// NotificationsList component styles
-/// @require {mixin} is-dropdown-list
-%NotificationsList
-  +is-dropdown-list
-
 // Styles
 
 // List
 .adm-list
   @extend %List
 
-// Buckets
-.buckets
-  @extend %Buckets
-
-// Menu
-.menu
-  @extend %Menu
-
 .dropdown-list
   +is-dropdown-list
 
-.adm-dropdown .dropdown-menu
-  +width(max-content, unset, none)
-
-.menu-item-dropdown .dropdown-menu
-  +is-borderless
-
-  border-top: $dropdown-element-border
-
-.dropdown-content .dropdown-menu
-  +width(100%)
-
-.menu-item-dropdown .dropdown-content > .dropdown-menu
-  +relative
-
-  width: 100%
-
-// NotificationsList
-.notifications-list
-  @extend %NotificationsList
+.dropdown-content .dropdown-list
+  +is-dropdown-list(dropdown-content)
 
 // Responsive Styles
 
 // Desktop
 
 // Tablet
-@media screen and (max-width: size($breakpoint-1024))
-  .buckets
-    +flex-column
-
-@media screen and (max-width: size($breakpoint-834))
-  .app-header-nav .main-menu
-    +is-hidden
 
 // Mobile

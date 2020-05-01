@@ -55,15 +55,18 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 
     font-family: $primary-font-family
     letter-spacing: $letter-spacing
-    padding: size($magic-number-50p) !important
   @else if $context == dropdown
     +constrain(size($magic-number * 15))
 
     +flex-spread
 
+    +font-size
+
     +set-bkg-color-and-hover($color-brand-rolling-stone)
+
+    padding: size($magic-number-75p) size($magic-number-50p) !important
   @else if $context == submit
-    +constrain(size($magic-number * 6))
+    +constrain(size($magic-number * 4.5))
 
     $cape-palliser: #aa7b3f
 

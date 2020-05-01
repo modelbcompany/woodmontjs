@@ -6,12 +6,7 @@ import { object, text } from '@storybook/addon-knobs'
 import Link from '..'
 
 // Metadata
-import {
-  IconLinkStoryParams,
-  LinkStoryParams,
-  MenuItemLinkStoryParams,
-  TableDataLinkStoryParams
-} from '../metadata/Link.meta'
+import { IconLinkStoryParams, LinkStoryParams } from '../metadata/Link.meta'
 
 /**
  * @file Stories - Link
@@ -55,40 +50,4 @@ export const IconLink = () => (
 
 IconLink.story = {
   parameters: IconLinkStoryParams
-}
-
-/**
- * Renders a menu item @link Link component.
- *
- * @returns {Link}
- */
-export const MenuItemLink = () => (
-  <Link
-    className={`menu-item-link ${text('className')}`}
-    data-icon={object('data-icon')}
-    href={text('href')}
-  >
-    {text('children', 'Menu Item Link')}
-  </Link>
-)
-
-MenuItemLink.story = {
-  name: 'MenuItem',
-  parameters: MenuItemLinkStoryParams
-}
-
-/**
- * Story for @link Link components used inside of @link TableData components.
- *
- * @returns {Link}
- */
-export const TableDataLink = () => (
-  <Link href={text('href')} className={`table-data-link ${text('className')}`}>
-    {text('children', 'MODB - Blueprint Development (Block of General hrs)')}
-  </Link>
-)
-
-TableDataLink.story = {
-  name: 'TableData',
-  parameters: TableDataLinkStoryParams
 }

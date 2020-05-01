@@ -1,18 +1,14 @@
 // Packages
 import React from 'react'
-import { array, text, select } from '@storybook/addon-knobs'
+import { text, select } from '@storybook/addon-knobs'
 
 // Component
 import List from '..'
 
 // Metadata
-import {
-  DropdownListStoryParams,
-  ListStoryParams
-} from '../metadata/List.meta'
+import { ListStoryParams } from '../metadata/List.meta'
 
 // Mock Data
-import DropdownListMock from '../__mocks__/DropdownList.mock'
 import ListMock from '../__mocks__/List.mock'
 
 /**
@@ -39,20 +35,3 @@ export const Default = () => (
     {ListMock}
   </List>
 )
-
-/**
- * @link Dropdown @link List story.
- *
- * @returns {List}
- */
-export const DropdownList = () => (
-  <List
-    className={`dropdown-list ${text('className')}`}
-    data-items={array('data-items', DropdownListMock)}
-  />
-)
-
-DropdownList.story = {
-  name: 'Dropdown',
-  parameters: DropdownListStoryParams
-}

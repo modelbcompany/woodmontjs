@@ -7,10 +7,7 @@ import { Link as RouterLink } from '@reach/router'
 import { Icon } from '../Span'
 
 // Hooks
-import {
-  useAttributes,
-  useIcon
-} from '../../../hooks'
+import { useAttributes, useIcon } from '../../../hooks'
 
 // Stylesheets
 import './link.sass'
