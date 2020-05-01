@@ -40,9 +40,7 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 // Placeholders
 
 /// Button component styles
-/// @example <Button>I'm a button!</Button>
 /// @require {function} size
-/// @require {mixin} background-color
 /// @require {mixin} color
 /// @require {mixin} display-flex
 /// @require {mixin} font-size
@@ -60,10 +58,7 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 /// @require {variable} $grey-200
 /// @require {variable} $grey-300
 /// @require {variable} $grey-600
-/// @require {variable} $magic-number
-/// @require {variable} $pp-default-navy
 /// @require {variable} $secondary-font-family
-/// @require {variable} $transparent
 %Button
   +color($grey-600, $grey-200)
 
@@ -94,11 +89,6 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 
   &[data-icon]
     +is-icon-btn
-
-  &.is-navy
-    +is-white-text
-
-    +set-bkg-color-and-hover($pp-default-navy)
 
   &.is-transparent
     +is-transparent
