@@ -1,9 +1,8 @@
 <!-- Packages -->
 import { Props } from '@storybook/addon-docs/blocks'
-import { action } from '@storybook/addon-actions'
 
 <!-- Components -->
-import { Form } from '.'
+import { Form, FloorPlanSearchForm } from '.'
 
 # Form
 
@@ -11,8 +10,21 @@ import { Form } from '.'
 
 **https://developer.mozilla.org/docs/Web/HTML/Element/form**
 
-<Props components={{ Form }} />
+<Props components={{ Form, FloorPlanSearchForm }} />
 
 ## Usage
 
 <br/>
+
+### Components
+
+<br/>
+
+#### FloorPlanSearchForm
+
+<Preview>
+  <FloorPlanSearchForm
+    handleFilter={event => console.warn('@todo handleFilter =>', event.target)}
+    handleSearch={event => console.warn('@todo handleSearch =>', event.target)}
+  />
+</Preview>

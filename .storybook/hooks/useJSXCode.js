@@ -59,7 +59,8 @@ export const useJSXCode = source => {
 
     const jsx_str = reactElementToJSXString(component, {
       maxInlineAttributesLineLength: 70,
-      showDefaultProps: false
+      showDefaultProps: false,
+      showFunctions: true
     })
 
     return code += `\n${jsx_str}`

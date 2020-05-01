@@ -22,11 +22,22 @@
 
   +no-padding
 
+/// FloorPlanSearchFiltersField component styles
+%FloorPlanSearchFiltersField
+  @empty
+
 // Styles
 
 // Fieldset
 .adm-fieldset
   @extend %Fieldset
+
+// FloorPlanSearchFiltersField
+.floor-plan-search-form-filters
+  @extend %FloorPlanSearchFiltersField
+
+.floor-plan-search-form .floor-plan-search-form-filters
+  flex-grow: 0.85
 
 // Responsive Styles
 

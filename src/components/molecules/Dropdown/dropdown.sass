@@ -26,23 +26,7 @@
 
   +relative
 
-  +width(max-content)
-
-  &.add-new-dropdown
-    margin-right: size($magic-number-75p)
-
-    &:last-of-type
-      margin-right: size($magic-number * 2)
-
-  &.deliverable-actions-dropdown
-    float: right
-
-  &.sidebar-menu-item-dropdown
-    +width(100%, unset)
-
-  &.deliverable-actions-dropdown,
-  &.notifications-dropdown
-    align-items: flex-end
+  +width(max-content, max-content, none)
 
 // Styles
 
@@ -50,19 +34,20 @@
 .adm-dropdown
   @extend %Dropdown
 
-.deliverables-table-row .deliverable-actions-dropdown
-  +width(auto, 100%, inherit)
+.floor-plan-search-form-filters .floor-plan-search-form-dropdown
+  flex-grow: 0.225
 
-  float: unset
+  &:last-of-type
+    order: 2
 
-.app-header-nav .notifications-dropdown
-  &:not(:last-of-type)
-    margin-right: size($magic-number)
+  &:first-of-type
+    order: 1
 
-.dropdown-menu-item .adm-dropdown,
-.menu-item-dropdown .adm-dropdown,
-.dropdown-menu .menu-item-dropdown
-  +width(100%)
+  &:nth-of-type(2)
+    order: 0
+
+  &:nth-of-type(3)
+    order: 3
 
 // Responsive Styles
 

@@ -33,7 +33,6 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 /// @require {mixin} is-uppercase
 /// @require {mixin} is-white-text
 /// @require {mixin} set-bkg-color-and-hover
-/// @require {variable} $bakers-dozen
 /// @require {variable} $color-brand-rolling-stone
 /// @require {variable} $color-brand-tussock
 /// @require {variable} $letter-spacing
@@ -45,7 +44,7 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
   @if $context == null
     +constrain(size($magic-number * 1.5), height)
 
-    +font-size($bakers-dozen)
+    +font-size
 
     +font-weight(600)
 
@@ -56,11 +55,9 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
     font-family: $primary-font-family
     letter-spacing: $letter-spacing
   @else if $context == dropdown
-    +constrain(size($magic-number * 15))
-
     +flex-spread
 
-    +font-size
+    +is-full-width
 
     +set-bkg-color-and-hover($color-brand-rolling-stone)
 
@@ -159,6 +156,11 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 
   &[type='submit']
     +is-floor-plan-search-form-btn(submit)
+
+.floor-plan-search-form .floor-plan-search-form-btn[type='submit']
+  flex-grow: 0.125
+  max-width: none
+  width: auto
 
 // Responsive Styles
 

@@ -85,8 +85,9 @@
   @content
 
 /// Center flexbox items on main axis and distrbute space between elements
-=flex-spread
-  align-items: center
+/// @param {String} $alignment [center] - Flexbox alignment
+=flex-spread($alignment: center)
+  align-items: $alignment
   justify-content: space-between
 
   @content

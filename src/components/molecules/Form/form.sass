@@ -12,15 +12,27 @@
 // Placeholders
 
 /// Form component styles
-/// @require {mixin} constrain
+/// @require {mixin} is-full-width
 %Form
-  +constrain(max-content)
+  +is-full-width
+
+/// FloorPlanSearchForm component styles
+/// @require {mixin} display-flex
+/// @require {mixin} flex-spread
+%FloorPlanSearchForm
+  +display-flex
+
+  +flex-spread(flex-start)
 
 // Styles
 
 // Form
 .adm-form
   @extend %Form
+
+// FloorPlanSearchForm
+.floor-plan-search-form
+  @extend %FloorPlanSearchForm
 
 // Responsive Styles
 

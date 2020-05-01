@@ -14,7 +14,6 @@ const COMMON_PROPS = {
   },
   item: {
     className: 'dropdown-item floor-plan-search-form-dropdown-item',
-    onClick: event => console.warn('@todo handleFilter =>', event.target),
     role: 'button'
   },
   list: {

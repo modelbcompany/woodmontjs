@@ -2,7 +2,7 @@
 import { Props } from '@storybook/addon-docs/blocks'
 
 <!-- Components -->
-import Fieldset from '.'
+import { Fieldset, FloorPlanSearchFiltersField } from '.'
 
 # Fieldset
 
@@ -14,4 +14,24 @@ with the class `fieldset-container` will wrap the child elements.
 **https://developer.mozilla.org/docs/Web/HTML/Element/fieldset**  
 **https://khrome.dev/blog/html-elements-with-flex-box-quirks/**
 
-<Props components={{ Fieldset }} />
+<Props components={{ Fieldset, FloorPlanSearchFiltersField }} />
+
+## Usage
+
+<br/>
+
+### Components
+
+<br/>
+
+#### FloorPlanSearchFiltersField
+
+`Fieldset` component with the following properties:
+
+- `className='floor-plan-search-form-filters'`
+
+<Preview>
+  <FloorPlanSearchFiltersField
+    handleFilter={event => console.warn('@todo handleFilter =>', event.target)}
+  />
+</Preview>

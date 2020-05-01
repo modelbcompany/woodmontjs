@@ -4,9 +4,22 @@ import PropTypes from 'prop-types'
 
 // Components
 import Container from '../Container'
+import Dropdown from '../Dropdown'
+
+// Config
+import {
+  FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME
+} from './config/Fieldset.constants'
+
+import {
+  FloorPlanSearchFormDropdownProps as FloorPlanSearchFilters
+} from '../../../config'
 
 // Hooks
 import { useAttributes } from '../../../hooks'
+
+// Utility Functions
+import { getDropdownProps } from '../../../utils/react.utils'
 
 // Stylesheets
 import './fieldset.sass'
@@ -37,6 +50,31 @@ export const Fieldset = ({ children, ...props }) => (
     </Container>
   </fieldset>
 )
+
+/**
+ * Renders a @link Fieldset component with the class
+ * `floor-plan-search-form-filters`.
+ *
+ * @todo Implement handleFilter - map over dropdown items
+ *
+ * @param {FloorPlanSearchFiltersFieldProps} props - Component data
+ * @returns {Fieldset}
+ */
+export const FloorPlanSearchFiltersField = ({ handleFilter, ...props }) => {
+  const attributes = useAttributes(props, 'floor-plan-search-form-filters')
+  const filters = Object.keys(FloorPlanSearchFilters)
+
+  return (
+    <Fieldset {...attributes} name={FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME}>
+      {filters.map(filter => {
+        const dropdown = getDropdownProps(FloorPlanSearchFilters[filter])
+        const key = `${filter.toLowerCase()}-filter`
+
+        return <Dropdown {...dropdown} key={key} />
+      })}
+    </Fieldset>
+  )
+}
 
 /**
  * @link Fieldset component properties.
@@ -96,6 +134,27 @@ Fieldset.propTypes = {
   name: PropTypes.string
 }
 
+/**
+ * @link FloorPlanSearchFiltersField component properties.
+ *
+ * @typedef {FloorPlanSearchFiltersFieldProps}
+ */
+FloorPlanSearchFiltersField.propTypes = {
+  /**
+   * Code to call when the `click` event is raised.
+   */
+  handleFilter: PropTypes.func,
+
+  /**
+   * This value cannot be overridden.
+   */
+  name: PropTypes.string
+}
+
 Fieldset.defaultProps = {}
+
+FloorPlanSearchFiltersField.defaultProps = {
+  name: FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME
+}
 
 export default Fieldset
