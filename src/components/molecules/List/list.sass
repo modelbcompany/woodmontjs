@@ -1,0 +1,176 @@
+// -----------------------------------------------------------------------------
+// List variables, functions, mixins, placeholders, and styles
+// @group List
+// -----------------------------------------------------------------------------
+
+// Variables
+
+/// Dropdown List border
+/// @require {function} size
+/// @require {variable} $grey-200
+/// @type {List}
+$dropdown-element-border: size(1) solid $grey-200
+
+// Functions
+
+// Mixins
+
+/// List reset styles
+/// @require {mixin} no-margin
+/// @require {mixin} no-padding
+=reset-list-element
+  +no-margin
+
+  +no-padding
+
+/// Dropdown List styles
+/// @require {function} size
+/// @require {mixin} absolute
+/// @require {mixin} background-color
+/// @require {mixin} constrain
+/// @require {mixin} display-flex
+/// @require {mixin} flex-column
+/// @require {mixin} is-hidden
+/// @require {mixin} reset-list-element
+/// @require {mixin} sticky
+/// @require {variable} $dropdown-element-border
+/// @require {variable} $grey-200
+/// @require {variable} $transparent
+/// @param {String} $context [null] Selector context
+=is-dropdown-list($context: null)
+  @if $context == null
+    +background-color($white)
+
+    +constrain(max-content)
+
+    +constrain(max-content, height)
+
+    +display-flex
+
+    +flex-column
+
+    +reset-list-element
+
+    +sticky(100%, null, null, null)
+
+    align-items: flex-start
+    border: $dropdown-element-border
+    overflow-y: scroll
+
+    &:empty
+      +is-hidden
+
+    &::after
+      $arrow-width: 7.5
+
+      +absolute(null, 9.5%, 100%, null)
+
+      border:
+        color: $transparent $transparent $grey-200 $transparent
+        style: solid
+        width: size($arrow-width)
+      margin-left: size($arrow-width * -1)
+
+    &.is-collapsed
+      +transition(all, 0.375s, ease-in-out)
+  @else if $context == adm-dropdown
+    // @todo
+
+// Placeholders
+
+/// List component styles
+/// @require {mixin} no-margin
+/// @require {mixin} no-padding
+%List
+  @todo
+
+/// Buckets component styles
+/// @require {mixin} display-flex
+%Buckets
+  +display-flex
+
+/// Menu component styles
+/// @require {mixin} constrain
+/// @require {mixin} display-flex
+/// @require {mixin} flex-column
+/// @require {mixin} is-dropdown-list
+/// @require {mixin} is-flex-centered
+/// @require {mixin} reset-list-element
+/// @require {mixin} width
+%Menu
+  +display-flex
+
+  +is-flex-centered
+
+  +reset-list-element
+
+  +width(max-content, unset, none)
+
+  &.dashboard-menu
+    +constrain(100%)
+
+  &.dropdown-menu
+    +is-dropdown-list
+
+  &.sidebar-menu
+    +flex-column
+
+    &[data-position='right']
+      align-items: flex-end
+
+/// NotificationsList component styles
+/// @require {mixin} is-dropdown-list
+%NotificationsList
+  +is-dropdown-list
+
+// Styles
+
+// List
+.adm-list
+  @extend %List
+
+// Buckets
+.buckets
+  @extend %Buckets
+
+// Menu
+.menu
+  @extend %Menu
+
+.dropdown-list
+  +is-dropdown-list
+
+.adm-dropdown .dropdown-menu
+  +width(max-content, unset, none)
+
+.menu-item-dropdown .dropdown-menu
+  +is-borderless
+
+  border-top: $dropdown-element-border
+
+.dropdown-content .dropdown-menu
+  +width(100%)
+
+.menu-item-dropdown .dropdown-content > .dropdown-menu
+  +relative
+
+  width: 100%
+
+// NotificationsList
+.notifications-list
+  @extend %NotificationsList
+
+// Responsive Styles
+
+// Desktop
+
+// Tablet
+@media screen and (max-width: size($breakpoint-1024))
+  .buckets
+    +flex-column
+
+@media screen and (max-width: size($breakpoint-834))
+  .app-header-nav .main-menu
+    +is-hidden
+
+// Mobile

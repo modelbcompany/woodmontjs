@@ -1,0 +1,34 @@
+<!-- Packages -->
+import { Props } from '@storybook/addon-docs/blocks'
+
+<!-- Components -->
+import { List } from '.'
+
+<!-- Mock Data -->
+import DropdownListMock from './__mocks__/DropdownList.mock'
+import ListMock from './__mocks__/List.mock'
+
+# List
+
+`<ul>` or `<ol>` element with the class `adm-list`.
+
+**https://developer.mozilla.org/docs/Web/HTML/Element/ol**  
+**https://developer.mozilla.org/docs/Web/HTML/Element/ul**  
+
+<Preview>
+  <List data-items={ListMock} />
+</Preview>
+
+<Props components={{ List }} />
+
+## Usage
+
+<br/>
+
+### Dropdown
+
+`List` component with the class `dropdown-list`.
+
+<Preview>
+  <List className='dropdown-list' data-items={DropdownListMock} />
+</Preview>

@@ -1,0 +1,72 @@
+// -----------------------------------------------------------------------------
+// Item variables, functions, mixins, placeholders, and styles
+// @group Item
+// -----------------------------------------------------------------------------
+
+// Variables
+
+/// Dropdown Item border
+/// @require {function} size
+/// @require {variable} $grey-200
+$dropdown-element-border: size(0.5) solid $grey-200
+
+/// Dropdown Button, Dropdown, and Link padding
+/// @require {function} size
+/// @require {variable} $magic-number-75p
+/// @type {Number}
+$dropdown-element-padding: $magic-number-75p
+
+// Functions
+
+// Mixins
+
+// Placeholders
+
+/// Item component styles
+/// @require {mixin} is-dropdown-item
+%Item
+  &[role='button']
+    +event
+      cursor: pointer
+
+
+    > *
+      pointer-events: none
+
+// Styles
+
+// Item
+.adm-item
+  @extend %Item
+
+.dropdown-item
+  $event-bkg-color: rgba(246, 246, 246, 1)
+
+  +display-flex(inline-flex)
+
+  +event
+    +background-color($event-bkg-color)
+
+
+  +font-size($one-dozen)
+
+  align-items: center
+  border-bottom: $dropdown-element-border
+  font-family: $primary-font-family
+  justify-content: flex-start
+  margin-left: 0 !important
+  padding: size($dropdown-element-padding)
+
+.dropdown-list .dropdown-item
+  +width(100%)
+
+  &:last-of-type
+    +is-borderless
+
+// Responsive Styles
+
+// Desktop
+
+// Tablet
+
+// Mobile
