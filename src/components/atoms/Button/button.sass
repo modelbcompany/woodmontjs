@@ -40,7 +40,7 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 /// @require {variable} $magic-number-50p
 /// @require {variable} $primary-font-family
 /// @param {String} $context [null]
-=is-floor-plan-search-form-btn($context: null)
+=is-floorplan-search-form-btn($context: null)
   @if $context == null
     +constrain(size($magic-number * 1.5), height)
 
@@ -148,16 +148,16 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 .ada-button
   @extend %Button
 
-.floor-plan-search-form-btn
-  +is-floor-plan-search-form-btn
+.floorplan-search-form-btn
+  +is-floorplan-search-form-btn
 
   &[name='dropdown']
-    +is-floor-plan-search-form-btn(dropdown)
+    +is-floorplan-search-form-btn(dropdown)
 
   &[type='submit']
-    +is-floor-plan-search-form-btn(submit)
+    +is-floorplan-search-form-btn(submit)
 
-.floor-plan-search-form .floor-plan-search-form-btn[type='submit']
+.floorplan-search-form .floorplan-search-form-btn[type='submit']
   flex-grow: 0.125
   max-width: none
   width: auto

@@ -4,9 +4,9 @@
  */
 
 /**
- * `name` used in the @link FloorPlanSearchFormFilters component.
+ * `name` used in the @link FloorplanSearchFormFilters component.
  *
  * @readonly
  * @property {string} FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME
  */
-export const FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME = 'floor-plans-search-filters'
+export const FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME = 'floorplans-search-filters'

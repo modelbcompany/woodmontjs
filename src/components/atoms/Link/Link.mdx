@@ -8,10 +8,7 @@ import { Link } from '.'
 
 `<a>` element with the class `ada-link`.
 
-If `data-router=true`, a Reach Router `Link` will be rendered instead.
-
 **https://developer.mozilla.org/docs/Web/HTML/Element/a**  
-**https://reach.tech/router/api/Link**
 
 <Preview>
   <Link>
@@ -25,28 +22,26 @@ If `data-router=true`, a Reach Router `Link` will be rendered instead.
 
 <br/>
 
+### Floorplan
+
+- `className='floorplan-link'`
+
+<Preview id='floorplan-link-preview'>
+  <Link className='floorplan-link'>
+    Apply Now
+  </Link>
+
+  <Link className='floorplan-link' download>
+    Download Floorplan
+  </Link>
+</Preview>
+
 ### Icon Link
 
-Render a `Link` component with an `Icon` beside the text.
+- `data-icon={IconProps}`
 
 <Preview>
   <Link data-icon={{ children: 'link' }}>
     Link Text
-  </Link>
-</Preview>
-
-#### Action Link
-
-`Link` component with the following properties:
-
-- `className='action-link'`
-- `data-icon={ children: 'keyboard_arrow_right', 'data-position': 'right' }`.
-
-<Preview>
-  <Link 
-    className='action-link' 
-    data-icon={{ children: 'keyboard_arrow_right', 'data-position': 'right' }}
-  >
-    Action Link
   </Link>
 </Preview>

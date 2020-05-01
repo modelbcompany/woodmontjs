@@ -37,7 +37,7 @@ export const Default = () => (
  */
 export const DropdownListItem = () => (
   <Item
-    className={`dropdown-item ${text('className', 'floor-plan-search-form-dropdown-item')}`}
+    className={`dropdown-item ${text('className', 'floorplan-search-form-dropdown-item')}`}
     role={text('role', 'button')}
   >
     {text('children', 'Studio')}

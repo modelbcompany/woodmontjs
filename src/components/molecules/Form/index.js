@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 // Components
 import { Button } from '../../atoms'
-import { FloorPlanSearchFiltersField } from '../Fieldset'
+import { FloorplanSearchFiltersField } from '../Fieldset'
 
 // Config
 import { FLOOR_PLAN_SEARCH_FORM_ID } from './config/Form.constants'
@@ -35,27 +35,27 @@ export const Form = ({ children, ...props }) => (
 )
 
 /**
- * Renders a @link Form component with the class `floor-plan-search-form`.
+ * Renders a @link Form component with the class `floorplan-search-form`.
  *
- * @param {FloorPlanSearchFormProps} props - Component data
+ * @param {FloorplanSearchFormProps} props - Component data
  * @returns {Form}
  */
-export const FloorPlanSearchForm = ({
+export const FloorplanSearchForm = ({
   handleFilter,
   handleSearch,
   ...props
 }) => {
-  const attributes = useAttributes(props, 'floor-plan-search-form')
+  const attributes = useAttributes(props, 'floorplan-search-form')
 
   return (
     <Form {...attributes} id={FLOOR_PLAN_SEARCH_FORM_ID}>
-      <FloorPlanSearchFiltersField
+      <FloorplanSearchFiltersField
         form={FLOOR_PLAN_SEARCH_FORM_ID}
         handleFilter={handleFilter}
       />
 
       <Button
-        className='floor-plan-search-form-btn'
+        className='floorplan-search-form-btn'
         form={FLOOR_PLAN_SEARCH_FORM_ID}
         onClick={handleSearch}
         type='submit'
@@ -241,11 +241,11 @@ Form.propTypes = {
 }
 
 /**
- * @link FloorPlanSearchForm component properties.
+ * @link FloorplanSearchForm component properties.
  *
- * @typedef {FloorPlanSearchFormProps}
+ * @typedef {FloorplanSearchFormProps}
  */
-FloorPlanSearchForm.propTypes = {
+FloorplanSearchForm.propTypes = {
   /**
    * Code to call when the `click` event is raised.
    */
@@ -269,7 +269,7 @@ Form.defaultProps = {
   target: '_self'
 }
 
-FloorPlanSearchForm.defaultProps = {
+FloorplanSearchForm.defaultProps = {
   id: FLOOR_PLAN_SEARCH_FORM_ID
 }
 

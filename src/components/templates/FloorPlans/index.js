@@ -13,18 +13,18 @@ import './floorplans-template.sass'
 
 /**
  * @file Floor Plans Template
- * @module components/Components/Templates/FloorPlans
+ * @module components/Components/Templates/Floorplans
  * @see {@link https://developer.mozilla.org/docs/Web/HTML/Element/main}
  */
 
 /**
  * Renders a `<main>` element with the class `adt-floorplans`.
  *
- * @class FloorPlansTemplate
- * @param {FloorPlansTemplateProps} props - Component data
+ * @class FloorplansTemplate
+ * @param {FloorplansTemplateProps} props - Component data
  * @returns {HTMLElement}
  */
-export const FloorPlansTemplate = props => {
+export const FloorplansTemplate = props => {
   const attributes = useAttributes(props, 'adt-floorplans')
 
   return (
@@ -35,11 +35,11 @@ export const FloorPlansTemplate = props => {
 }
 
 /**
- * @link FloorPlansTemplate component properties.
+ * @link FloorplansTemplate component properties.
  *
- * @typedef {FloorPlansTemplateProps}
+ * @typedef {FloorplansTemplateProps}
  */
-FloorPlansTemplate.propTypes = {
+FloorplansTemplate.propTypes = {
   /**
    * A space-separated list of the classes of the element.
    *
@@ -64,6 +64,6 @@ FloorPlansTemplate.propTypes = {
   id: PropTypes.string
 }
 
-FloorPlansTemplate.defaultProps = {}
+FloorplansTemplate.defaultProps = {}
 
-export default FloorPlansTemplate
+export default FloorplansTemplate

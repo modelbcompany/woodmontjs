@@ -33,7 +33,11 @@ See: https://storybook.js.org/docs/configurations/add-custom-body/
   /* Set background colors */
 
   #react-logo-preview {
-    background-color: #282c34;
+    background-color: rgba(40, 44, 52, 1);
+  }
+
+  #floorplan-link-preview {
+    background-color: rgba(203, 195, 188, 1)
   }
 
   /* Adjust componet previews */
@@ -42,7 +46,8 @@ See: https://storybook.js.org/docs/configurations/add-custom-body/
     overflow: hidden;
   }
 
-  #floor-plan-search-form-dropdown-item-preview>div>div {
+  #floorplan-link-preview>div>div,
+  #floorplan-search-form-dropdown-item-preview>div>div {
     flex-direction: column;
   }
 </style>

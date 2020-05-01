@@ -1,12 +1,16 @@
 // Packages
 import React from 'react'
-import { object, text } from '@storybook/addon-knobs'
+import { boolean, object, text } from '@storybook/addon-knobs'
 
 // Components
 import Link from '..'
 
 // Metadata
-import { IconLinkStoryParams, LinkStoryParams } from '../metadata/Link.meta'
+import {
+  FloorplanLinkStoryParams,
+  IconLinkStoryParams,
+  LinkStoryParams
+} from '../metadata/Link.meta'
 
 /**
  * @file Stories - Link
@@ -29,6 +33,30 @@ export const Default = () => (
     {text('children', 'Link text')}
   </Link>
 )
+
+/**
+ * Default @link Link story.
+ *
+ * @returns {Link}
+ */
+export const FloorplanLink = () => {
+  const download = boolean('download', true)
+
+  return (
+    <Link
+      className={`floorplan-link ${text('className')}`}
+      download={download}
+      href={text('href')}
+    >
+      {download ? 'Download Floorplan' : 'Apply Now'}
+    </Link>
+  )
+}
+
+FloorplanLink.story = {
+  name: 'Floorplan',
+  parameters: FloorplanLinkStoryParams
+}
 
 /**
  * Renders an @link Icon component on either side of the link text.

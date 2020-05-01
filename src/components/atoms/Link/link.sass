@@ -15,18 +15,39 @@ $dropdown-element-padding: size($magic-number-50p)
 
 // Mixins
 
-/// Action Link component styles
+/// Floorplan Link styles
+/// @require {function} size
+/// @require {mixin} font-size
 /// @require {mixin} font-weight
-=is-action-link
-  +font-weight(500)
+/// @require {mixin} is-center-aligned-text
+/// @require {mixin} is-full-width
+/// @require {mixin} is-uppercase
+/// @require {variable} $magic-number-50p
+/// @param {string} $context [null]
+=is-floorplan-link($context: null)
+  @if $context == null
+    +font-size(14)
 
-/// Icon Link styles
-/// @require {mixin} display-flex
-/// @require {mixin} is-flex-centered
-=is-icon-link
-  +display-flex(inline-flex)
+    +font-weight(600)
 
-  +is-flex-centered
+    +is-center-aligned-text
+
+    +is-full-width
+
+    +is-uppercase
+
+    display: inline-block
+    padding: size($magic-number-50p)
+  @else if $context == dark
+    +color($white, $color-brand-tussock)
+
+    +event
+      +color($color-brand-tussock, $white)
+  @else if $context == light
+    +color($color-brand-tussock, $white)
+
+    +event
+      +color($white, $color-brand-tussock)
 
 /// Active state styles
 /// @example <Link className='is-active'>
@@ -38,9 +59,11 @@ $dropdown-element-padding: size($magic-number-50p)
 
 /// Link component styles
 /// @require {mixin} color
+/// @require {mixin} display-flex
 /// @require {mixin} event
 /// @require {mixin} font-size
 /// @require {mixin} font-weight
+/// @require {mixin} is-flex-centered
 /// @require {mixin} state-active
 /// @require {variable} $secondary-font-family
 %Link
@@ -57,6 +80,11 @@ $dropdown-element-padding: size($magic-number-50p)
 
   font-family: $secondary-font-family
 
+  &[data-icon]
+    +display-flex(inline-flex)
+
+    +is-flex-centered
+
   &.is-active
     +state-active
 
@@ -66,8 +94,32 @@ $dropdown-element-padding: size($magic-number-50p)
 .ada-link
   @extend %Link
 
-.ada-link[data-icon='[object Object]']
-  +is-icon-link
+.floorplan-link
+  +event
+    +is-white-text
+
+  +font-size(14)
+
+  +font-weight(600)
+
+  +is-center-aligned-text
+
+  +is-full-width
+
+  +is-uppercase
+
+  +set-bkg-color-and-hover($white, false, $color-brand-tussock)
+
+  +text-color($color-brand-tussock)
+
+  display: inline-block
+  padding: size($magic-number-75p)
+
+  &[download],
+  &[download='true']
+    +is-white-text
+
+    +set-bkg-color-and-hover($color-brand-tussock, false, $color-brand-cod-gray)
 
 // Responsive Styles
 

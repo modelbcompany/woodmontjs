@@ -4,9 +4,9 @@
  */
 
 /**
- * `id` used in the @link FloorPlanSearchForm component.
+ * `id` used in the @link FloorplanSearchForm component.
  *
  * @readonly
  * @property {string} FLOOR_PLAN_SEARCH_FORM_ID
  */
-export const FLOOR_PLAN_SEARCH_FORM_ID = 'floor-plans-search-form'
+export const FLOOR_PLAN_SEARCH_FORM_ID = 'floorplans-search-form'

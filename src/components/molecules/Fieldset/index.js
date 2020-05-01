@@ -12,7 +12,7 @@ import {
 } from './config/Fieldset.constants'
 
 import {
-  FloorPlanSearchFormDropdownProps as FloorPlanSearchFilters
+  FloorplanSearchFormDropdownProps as FloorplanSearchFilters
 } from '../../../config'
 
 // Hooks
@@ -53,21 +53,21 @@ export const Fieldset = ({ children, ...props }) => (
 
 /**
  * Renders a @link Fieldset component with the class
- * `floor-plan-search-form-filters`.
+ * `floorplan-search-form-filters`.
  *
  * @todo Implement handleFilter - map over dropdown items
  *
- * @param {FloorPlanSearchFiltersFieldProps} props - Component data
+ * @param {FloorplanSearchFiltersFieldProps} props - Component data
  * @returns {Fieldset}
  */
-export const FloorPlanSearchFiltersField = ({ handleFilter, ...props }) => {
-  const attributes = useAttributes(props, 'floor-plan-search-form-filters')
-  const filters = Object.keys(FloorPlanSearchFilters)
+export const FloorplanSearchFiltersField = ({ handleFilter, ...props }) => {
+  const attributes = useAttributes(props, 'floorplan-search-form-filters')
+  const filters = Object.keys(FloorplanSearchFilters)
 
   return (
     <Fieldset {...attributes} name={FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME}>
       {filters.map(filter => {
-        const dropdown = getDropdownProps(FloorPlanSearchFilters[filter])
+        const dropdown = getDropdownProps(FloorplanSearchFilters[filter])
         const key = `${filter.toLowerCase()}-filter`
 
         return <Dropdown {...dropdown} key={key} />
@@ -135,11 +135,11 @@ Fieldset.propTypes = {
 }
 
 /**
- * @link FloorPlanSearchFiltersField component properties.
+ * @link FloorplanSearchFiltersField component properties.
  *
- * @typedef {FloorPlanSearchFiltersFieldProps}
+ * @typedef {FloorplanSearchFiltersFieldProps}
  */
-FloorPlanSearchFiltersField.propTypes = {
+FloorplanSearchFiltersField.propTypes = {
   /**
    * Code to call when the `click` event is raised.
    */
@@ -153,7 +153,7 @@ FloorPlanSearchFiltersField.propTypes = {
 
 Fieldset.defaultProps = {}
 
-FloorPlanSearchFiltersField.defaultProps = {
+FloorplanSearchFiltersField.defaultProps = {
   name: FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME
 }
 

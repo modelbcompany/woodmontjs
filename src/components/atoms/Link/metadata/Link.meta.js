@@ -1,6 +1,9 @@
 // Documentation
 import mdx from '../Link.mdx'
 
+// Config
+import { StorybookBackgrounds } from '../../../../config/palettes'
+
 /**
  * @file Story Metadata - Link
  * @module components/molecules/Link/metadata/Link
@@ -18,6 +21,15 @@ export const LinkStoryParams = {
     disabled: true
   },
   docs: { page: mdx }
+}
+
+/**
+ * Storybook parameters for the @link Floorplan @link Link story.
+ *
+ * @namespace FloorplanLinkStoryParams
+ */
+export const FloorplanLinkStoryParams = {
+  backgrounds: [StorybookBackgrounds.brand['$color-brand-silver-rust']]
 }
 
 /**

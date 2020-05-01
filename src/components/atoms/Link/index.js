@@ -1,7 +1,6 @@
 // Packages
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link as RouterLink } from '@reach/router'
 
 // Components
 import { Icon } from '../Span'
@@ -23,24 +22,15 @@ import './link.sass'
 /**
  * Renders an `<a>` element with the class `ada-link`.
  *
- * If @param props.router is true, a Reach Router Link will be rendered instead.
- *
  * @class Link
  * @param {LinkProps} props - Component data
  * @returns {HTMLAnchorElement | RouterLink}
  */
-export const Link = ({ 'data-router': router, ...props }) => {
-  const attributes = useAttributes(
-    props,
-    'ada-link',
-    router ? 'href' : 'to, replace, ref, innerRef, getProps, state'
-  )
-
+export const Link = props => {
+  const attributes = useAttributes(props, 'ada-link')
   const { children } = useIcon(props)
 
-  return router
-    ? <RouterLink {...attributes} to={props.href}>{children}</RouterLink>
-    : <a {...attributes} data-router={router}>{children}</a>
+  return <a {...attributes}>{children}</a>
 }
 
 /**
@@ -83,40 +73,16 @@ Link.propTypes = {
   'data-*': PropTypes.any,
 
   /**
+   * `Icon` properties.
+   *
    * If defined, `children` will be rendered next to an `Icon`.
    */
   'data-icon': Icon.propTypes,
 
   /**
-   * If true, a Reach Router `Link` component will be rendered instead of an
-   * `<a>` element.
-   *
-   * See: https://reach.tech/router/api/Link
-   */
-  'data-router': PropTypes.bool,
-
-  /**
    * Prompts the user to save the linked URL instead of navigating to it.
    */
   download: PropTypes.bool,
-
-  /**
-   * Function to gather the props for the underlying anchor element.
-   * Useful for styling the anchor as active.
-   *
-   * This function takes one argument, `obj`. It will have the following
-   * properties:
-   *
-   * - **`isCurrent`**: `true` if `location.pathname` is exactly the same as the
-   *   anchor’s `href`
-   * - **`isPartiallyCurrent`**: `true` if `location.pathname` starts with the
-   *   anchor’s `href`
-   * - **`href`**: the fully resolved href of the link
-   * - **`location`**: the app’s location
-   *
-   * If `data-router` is false, this value will be ignored.
-   */
-  getProps: PropTypes.func,
 
   /**
    * The URL that the hyperlink points to.
@@ -131,38 +97,9 @@ Link.propTypes = {
   id: PropTypes.string,
 
   /**
-   * Calls up with its inner ref for apps on `React` <16.4.
-   * If using `React` >=16.4, use the `ref` property instead.
-   *
-   * If `data-router` is false, this value will be ignored.
-   */
-  innerRef: PropTypes.func,
-
-  /**
-   * If using `React` >=16.4, `Link` will forward its ref to you.
-   *
-   * If `data-router` is false, this value will be ignored.
-   */
-  ref: PropTypes.func,
-
-  /**
    * The relationship of the linked URL as space-separated link types.
    */
   rel: PropTypes.string,
-
-  /**
-   * If true, the latest entry on the history stack will be replaced with a new
-   * one. Use this when you don’t want the previous page to show up when the
-   * user clicks the back button.
-   */
-  replace: PropTypes.bool,
-
-  /**
-   * An object to put on location state.
-   *
-   * If `data-router` is false, this value will be ignored.
-   */
-  state: PropTypes.object,
 
   /**
    * Where to display the linked URL, as the name for a browsing context (a tab,

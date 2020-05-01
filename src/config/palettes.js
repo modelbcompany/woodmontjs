@@ -12,42 +12,31 @@ import { grey } from '@material-ui/core/colors'
  * @type {Object}
  */
 export const REACT = {
-  blue: '#61dafb',
-  gray: '#282c34'
+  '$color-react-blue': 'rgba(97, 218, 251, 1)',
+  '$color-react-gray': 'rgba(40, 44, 52, 1)'
 }
 
 /**
- * Primary color palettes.
- * Each key represents the id of a theme.
+ * Brand color palette.
  *
  * @type {Object}
  */
-export const PRIMARY = {
-  /**
-   * Primary color palette for `default` theme.
-   *
-   * @property {string} default
-   */
-  default: {}
+export const BRAND = {
+  '$color-brand-cod-gray': 'rgba(10, 10, 10, 1)',
+  '$color-brand-rolling-stone': 'rgba(111, 118, 123, 1)',
+  '$color-brand-silver-rust': 'rgba(203, 195, 188, 1)',
+  '$color-brand-tussock': 'rgba(191, 141, 74, 1)'
 }
 
 /**
  * Alert color palettes.
- * Each key represents the id of a theme.
  *
  * @type {Object}
  */
 export const ALERT = {
-  /**
-   * Alert color palette for `default` theme.
-   *
-   * @property {string} default
-   */
-  default: {
-    positive: '#40ad48',
-    warning: '#f1c40f',
-    negative: '#ed6b75'
-  }
+  '$ap-default-success': 'rgba(65, 173, 73, 1)',
+  '$ap-default-warning': 'rgba(233, 190, 18, 1)',
+  '$ap-default-negative': 'rgba(237, 107, 117, 1)'
 }
 
 /**
@@ -57,6 +46,13 @@ export const ALERT = {
  * @namespace StorybookBackgrounds
  */
 export const StorybookBackgrounds = Object.freeze({
+  brand: {
+    '$color-brand-silver-rust': {
+      name: '$color-brand-silver-rust',
+      value: BRAND['$color-brand-silver-rust'],
+      default: true
+    }
+  },
   grey: {
     200: {
       name: 'Grey 200',
@@ -65,14 +61,14 @@ export const StorybookBackgrounds = Object.freeze({
     }
   },
   react: {
-    blue: {
-      name: 'React Blue',
-      value: REACT.blue,
+    '$color-react-gray': {
+      name: '$color-react-gray',
+      value: REACT['$color-react-gray'],
       default: true
     },
-    gray: {
-      name: 'React Gray',
-      value: REACT.gray,
+    '$color-react-blue': {
+      name: '$color-react-blue',
+      value: REACT['$color-react-blue'],
       default: true
     }
   }

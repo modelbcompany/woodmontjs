@@ -42,13 +42,13 @@ export const Default = () => (
 )
 
 /**
- * @link FloorPlanSearchForm @link Button story.
+ * @link FloorplanSearchForm @link Button story.
  *
  * @returns {Button}
  */
-export const FloorPlanSearchFormButton = () => (
+export const FloorplanSearchFormButton = () => (
   <Button
-    className='floor-plan-search-form-btn'
+    className='floorplan-search-form-btn'
     disabled={boolean('disabled')}
     name={text('name')}
     onClick={e => action('onClick')(e.target)}
@@ -58,8 +58,8 @@ export const FloorPlanSearchFormButton = () => (
   </Button>
 )
 
-FloorPlanSearchFormButton.story = {
-  name: 'FloorPlanSearchForm',
+FloorplanSearchFormButton.story = {
+  name: 'FloorplanSearchForm',
   parameters: FormButtonStoryParams
 }
 

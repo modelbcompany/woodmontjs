@@ -39,7 +39,7 @@ export const FloorplanImageStoryParams = {}
  * @property {object} knobs - Storybook Knobs config
  */
 export const ReactLogoStoryParams = {
-  backgrounds: [StorybookBackgrounds.react.gray],
+  backgrounds: [StorybookBackgrounds.react['$color-react-gray']],
   knobs: {
     disabled: true
   }
