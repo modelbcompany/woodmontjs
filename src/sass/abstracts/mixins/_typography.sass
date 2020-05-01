@@ -35,14 +35,13 @@
 =align-text($alignment, $important: false)
   text-align: if($important, $alignment !important, $alignment)
 
-/// Converts @see @param $size into to em or rem units
+/// Converts @param $size into to em or rem units
 /// After converting, the font-size will be set
 /// @require {function} size
-/// @require {variable} $magic-number
-/// @param {Number} $size [$magic-number] - Value to convert in pixels
+/// @param {Number} $size [16] - Value to convert in pixels
 /// @param {Boolean} $important [false] - If true, add !important
 /// @param {String} $unit [rem] - Unit to convert to
-=font-size($size: $magic-number, $important: false, $unit: rem)
+=font-size($size: 16, $important: false, $unit: rem)
   font-size: if($important, size($size, $unit) !important, size($size, $unit))
 
 /// font-style helper

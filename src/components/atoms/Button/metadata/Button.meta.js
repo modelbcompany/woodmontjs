@@ -17,11 +17,11 @@ export const ButtonStoryParams = {
 }
 
 /**
- * Storybook parameters for the Dropdown @link Button story.
+ * Storybook parameters for the @link Form @link Button story.
  *
- * @namespace DropdownButtonStoryParams
+ * @namespace FormButtonStoryParams
  */
-export const DropdownButtonStoryParams = {}
+export const FormButtonStoryParams = {}
 
 /**
  * Storybook parameters for the Icon @link Button story.
@@ -29,15 +29,3 @@ export const DropdownButtonStoryParams = {}
  * @namespace IconButtonStoryParams
  */
 export const IconButtonStoryParams = {}
-
-/**
- * Storybook parameters for the Smooth Scroll @link Button story.
- *
- * @namespace SmoothScrollButtonStoryParams
- * @property {object} actions - Storybook Actions config
- * @property {object} knobs - Storybook Knobs config
- */
-export const SmoothScrollButtonStoryParams = {
-  actions: { disabled: true },
-  knobs: { disabled: true }
-}

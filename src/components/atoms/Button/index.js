@@ -183,7 +183,7 @@ Button.propTypes = {
   name: PropTypes.string,
 
   /**
-   * Code to be called when the the `click` event is raised.
+   * Code to be called when the `click` event is raised.
    */
   onClick: PropTypes.func,
 

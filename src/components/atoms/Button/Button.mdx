@@ -28,19 +28,24 @@ import {
 
 <br/>
 
-### Dropdown
+### Form
 
-`Button` component where `name=dropdown`.
+<br/>
+
+#### FloorPlanSearchForm
+
+- `className='floor-plan-search-form-btn'`
+- `type='submit'`
 
 <Preview>
-  <Button name={DROPDOWN_BUTTON_DEFAULTS.name}>
-    Dropdown
+  <Button className='floor-plan-search-form-btn' type='submit'>
+    Search
   </Button>
 </Preview>
 
 ### Icon
 
-`Button` component where `data-icon` contains `Icon` component properties.
+- `data-icon={IconProps}`
 
 <Preview>
   <Button data-icon={{ children: 'arrow_drop_down' }} />
@@ -62,25 +67,34 @@ import {
   <Button data-icon={{ 'aria-label': 'Swap order', children: 'swap_vert' }} />
 </Preview>
 
+#### Dropdown
+
+- `name=dropdown`
+
+<Preview>
+  <Button name={DROPDOWN_BUTTON_DEFAULTS.name}>
+    Dropdown
+  </Button>
+</Preview>
+
 #### Smooth Scroll
 
-`Button` component where `name=smooth_scroll`.
+- `name=smooth_scroll`
+- `value={{ duration, to }}`
 
 When clicked, this page will scroll to the top of the element selected by the
 `value.to` property at a speed of `value.duration` milliseconds.
 
 <Preview>
-  <Button name='smooth_scroll'>
+  <Button name={SMOOTH_SCROLL_BUTTON_DEFAULTS.name}>
     Smooth scroll button
   </Button>
 </Preview>
 
 ##### Scroll To Top
 
-`Button` component where
-
-- `name=smooth_scroll`
 - `data-icon={ 'aria-label': 'Scroll to top', children: 'arrow_upward' }`
+- `name=smooth_scroll`
 
 <Preview>
   <Button

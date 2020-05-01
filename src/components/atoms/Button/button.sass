@@ -26,6 +26,35 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 
   @content
 
+/// Form Button styles
+/// @require {function} size
+/// @require {mixin} font-size
+/// @require {mixin} font-weight
+/// @require {mixin} is-uppercase
+/// @require {mixin} is-white-text
+/// @require {variable} $bakers-dozen
+/// @require {variable} $color-brand-tussock
+/// @require {variable} $letter-spacing
+/// @require {variable} $magic-number
+/// @param {String} $context [null]
+=is-form-btn($context: null)
+  @if $context == null
+    // @todo
+  @else if $context == floor-plan-search-form
+    $dark-tussock: #aa7b3f
+
+    +font-size($bakers-dozen)
+
+    +font-weight(600)
+
+    +is-uppercase
+
+    +is-white-text
+
+    background: linear-gradient(to right, $dark-tussock, $color-brand-tussock)
+    letter-spacing: $letter-spacing
+    padding: size($magic-number * 0.375) size($magic-number * 1.5)
+
 /// Common transparent button properties
 /// @require {mixin} background-color
 /// @require {mixin} no-padding
@@ -53,6 +82,7 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 /// @require {mixin} no-breaking
 /// @require {mixin} no-padding
 /// @require {mixin} set-bkg-color-and-hover
+/// @require {mixin} text-color
 /// @require {mixin} transition
 /// @require {variable} $btn-padding
 /// @require {variable} $grey-200
@@ -60,8 +90,6 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 /// @require {variable} $grey-600
 /// @require {variable} $secondary-font-family
 %Button
-  +color($grey-600, $grey-200)
-
   +display-flex(inline-flex)
 
   +font-size(16)
@@ -71,6 +99,10 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
   +is-flex-centered
 
   +no-breaking
+
+  +set-bkg-color-and-hover($grey-200)
+
+  +text-color($grey-600)
 
   +transition(all, 0.25s, ease-in-out)
 
@@ -98,6 +130,9 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 // Button
 .ada-button
   @extend %Button
+
+.floor-plan-search-form-btn
+  +is-form-btn(floor-plan-search-form)
 
 // Responsive Styles
 

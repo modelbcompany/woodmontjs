@@ -6,18 +6,11 @@ import { boolean, object, text } from '@storybook/addon-knobs'
 // Components
 import Button from '..'
 
-// Config
-import {
-  DROPDOWN_BUTTON_DEFAULTS,
-  SMOOTH_SCROLL_BUTTON_DEFAULTS
-} from '../../../../config/constants'
-
 // Metadata
 import {
   ButtonStoryParams,
-  DropdownButtonStoryParams,
-  IconButtonStoryParams,
-  SmoothScrollButtonStoryParams
+  FormButtonStoryParams,
+  IconButtonStoryParams
 } from '../metadata/Button.meta'
 
 /**
@@ -49,22 +42,24 @@ export const Default = () => (
 )
 
 /**
- * Dropdown @link Button story.
+ * @link FloorPlanSearchForm @link Button story.
  *
  * @returns {Button}
  */
-export const DropdownButton = () => (
+export const FloorPlanSearchFormButton = () => (
   <Button
-    name={DROPDOWN_BUTTON_DEFAULTS.name}
-    value='#dropdown-menu-id'
+    className='floor-plan-search-form-btn'
+    disabled={boolean('disabled')}
+    onClick={e => action('onClick')(e.target)}
+    type='submit'
   >
-    {text('children', 'Dropdown')}
+    {text('children', 'Search')}
   </Button>
 )
 
-DropdownButton.story = {
-  name: 'Dropdown',
-  parameters: DropdownButtonStoryParams
+FloorPlanSearchFormButton.story = {
+  name: 'FloorPlanSearchForm',
+  parameters: FormButtonStoryParams
 }
 
 /**
@@ -76,7 +71,7 @@ export const IconButton = () => {
   const icon = { children: 'keyboard_arrow_right', 'data-position': 'right' }
 
   return (
-    <Button data-icon={object('data-icon', icon)}>
+    <Button data-icon={object('data-icon', icon)} name={text('name')}>
       {text('children', 'Next')}
     </Button>
   )
@@ -85,21 +80,4 @@ export const IconButton = () => {
 IconButton.story = {
   name: 'Icon',
   parameters: IconButtonStoryParams
-}
-
-/**
- * Smooth scroll @link Button story.
- *
- * @returns {Button}
- */
-export const SmoothScrollButton = () => (
-  <Button
-    data-icon={{ 'aria-label': 'Scroll to top', children: 'arrow_upward' }}
-    name={SMOOTH_SCROLL_BUTTON_DEFAULTS.name}
-  />
-)
-
-SmoothScrollButton.story = {
-  name: 'Smooth Scroll',
-  parameters: SmoothScrollButtonStoryParams
 }
