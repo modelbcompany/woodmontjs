@@ -50,8 +50,9 @@ export const FloorPlanSearchFormButton = () => (
   <Button
     className='floor-plan-search-form-btn'
     disabled={boolean('disabled')}
+    name={text('name')}
     onClick={e => action('onClick')(e.target)}
-    type='submit'
+    type={text('type', 'submit')}
   >
     {text('children', 'Search')}
   </Button>

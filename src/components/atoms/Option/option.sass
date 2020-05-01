@@ -23,13 +23,21 @@
 
   +text-color($black)
 
-  font-family: $secondary-font-family
-
 // Styles
 
 // Option
 .ada-option
   @extend %Option
+
+.floor-plan-search-form-select select > .ada-option,
+.floor-plan-search-form-select-option
+  +background-color($color-brand-rolling-stone, important)
+
+  +font-weight(600)
+
+  +is-uppercase
+
+  +is-white-text
 
 // Responsive Styles
 

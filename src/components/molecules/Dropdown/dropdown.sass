@@ -1,0 +1,73 @@
+// -----------------------------------------------------------------------------
+// Dropdown variables, functions, mixins, placeholders, and styles
+// @group Dropdown
+// -----------------------------------------------------------------------------
+
+// Variables
+
+// Functions
+
+// Mixins
+
+// Placeholders
+
+/// Dropdown component styles
+/// @require {function} size
+/// @require {mixin} display-flex
+/// @require {mixin} flex-column
+/// @require {mixin} relative
+/// @require {mixin} width
+/// @require {variable} $magic-number
+/// @require {variable} $magic-number-75p
+%Dropdown
+  +display-flex
+
+  +flex-column
+
+  +relative
+
+  +width(max-content)
+
+  &.add-new-dropdown
+    margin-right: size($magic-number-75p)
+
+    &:last-of-type
+      margin-right: size($magic-number * 2)
+
+  &.deliverable-actions-dropdown
+    float: right
+
+  &.sidebar-menu-item-dropdown
+    +width(100%, unset)
+
+  &.deliverable-actions-dropdown,
+  &.notifications-dropdown
+    align-items: flex-end
+
+// Styles
+
+// Dropdown
+.adm-dropdown
+  @extend %Dropdown
+
+.deliverables-table-row .deliverable-actions-dropdown
+  +width(auto, 100%, inherit)
+
+  float: unset
+
+.app-header-nav .notifications-dropdown
+  &:not(:last-of-type)
+    margin-right: size($magic-number)
+
+.dropdown-menu-item .adm-dropdown,
+.menu-item-dropdown .adm-dropdown,
+.dropdown-menu .menu-item-dropdown
+  +width(100%)
+
+// Responsive Styles
+
+// Desktop
+
+// Tablet
+
+// Mobile

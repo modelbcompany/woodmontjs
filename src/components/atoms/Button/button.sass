@@ -32,16 +32,18 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 /// @require {mixin} font-weight
 /// @require {mixin} is-uppercase
 /// @require {mixin} is-white-text
+/// @require {mixin} set-bkg-color-and-hover
 /// @require {variable} $bakers-dozen
+/// @require {variable} $color-brand-rolling-stone
 /// @require {variable} $color-brand-tussock
 /// @require {variable} $letter-spacing
 /// @require {variable} $magic-number
+/// @require {variable} $magic-number-50p
+/// @require {variable} $primary-font-family
 /// @param {String} $context [null]
-=is-form-btn($context: null)
+=is-floor-plan-search-form-btn($context: null)
   @if $context == null
-    // @todo
-  @else if $context == floor-plan-search-form
-    $dark-tussock: #aa7b3f
+    +constrain(size($magic-number * 1.5), height)
 
     +font-size($bakers-dozen)
 
@@ -51,9 +53,24 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 
     +is-white-text
 
-    background: linear-gradient(to right, $dark-tussock, $color-brand-tussock)
+    font-family: $primary-font-family
     letter-spacing: $letter-spacing
-    padding: size($magic-number * 0.375) size($magic-number * 1.5)
+    padding: size($magic-number-50p) !important
+  @else if $context == dropdown
+    +constrain(size($magic-number * 15))
+
+    +flex-spread
+
+    +set-bkg-color-and-hover($color-brand-rolling-stone)
+  @else if $context == submit
+    +constrain(size($magic-number * 6))
+
+    $cape-palliser: #aa7b3f
+
+    background: linear-gradient(to right, $cape-palliser, $color-brand-tussock)
+    padding: size($magic-number / 4) size($magic-number / 3)
+
+  @content
 
 /// Common transparent button properties
 /// @require {mixin} background-color
@@ -132,7 +149,13 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
   @extend %Button
 
 .floor-plan-search-form-btn
-  +is-form-btn(floor-plan-search-form)
+  +is-floor-plan-search-form-btn
+
+  &[name='dropdown']
+    +is-floor-plan-search-form-btn(dropdown)
+
+  &[type='submit']
+    +is-floor-plan-search-form-btn(submit)
 
 // Responsive Styles
 

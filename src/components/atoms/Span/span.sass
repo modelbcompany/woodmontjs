@@ -9,46 +9,6 @@
 
 // Mixins
 
-/// Badge styles
-/// @require {function} size
-/// @require {mixin} color
-/// @require {mixin} display-flex
-/// @require {mixin} font-size
-/// @require {mixin} font-weight
-/// @require {mixin} height
-/// @require {mixin} is-flex-centered
-/// @require {mixin} no-breaking
-/// @require {mixin} width
-/// @require {variable} $grey-200
-/// @require {variable} $grey-500
-/// @require {variable} $magic-number
-/// @require {variable} $magic-number-50p
-/// @require {variable} $primary-font-family
-/// @require {variable} $sp-default-blue
-/// @param {String} $context [null]
-=is-badge($context: null)
-  @if $context == null
-    +color($grey-500, $grey-200)
-
-    +display-flex(inline-flex)
-
-    +font-size(11)
-
-    +font-weight(500)
-
-    +height(size($magic-number))
-
-    +is-flex-centered
-
-    +no-breaking
-
-    +width(size($magic-number * 3))
-
-    font-family: $primary-font-family
-    padding: 0 size($magic-number)
-
-  @content
-
 /// Circular Badge styles
 /// @require {mixin} color
 /// @require {mixin} font-size
@@ -123,14 +83,28 @@
 .ada-paragraph .ada-span
   +font-weight(600)
 
-.wrapper
-  +is-wrapper
-
 .badge
-  +is-badge
+  +color($grey-500, $grey-200)
 
-.badge.is-circle
-  +is-circular-badge
+  +display-flex(inline-flex)
+
+  +font-size(11)
+
+  +font-weight(500)
+
+  +height(size($magic-number))
+
+  +is-flex-centered
+
+  +no-breaking
+
+  +width(size($magic-number * 3))
+
+  font-family: $primary-font-family
+  padding: 0 size($magic-number)
+
+  &.is-circle
+    +is-circular-badge
 
 // Icon
 .icon
@@ -138,6 +112,9 @@
 
 .adm-select .icon
   +is-icon(adm-select)
+
+.floor-plan-search-form-select .icon
+  +is-white-text
 
 // Responsive Styles
 

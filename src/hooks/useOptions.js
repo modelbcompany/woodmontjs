@@ -10,12 +10,13 @@ import { isArray } from '../utils'
  */
 
 /**
- * Returns the value of `data-options`, or an empty array if null or undefined.
+ * Uses @param initial as the initial state and returns an object containing the
+ * current value, as well as functions to mutate the internal state.
  *
- * @param {object} props - Component data
- * @returns {object[]}
+ * @param {OptionProps[]} initial - Initial selection options
+ * @returns {object}
  */
-export const useOptions = ({ 'data-options': opts }) => {
+export const useOptions = opts => {
   const [options, setOptions] = useState(isArray(opts) || [])
   const [selected, setSelected] = useState(null)
 
