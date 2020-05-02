@@ -41,8 +41,7 @@
     "postbuild:public": "cp -R public/assets build && cp -R public/assets build/storybook",
     "postbuild": "run-s postbuild:*",
     "prestart": "npm test && npm run build",
-    "start": "serve ./build",
-    "now-build": "npm run prestart"
+    "start": "serve ./build"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.12",

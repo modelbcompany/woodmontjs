@@ -27,7 +27,7 @@ import './heading.sass'
 export const Heading = ({ children, 'data-size': size, ...props }) => {
   const attributes = useAttributes(props, 'ada-heading')
 
-  size = size || size < 1 || size > 6 ? 1 : size
+  size = size || ((size < 1 || size > 6) ? 1 : size)
 
   let $el
 

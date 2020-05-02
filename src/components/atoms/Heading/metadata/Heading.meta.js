@@ -19,3 +19,19 @@ export const HeadingStoryParams = {
   },
   docs: { page: mdx }
 }
+
+/**
+ * Storybook parameters for the @link FloorplansGrid @link Heading story.
+ *
+ * @namespace FloorplansGridHeadingStoryParams
+ * @property {object} backgrounds - Storybook Backgrounds config
+ */
+export const FloorplansGridHeadingStoryParams = {
+  backgrounds: [
+    {
+      name: 'Marble Brown',
+      value: '#3c312d',
+      default: true
+    }
+  ]
+}

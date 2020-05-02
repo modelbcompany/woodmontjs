@@ -33,7 +33,6 @@
   line-height: size(32)
   margin-bottom: size(5)
 
-.adt-floorplans .template-title,
 .adt-floorplans-title
   +color($color-brand-silver-rust, $color-brand-rolling-stone)
 
@@ -41,15 +40,25 @@
 
   +font-weight
 
-  +is-center-aligned-text
-
-  +is-uppercase
-
   +width(100%)
 
   display: inline-block
   letter-spacing: 0.07rem
   padding: size(30)
+
+.floorplans-grid-title
+  +is-white-text
+
+.adt-floorplans-subheading,
+.floorplans-grid-title
+  letter-spacing: 0.08rem
+
+.adt-floorplans-subheading,
+.adt-floorplans-title,
+.floorplans-grid-title
+  +is-center-aligned-text
+
+  +is-uppercase
 
 // Responsive Styles
 

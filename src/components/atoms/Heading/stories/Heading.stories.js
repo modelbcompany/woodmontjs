@@ -6,7 +6,10 @@ import { text, number } from '@storybook/addon-knobs'
 import Heading from '..'
 
 // Metadata
-import { HeadingStoryParams } from '../metadata/Heading.meta'
+import {
+  FloorplansGridHeadingStoryParams,
+  HeadingStoryParams
+} from '../metadata/Heading.meta'
 
 /**
  * @file Stories - Heading
@@ -29,3 +32,40 @@ export const Default = () => (
     {text('children')}
   </Heading>
 )
+
+/**
+ * @link FloorplansGrid @link Heading story.
+ *
+ * @returns {Heading}
+ */
+export const FloorplansGridHeading = () => (
+  <Heading
+    className={text('className', 'floorplans-grid-title')}
+    data-size={3}
+  >
+    {text('children', 'One bedrooom')}
+  </Heading>
+)
+
+FloorplansGridHeading.story = {
+  name: 'FloorplansGrid',
+  parameters: FloorplansGridHeadingStoryParams
+}
+
+/**
+ * @link FloorplansTemplate @link Heading story.
+ *
+ * @returns {Heading}
+ */
+export const FloorplansTemplateHeading = () => (
+  <Heading
+    className={text('className', 'adt-floorplans-title')}
+    data-size={number('data-size', 1)}
+  >
+    {text('children', 'Floor Plans')}
+  </Heading>
+)
+
+FloorplansTemplateHeading.story = {
+  name: 'FloorplansTemplate'
+}
