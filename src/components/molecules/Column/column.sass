@@ -22,32 +22,38 @@
 
 // Mixins
 
-/// Styles for Columns containing images
-/// @require {mixin} is-flex-centered
-=has-image
-  +is-flex-centered
-
-  position: relative
-
 // Placeholders
 
 /// Column component styles
 /// @require {mixin} display-flex
 /// @require {mixin} flex-column
 /// @require {mixin} has-image
+/// @require {mixin} is-flex-centered
 %Column
   +display-flex
 
   +flex-column
 
-  &.has-image
-    +has-image
+  &.image-column
+    +is-flex-centered
+
+    position: relative
 
 // Styles
 
 // Column
 .adm-column
   @extend %Column
+
+.floorplan
+  .image-column
+    padding-bottom: size($one-dozen)
+
+  .link-column
+    padding: size($one-dozen / 3) 0 size($one-dozen)
+
+  .text-column
+    padding: size(20) 0
 
 // Responsive Styles
 

@@ -44,7 +44,7 @@ export const FloorplanImage = () => (
   <Image
     alt={text('alt', 'Unit #106 floorplan')}
     className={`floorplan-img ${text('className')}`}
-    src={text('src', '/assets/images/Floorplan2.jpg')}
+    src={text('src', '/assets/images/fp-image-944x1024.jpg')}
   />
 )
 

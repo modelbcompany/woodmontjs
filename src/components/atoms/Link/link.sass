@@ -98,9 +98,10 @@ $dropdown-element-padding: size($magic-number-50p)
   +event
     +is-white-text
 
-  +font-size(14)
 
-  +font-weight(600)
+  +font-size($bakers-dozen)
+
+  +font-weight(700)
 
   +is-center-aligned-text
 
@@ -113,6 +114,7 @@ $dropdown-element-padding: size($magic-number-50p)
   +text-color($color-brand-tussock)
 
   display: inline-block
+  letter-spacing: 0.08rem
   padding: size($magic-number-75p)
 
   &[download],
@@ -120,6 +122,10 @@ $dropdown-element-padding: size($magic-number-50p)
     +is-white-text
 
     +set-bkg-color-and-hover($color-brand-tussock, false, $color-brand-cod-gray)
+
+.floorplan .floorplan-link
+  &:first-of-type
+    margin-bottom: size(15)
 
 // Responsive Styles
 

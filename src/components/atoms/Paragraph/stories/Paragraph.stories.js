@@ -6,10 +6,7 @@ import { text } from '@storybook/addon-knobs'
 import Paragraph from '..'
 
 // Metadata
-import {
-  ParagraphStoryParams,
-  TableDataTextStoryParams
-} from '../metadata/Paragraph.meta'
+import { ParagraphStoryParams } from '../metadata/Paragraph.meta'
 
 /**
  * @file Stories - Paragraph
@@ -32,19 +29,3 @@ export const Default = () => (
     {text('children')}
   </Paragraph>
 )
-
-/**
- * Story for @link Paragraph components used in @link TableData components.
- *
- * @returns {Paragraph}
- */
-export const TableDataText = () => (
-  <Paragraph className='table-data-text'>
-    {text('children', 'Work on Component Library')}
-  </Paragraph>
-)
-
-TableDataText.story = {
-  name: 'TableData',
-  parameters: TableDataTextStoryParams
-}

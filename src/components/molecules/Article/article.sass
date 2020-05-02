@@ -11,7 +11,25 @@
 
 // Placeholders
 
+/// Floorplan component styles
+/// @require {mixin} background-color
+/// @require {mixin} text-color
+/// @require {mixin} width
+/// @require {variable} $color-brand-cod-gray
+/// @require {variable} $color-brand-silver-rust
+/// @require {variable} $magic-number
+%Floorplan
+  +background-color($color-brand-silver-rust)
+
+  +width(size(400))
+
+  padding: size($magic-number * 1.25)
+
 // Styles
+
+// Floorplan
+.floorplan
+  @extend %Floorplan
 
 // Responsive Styles
 

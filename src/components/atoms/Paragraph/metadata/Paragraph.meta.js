@@ -19,10 +19,3 @@ export const ParagraphStoryParams = {
   },
   docs: { page: mdx }
 }
-
-/**
- * Storybook parameters for the @link TableData @link Paragraph story.
- *
- * @namespace TableDataTextStoryParams
- */
-export const TableDataTextStoryParams = {}

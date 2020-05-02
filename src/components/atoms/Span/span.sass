@@ -80,9 +80,6 @@
 .ada-span
   @extend %Span
 
-.ada-paragraph .ada-span
-  +font-weight(600)
-
 .badge
   +color($grey-500, $grey-200)
 
@@ -105,6 +102,11 @@
 
   &.is-circle
     +is-circular-badge
+
+.unit-type
+  +font-weight(600)
+
+  font-family: $secondary-font-family
 
 // Icon
 .icon
