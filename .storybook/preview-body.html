@@ -8,6 +8,28 @@ See: https://storybook.js.org/docs/configurations/add-custom-body/
 -->
 
 <style>
+  /*
+    How to make dynamic div overflow without fixed height:
+    https://stackoverflow.com/questions/53472719/how-to-make-dynamic-div-overflow-without-fixed-height
+  */
+
+  .sb-show-main #docs-root,
+  .sb-show-main #root {
+    height: 100vh;
+  }
+
+  /* Allow horizontal scrolling */
+
+  .sb-show-main {
+    overflow-x: scroll;
+  }
+
+  /* Hide stories from Docs page (previews only) */
+
+  #docs-root div[id^='story--'] {
+    /* display: none; */
+  }
+
   /* Set preview background colors */
 
   #react-logo-preview {

@@ -16,11 +16,24 @@
 %Section
   +is-full-width
 
+/// FloorPlansGrid component styles
+/// @require {function} size
+/// @require {mixin} set-bkg-img
+/// @require {variable} $magic-number
+%FloorPlansGrid
+  +set-bkg-img('/assets/images/woodmont-marble-bg-901x1024.jpg')
+
+  padding: size($magic-number * 2.5)
+
 // Styles
 
 // Section
 .ado-section
   @extend %Section
+
+// FloorPlansGrid
+.floorplans-grid
+  @extend %FloorPlansGrid
 
 // Responsive Styles
 

@@ -2,7 +2,10 @@
 import { Props } from '@storybook/addon-docs/blocks'
 
 <!-- Components -->
-import Section from '.'
+import { Section, FloorPlansGrid } from '.'
+
+<!-- Mock Data -->
+import { FloorplansMock } from './__mocks__/Floorplans.mock'
 
 # Section
 
@@ -10,4 +13,22 @@ import Section from '.'
 
 **https://developer.mozilla.org/docs/Web/HTML/Element/section**
 
-<Props components={{ Section }} />
+<Props components={{ Section, FloorPlansGrid }} />
+
+Usage
+
+<br/>
+
+### Components
+
+<br/>
+
+#### FloorPlansGrid
+
+`Section` component with the following properties:
+
+- `className='floorplans-grid'`
+
+<Preview>
+  <FloorPlansGrid floorplans={FloorplansMock} />
+</Preview>

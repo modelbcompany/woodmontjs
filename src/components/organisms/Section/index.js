@@ -3,7 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Components
-import { Container } from '../../molecules'
+import { Heading } from '../../atoms'
+import { Container, Floorplan } from '../../molecules'
 
 // Hooks
 import { useAttributes } from '../../../hooks'
@@ -37,6 +38,34 @@ export const Section = ({
     <section {...attributes}>
       <Container className='section-container'>{children}</Container>
     </section>
+  )
+}
+
+/**
+ * Renders a `Section` component with the class `floorplans-grid`.
+ *
+ * @todo Integrate @module FloorPlanSearch
+ *
+ * @class FloorPlansGrid
+ * @param {FloorPlansGridProps} props - Component data
+ * @returns {Section}
+ */
+export const FloorPlansGrid = ({ floorplans, ...rest }) => {
+  const { title } = rest
+  const attributes = useAttributes(rest, 'floorplans-grid')
+
+  return (
+    <Section {...attributes}>
+      <Heading className='floorplans-grid-title'>
+        {title}
+      </Heading>
+
+      <Container className='floorplans-grid-container is-full-width'>
+        {floorplans.map(floorplan => (
+          <Floorplan {...floorplan} key={`${floorplans.id}_floorplan`} />
+        ))}
+      </Container>
+    </Section>
   )
 }
 
@@ -79,11 +108,57 @@ Section.propTypes = {
    * document. Its purpose is to identify the element when linking (using a
    * fragment identifier), scripting, or styling (with CSS).
    */
-  id: PropTypes.string
+  id: PropTypes.string,
+
+  /**
+   * Contains a text representing advisory information related to the element it
+   * belongs to. Such information can typically, but not necessarily, be
+   * presented to the user as a tooltip.
+   */
+  title: PropTypes.string
 }
 
 Section.defaultProps = {
   'data-container': false
+}
+
+/**
+ * @link FloorPlansGrid component properties.
+ *
+ * @todo Update documentation
+ *
+ * @typedef {FloorPlansGridProps}
+ */
+FloorPlansGrid.propTypes = {
+  floorplans: PropTypes.arrayOf(PropTypes.shape({
+    apt: PropTypes.shape({
+      apply: PropTypes.string,
+      name: PropTypes.string
+    }),
+    floorplan: PropTypes.shape({
+      id: PropTypes.string,
+      image: PropTypes.shape({
+        src: PropTypes.string
+      }),
+      name: PropTypes.string,
+      type: PropTypes.string
+    }),
+    rent: PropTypes.shape({
+      max: PropTypes.string,
+      min: PropTypes.string
+    }),
+    sqft: PropTypes.string
+  })),
+
+  /**
+   * `Section` `Heading` text.
+   */
+  title: PropTypes.string
+}
+
+FloorPlansGrid.defaultProps = {
+  floorplans: [],
+  title: 'One Bedroom'
 }
 
 export default Section

@@ -58,7 +58,7 @@ export const Floorplan = ({ apt, floorplan, rent, sqft, ...rest }) => {
     <Article {...attributes}>
       <Column className='floorplan-column'>
         <Column className='image-column'>
-          <Image {...floorplan.image} />
+          <Image {...floorplan.image} className='floorplan-img' />
         </Column>
 
         <Column className='text-column'>
