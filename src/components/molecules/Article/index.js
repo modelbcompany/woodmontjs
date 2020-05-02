@@ -41,6 +41,23 @@ export const Article = ({
 }
 
 /**
+ * Renders an @link Article component with the class `floorplan`.
+ *
+ * @class Floorplan
+ * @param {FloorplanProps} props - Component data
+ * @returns {Article}
+ */
+export const Floorplan = props => {
+  const attributes = useAttributes(props, 'floorplan')
+
+  return (
+    <Article {...attributes}>
+      {/*  */}
+    </Article>
+  )
+}
+
+/**
  * @link Article component properties.
  *
  * @typedef {ArticleProps}
@@ -82,8 +99,17 @@ Article.propTypes = {
   id: PropTypes.string
 }
 
+/**
+ * @link Floorplan component properties.
+ *
+ * @typedef {FloorplanProps}
+ */
+Floorplan.propTypes = {}
+
 Article.defaultProps = {
   'data-container': false
 }
+
+Floorplan.defaultProps = {}
 
 export default Article
