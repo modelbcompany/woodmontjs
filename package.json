@@ -41,12 +41,13 @@
     "postbuild:public": "cp -R public/assets build && cp -R public/assets build/storybook",
     "postbuild": "run-s postbuild:*",
     "prestart": "npm test && npm run build",
-    "start": "serve ./build"
+    "start": "serve ./build",
+    "now-build": "npm run prestart"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.12",
     "jquery": "^3.5.0",
-    "moment": "^2.24.0"
+    "moment": "^2.25.1"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
