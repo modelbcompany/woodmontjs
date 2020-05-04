@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 // Components
 import { Button } from '../../atoms'
-import { FloorplanSearchFiltersField } from '../Fieldset'
+import { FloorsPlanSearchFiltersField } from '../Fieldset'
 
 // Config
 import { FLOOR_PLAN_SEARCH_FORM_ID } from './config/Form.constants'
@@ -40,10 +40,10 @@ export const Form = ({ children, ...props }) => (
  * @todo Toggle Button disabled state
  * @todo Implement useFloorPlanSearch
  *
- * @param {FloorplanSearchFormProps} props - Component data
+ * @param {FloorPlansSearchFormProps} props - Component data
  * @returns {Form}
  */
-export const FloorplanSearchForm = ({
+export const FloorPlansSearchForm = ({
   handleFilter,
   handleSearch,
   ...rest
@@ -52,7 +52,7 @@ export const FloorplanSearchForm = ({
 
   return (
     <Form {...attributes} id={FLOOR_PLAN_SEARCH_FORM_ID}>
-      <FloorplanSearchFiltersField
+      <FloorsPlanSearchFiltersField
         form={FLOOR_PLAN_SEARCH_FORM_ID}
         handleFilter={handleFilter}
       />
@@ -245,11 +245,11 @@ Form.propTypes = {
 }
 
 /**
- * @link FloorplanSearchForm component properties.
+ * @link FloorPlansSearchForm component properties.
  *
- * @typedef {FloorplanSearchFormProps}
+ * @typedef {FloorPlansSearchFormProps}
  */
-FloorplanSearchForm.propTypes = {
+FloorPlansSearchForm.propTypes = {
   /**
    * Code to call when the `click` event is raised.
    */
@@ -273,7 +273,7 @@ Form.defaultProps = {
   target: '_self'
 }
 
-FloorplanSearchForm.defaultProps = {
+FloorPlansSearchForm.defaultProps = {
   handleFilter: e => console.warn('@todo handleFilter =>', e.target),
   handleSearch: e => console.warn('@todo handleSearch =>', e.target),
   id: FLOOR_PLAN_SEARCH_FORM_ID
