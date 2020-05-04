@@ -53,11 +53,11 @@ FloorplansGridHeading.story = {
 }
 
 /**
- * @link FloorplansTemplate @link Heading story.
+ * @link FloorPlansTemplate @link Heading story.
  *
  * @returns {Heading}
  */
-export const FloorplansTemplateHeading = () => (
+export const FloorPlansTemplateHeading = () => (
   <Heading
     className={text('className', 'adt-floorplans-title')}
     data-size={number('data-size', 1)}
@@ -66,6 +66,6 @@ export const FloorplansTemplateHeading = () => (
   </Heading>
 )
 
-FloorplansTemplateHeading.story = {
-  name: 'FloorplansTemplate'
+FloorPlansTemplateHeading.story = {
+  name: 'FloorPlansTemplate'
 }

@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Components
-import { Container, FloorplanSearchForm } from '../../molecules'
+import { Container, FloorPlansSearchForm } from '../../molecules'
 import { FloorPlansGrid, Main } from '../../organisms'
 
 // Hooks
@@ -29,17 +29,17 @@ import './floorplans-template.sass'
  * @todo handleFilter
  * @todo handleSearch
  *
- * @class FloorplansTemplate
- * @param {FloorplansTemplateProps} props - Component data
+ * @class FloorPlansTemplate
+ * @param {FloorPlansTemplateProps} props - Component data
  * @returns {HTMLElement}
  */
-export const FloorplansTemplate = props => {
+export const FloorPlansTemplate = props => {
   const attributes = useAttributes(props, 'adt-floorplans')
 
   return (
     <Main {...attributes}>
       <Container className='form-container is-full-width'>
-        <FloorplanSearchForm
+        <FloorPlansSearchForm
           handleFilter={e => console.warn('@todo handleFilter =>', e.target)}
           handleSearch={e => console.warn('@todo handleSearch =>', e.target)}
         />
@@ -51,11 +51,11 @@ export const FloorplansTemplate = props => {
 }
 
 /**
- * @link FloorplansTemplate component properties.
+ * @link FloorPlansTemplate component properties.
  *
- * @typedef {FloorplansTemplateProps}
+ * @typedef {FloorPlansTemplateProps}
  */
-FloorplansTemplate.propTypes = {
+FloorPlansTemplate.propTypes = {
   /**
    * A space-separated list of the classes of the element.
    *
@@ -80,6 +80,6 @@ FloorplansTemplate.propTypes = {
   id: PropTypes.string
 }
 
-FloorplansTemplate.defaultProps = {}
+FloorPlansTemplate.defaultProps = {}
 
-export default FloorplansTemplate
+export default FloorPlansTemplate

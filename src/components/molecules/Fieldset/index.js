@@ -12,7 +12,7 @@ import {
 } from './config/Fieldset.constants'
 
 import {
-  FloorplanSearchFormDropdownProps as FloorplanSearchFilters
+  FloorPlansSearchFormDropdownProps as FloorPlanSearchFilters
 } from '../../../config'
 
 // Hooks
@@ -57,17 +57,17 @@ export const Fieldset = ({ children, ...props }) => (
  *
  * @todo Implement handleFilter - map over dropdown items
  *
- * @param {FloorplanSearchFiltersFieldProps} props - Component data
+ * @param {FloorsPlanSearchFiltersFieldProps} props - Component data
  * @returns {Fieldset}
  */
-export const FloorplanSearchFiltersField = ({ handleFilter, ...props }) => {
+export const FloorsPlanSearchFiltersField = ({ handleFilter, ...props }) => {
   const attributes = useAttributes(props, 'floorplan-search-form-filters')
-  const filters = Object.keys(FloorplanSearchFilters)
+  const filters = Object.keys(FloorPlanSearchFilters)
 
   return (
     <Fieldset {...attributes} name={FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME}>
       {filters.map(filter => {
-        const dropdown = getDropdownProps(FloorplanSearchFilters[filter])
+        const dropdown = getDropdownProps(FloorPlanSearchFilters[filter])
         const key = `${filter.toLowerCase()}-filter`
 
         dropdown.button.form = props.form
@@ -137,11 +137,11 @@ Fieldset.propTypes = {
 }
 
 /**
- * @link FloorplanSearchFiltersField component properties.
+ * @link FloorsPlanSearchFiltersField component properties.
  *
- * @typedef {FloorplanSearchFiltersFieldProps}
+ * @typedef {FloorsPlanSearchFiltersFieldProps}
  */
-FloorplanSearchFiltersField.propTypes = {
+FloorsPlanSearchFiltersField.propTypes = {
   /**
    * Code to call when the `click` event is raised.
    */
@@ -155,7 +155,7 @@ FloorplanSearchFiltersField.propTypes = {
 
 Fieldset.defaultProps = {}
 
-FloorplanSearchFiltersField.defaultProps = {
+FloorsPlanSearchFiltersField.defaultProps = {
   name: FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME
 }
 
