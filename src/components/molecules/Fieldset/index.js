@@ -70,6 +70,8 @@ export const FloorplanSearchFiltersField = ({ handleFilter, ...props }) => {
         const dropdown = getDropdownProps(FloorplanSearchFilters[filter])
         const key = `${filter.toLowerCase()}-filter`
 
+        dropdown.button.form = props.form
+
         return <Dropdown {...dropdown} key={key} />
       })}
     </Fieldset>

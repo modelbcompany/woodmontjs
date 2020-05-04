@@ -40,7 +40,8 @@ export const Button = ({ className, ...props }) => {
     ...props,
     ...type,
     children: undefined,
-    className: classNames(type.className, className)
+    className: classNames(type.className, className),
+    'data-icon': !!{ ...props, ...type }['data-icon']
   }, 'ada-button')
 
   return <button {...attributes}>{children}</button>

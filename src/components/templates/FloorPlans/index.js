@@ -3,10 +3,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Components
-import { Main } from '../../organisms'
+import { Container, FloorplanSearchForm } from '../../molecules'
+import { FloorPlansGrid, Main } from '../../organisms'
 
 // Hooks
 import { useAttributes } from '../../../hooks'
+
+// Mock Data
+import { FloorplansMock } from
+  '../../organisms/Section/__mocks__/Floorplans.mock'
 
 // Stylesheets
 import './floorplans-template.sass'
@@ -20,6 +25,10 @@ import './floorplans-template.sass'
 /**
  * Renders a `<main>` element with the class `adt-floorplans`.
  *
+ * @todo Implement state
+ * @todo handleFilter
+ * @todo handleSearch
+ *
  * @class FloorplansTemplate
  * @param {FloorplansTemplateProps} props - Component data
  * @returns {HTMLElement}
@@ -29,7 +38,14 @@ export const FloorplansTemplate = props => {
 
   return (
     <Main {...attributes}>
-      {/*  */}
+      <Container className='form-container is-full-width'>
+        <FloorplanSearchForm
+          handleFilter={e => console.warn('@todo handleFilter =>', e.target)}
+          handleSearch={e => console.warn('@todo handleSearch =>', e.target)}
+        />
+      </Container>
+
+      <FloorPlansGrid floorplans={FloorplansMock} title='One Bedroom' />
     </Main>
   )
 }

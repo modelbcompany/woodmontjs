@@ -21,10 +21,10 @@ const COMMON_PROPS = {
   }
 }
 
-const mergeDropdownStyles = ({ 'data-button': button = {}, ...dropdown }) => ({
+const mergeDropdownStyles = ({ button = {}, ...dropdown }) => ({
   ...dropdown,
   ...COMMON_PROPS.dropdown,
-  'data-button': {
+  button: {
     ...button,
     ...COMMON_PROPS.button
   }
@@ -43,133 +43,133 @@ export const FloorplanSearchFormDropdownItems = Object.freeze({
   Bathrooms: [
     {
       children: '1',
-      'data-value': 1
+      value: 1
     },
     {
       children: '1.5',
-      'data-value': 1.5
+      value: 1.5
     },
     {
       children: '2',
-      'data-value': 2
+      value: 2
     },
     {
       children: '2.5',
-      'data-value': 2.5
+      value: 2.5
     },
     {
       children: '3',
-      'data-value': 3
+      value: 3
     }
-  ].map(item => mergeDropdownItemStyles(item)),
+  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'bathrooms' })),
 
   Bedrooms: [
     {
       children: 'Studio',
-      'data-value': 0
+      value: 0
     },
     {
       children: '1 BR',
-      'data-value': 1
+      value: 1
     },
     {
       children: '2 BR',
-      'data-value': 2
+      value: 2
     },
     {
       children: '3 BR',
-      'data-value': 3
+      value: 3
     }
-  ].map(item => mergeDropdownItemStyles(item)),
+  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'bedrooms' })),
 
   MaxPrice: [
     {
       children: '<$2k',
-      'data-value': {
+      value: {
         min: 0,
         max: 2000
       }
     },
     {
       children: '$2k - $2.5k',
-      'data-value': {
+      value: {
         min: 2001,
         max: 2500
       }
     },
     {
       children: '$2.5k - $3k',
-      'data-value': {
+      value: {
         min: 2501,
         max: 3000
       }
     },
     {
       children: '$3k - $3.5k',
-      'data-value': {
+      value: {
         min: 3001,
         max: 3500
       }
     },
     {
       children: '>$3.5k',
-      'data-value': {
+      value: {
         min: 3501,
         max: Number.MAX_SAFE_INTEGER
       }
     }
-  ].map(item => mergeDropdownItemStyles(item)),
+  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'max-price' })),
 
   MoveInDate: [
     {
       children: 'Janaury',
-      'data-value': 'january'
+      value: 'january'
     },
     {
       children: 'February',
-      'data-value': 'february'
+      value: 'february'
     },
     {
       children: 'March',
-      'data-value': 'march'
+      value: 'march'
     },
     {
       children: 'April',
-      'data-value': 'april'
+      value: 'april'
     },
     {
       children: 'May',
-      'data-value': 'may'
+      value: 'may'
     },
     {
       children: 'June',
-      'data-value': 'june'
+      value: 'june'
     },
     {
       children: 'July',
-      'data-value': 'july'
+      value: 'july'
     },
     {
       children: 'August',
-      'data-value': 'august'
+      value: 'august'
     },
     {
       children: 'September',
-      'data-value': 'september'
+      value: 'september'
     },
     {
       children: 'October',
-      'data-value': 'october'
+      value: 'october'
     },
     {
       children: 'November',
-      'data-value': 'november'
+      value: 'november'
     },
     {
       children: 'December',
-      'data-value': 'december'
+      value: 'december'
     }
-  ].map(item => mergeDropdownItemStyles(item))
+  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'move-in-date' }))
 })
 
 /**
@@ -182,65 +182,77 @@ export const FloorplanSearchFormDropdownItems = Object.freeze({
 export const FloorplanSearchFormDropdownProps = Object.freeze({
   Bathrooms: mergeDropdownStyles({
     'aria-label': 'Filter floor plans by number of bathrooms',
+    button: {
+      children: 'Bathrooms',
+      name: 'filter/bathrooms'
+    },
     children: {
       type: 'List',
       props: {
         ...COMMON_PROPS.list,
-        'data-items': FloorplanSearchFormDropdownItems.Bathrooms
+        'data-items': FloorplanSearchFormDropdownItems.Bathrooms,
+        id: 'filters-bathrooms-list'
       }
     },
-    'data-button': {
-      children: 'Bathrooms',
-      name: 'filter/bathrooms',
-      'data-value': -1
+    container: {
+      id: 'filters-bathrooms'
     }
   }),
 
   Bedrooms: mergeDropdownStyles({
     'aria-label': 'Filter floor plans by number of bathrooms',
+    button: {
+      children: 'Bedrooms',
+      name: 'filter/bedrooms'
+    },
     children: {
       type: 'List',
       props: {
         ...COMMON_PROPS.list,
-        'data-items': FloorplanSearchFormDropdownItems.Bedrooms
+        'data-items': FloorplanSearchFormDropdownItems.Bedrooms,
+        id: 'filters-bedrooms-list'
       }
     },
-    'data-button': {
-      children: 'Bedrooms',
-      name: 'filter/bedrooms',
-      'data-value': -1
+    container: {
+      id: 'filters-bedrooms'
     }
   }),
 
   MaxPrice: mergeDropdownStyles({
     'aria-label': 'Filter floor plans by max price',
+    button: {
+      children: 'Max Price',
+      name: 'filter/max-price'
+    },
     children: {
       type: 'List',
       props: {
         ...COMMON_PROPS.list,
-        'data-items': FloorplanSearchFormDropdownItems.MaxPrice
+        'data-items': FloorplanSearchFormDropdownItems.MaxPrice,
+        id: 'filter-max-price-list'
       }
     },
-    'data-button': {
-      children: 'Max Price',
-      name: 'filter/max-price',
-      'data-value': null
+    container: {
+      id: 'filter-max-price'
     }
   }),
 
   MoveInDate: mergeDropdownStyles({
     'aria-label': 'Filter floor plans by move-in date',
+    button: {
+      children: 'Move In Date',
+      name: 'filter/move-in-date'
+    },
     children: {
       type: 'List',
       props: {
         ...COMMON_PROPS.list,
-        'data-items': FloorplanSearchFormDropdownItems.MoveInDate
+        'data-items': FloorplanSearchFormDropdownItems.MoveInDate,
+        id: 'filter-move-in-date-list'
       }
     },
-    'data-button': {
-      children: 'Move In Date',
-      name: 'filter/move-in-date',
-      'data-value': null
+    container: {
+      id: 'filter-move-in-date'
     }
   })
 })

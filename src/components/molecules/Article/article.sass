@@ -12,17 +12,14 @@
 // Placeholders
 
 /// Floorplan component styles
+/// @require {function} size
 /// @require {mixin} background-color
-/// @require {mixin} text-color
-/// @require {mixin} width
-/// @require {variable} $color-brand-cod-gray
 /// @require {variable} $color-brand-silver-rust
 /// @require {variable} $magic-number
 %Floorplan
   +background-color($color-brand-silver-rust)
 
-  +width(size(400))
-
+  // grid-column: 1 / span 4
   padding: size($magic-number * 1.25)
 
 // Styles

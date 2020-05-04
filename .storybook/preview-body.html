@@ -16,6 +16,7 @@ See: https://storybook.js.org/docs/configurations/add-custom-body/
   .sb-show-main #docs-root,
   .sb-show-main #root {
     height: 100vh;
+    overflow-y: scroll
   }
 
   /* Allow horizontal scrolling */
@@ -58,5 +59,13 @@ See: https://storybook.js.org/docs/configurations/add-custom-body/
   #floorplan-link-preview>div>div,
   #floorplan-search-form-dropdown-item-preview>div>div {
     flex-direction: column;
+  }
+
+  #adt-floorplans-preview div:first-of-type>div {
+    padding: 0;
+  }
+
+  #adt-floorplans-preview div:first-of-type>div>div {
+    margin-top: 0;
   }
 </style>

@@ -56,7 +56,7 @@ export const FloorPlansGrid = ({ floorplans, ...rest }) => {
 
   return (
     <Section {...attributes}>
-      <Heading className='floorplans-grid-title'>
+      <Heading className='floorplans-grid-title' data-size={2}>
         {title}
       </Heading>
 

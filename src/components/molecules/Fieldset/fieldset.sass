@@ -37,12 +37,12 @@
   @extend %FloorplanSearchFiltersField
 
 .floorplan-search-form .floorplan-search-form-filters
-  flex-grow: 0.85
+  +respond-to($breakpoint-960, min)
+    flex-grow: 0.85
+    margin-right: size($magic-number-50p)
 
-// Responsive Styles
 
-// Desktop
+  +respond-to($breakpoint-960)
+    +is-full-width
 
-// Tablet
-
-// Mobile
+    margin-bottom: size($magic-number)

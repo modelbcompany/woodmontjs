@@ -9,34 +9,6 @@
 
 // Mixins
 
-/// Content container styles
-/// @require {mixin} height
-/// @require {mixin} no-margin
-/// @require {mixin} sticky
-/// @require {mixin} width
-/// @param {String} $context [null] - Selector context
-=is-content-container($context: null)
-  @if $context == null
-    // @todo
-  @else if $context == adm-dropdown
-    +height(auto, unset, none)
-
-    +no-margin
-
-    +width(100%)
-
-  @content
-
-/// Default page layout styles
-/// @require {mixin} constrain
-/// @require {mixin} is-stretched
-/// @param {String} $context [null] - Selector context
-=is-layout-container($context: null)
-  @if $context == null
-    +is-stretched
-
-  @content
-
 // Placeholders
 
 /// Container component styles
@@ -71,22 +43,56 @@
   @extend %Container
 
 .dropdown-content
-  +is-content-container(adm-dropdown)
+  +height(auto, unset, none)
+
+  +no-margin
+
+  +width(100%)
+
+.floorplan-search-form-dropdown .dropdown-content
+  +absolute(size(42))
+
+  z-index: $bakers-dozen
 
 .layout-container
-  +is-layout-container
+  +is-stretched
 
 .floorplan-search-form-filters .fieldset-container
-  +display-flex
+  +respond-to($breakpoint-960)
+    grid-template-columns: repeat(2, 1fr)
+    row-gap: size($magic-number * 0.625)
 
-  +flex-spread(flex-start)
+
+  +respond-to($breakpoint-768)
+    grid-template-columns: repeat(1, 1fr)
+
+
+  display: grid
+  grid:
+    column-gap: size($magic-number-50p)
+    template-columns: repeat(4, 1fr)
 
 .floorplans-grid-container
-  +display-flex
+  +respond-to($breakpoint-768)
+    grid-template-columns: repeat(1, 1fr) !important
+    row-gap: size($magic-number * 2)
 
-  +flex-align(flex-start)
 
-  flex-wrap: wrap
+  +responsive-grid
+
+  row-gap: size($magic-number * 1.5)
+
+.adt-floorplans .form-container
+  $padding-multiplier: 2.5
+
+  $padding-horizontal: size($magic-number * $padding-multiplier)
+  $padding-vertical: size($magic-number * $padding-multiplier * 0.5)
+
+  +respond-to($breakpoint-1024)
+    padding: $padding-vertical
+
+
+  padding: $padding-vertical $padding-horizontal
 
 // Responsive Styles
 

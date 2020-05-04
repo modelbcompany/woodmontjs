@@ -18,11 +18,23 @@
 
 /// FloorplanSearchForm component styles
 /// @require {mixin} display-flex
-/// @require {mixin} flex-spread
+/// @require {mixin} flex-align
+/// @require {mixin} flex-column
+/// @require {mixin} respond-to
+/// @require {variable} $breakpoint-960
 %FloorplanSearchForm
+  +respond-to($breakpoint-960)
+    +flex-column
+
+
   +display-flex
 
-  +flex-spread(flex-start)
+  +flex-align(flex-start)
+
+  justify-content: space-between
+
+  *:not(.icon)
+    +font-size(14)
 
 // Styles
 

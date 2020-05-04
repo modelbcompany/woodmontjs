@@ -55,7 +55,7 @@ export const Floorplan = ({ apt, floorplan, rent, sqft, ...rest }) => {
   floorplan.image.alt = `Floorplan for apartment #${apt.name}`
 
   return (
-    <Article {...attributes}>
+    <Article {...attributes} title={floorplan?.id ?? 'floorplan'}>
       <Column className='floorplan-column'>
         <Column className='image-column'>
           <Image {...floorplan.image} className='floorplan-img' />
@@ -82,7 +82,11 @@ export const Floorplan = ({ apt, floorplan, rent, sqft, ...rest }) => {
         </Column>
 
         <Column className='link-column'>
-          <Link className='floorplan-link' href={apt.apply}>
+          <Link
+            className='floorplan-link'
+            href={apt.apply}
+            target='_blank'
+          >
             Apply Now
           </Link>
 

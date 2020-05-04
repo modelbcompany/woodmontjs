@@ -4,13 +4,18 @@
   "description": "React component and JS utility function library, originally built to support the development of a new Floor Plans page and online scheduling feature on the 8001 Woodmont landing page.",
   "keywords": [
     "component library",
+    "es6",
     "front end development",
+    "javascript",
+    "javascript library",
     "react",
     "sass",
     "storybook",
     "storybook-addon-docs",
     "ui development",
-    "utility functions"
+    "wordpress react",
+    "vercel",
+    "zeit now"
   ],
   "homepage": "https://github.com/modelbcompany/woodmontjs#README",
   "bugs": {

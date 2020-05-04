@@ -7,7 +7,10 @@ import { Button } from '../../atoms'
 import Container from '../Container'
 
 // Hooks
-import { useAttributes, useDropdown, useIcon } from '../../../hooks'
+import { useAttributes, useDisclosure, useIcon } from '../../../hooks'
+
+// Utility Functions
+import { classNames } from '../../../utils'
 
 // Stylesheets
 import './dropdown.sass'
@@ -23,19 +26,22 @@ import './dropdown.sass'
  * @param {DropdownProps} props - Component data
  * @returns {HTMLDivElement}
  */
-export const Dropdown = ({ 'data-button': pb, ...props }) => {
+export const Dropdown = ({ button: btn, container, ...props }) => {
   const attributes = useAttributes(props, 'adm-dropdown')
-  const { children } = useIcon(attributes)
-  const { handleDropdown, open } = useDropdown()
+  const { children } = useIcon(props)
+  const { button, content, expanded } = useDisclosure({
+    button: btn,
+    content: {
+      ...container,
+      className: classNames('dropdown-content', container.className),
+      children
+    }
+  })
 
   return (
     <div {...attributes} data-open={open}>
-      <Button {...pb} name='dropdown' onClick={handleDropdown} />
-      {
-        open && children
-          ? <Container className='dropdown-content'>{children}</Container>
-          : null
-      }
+      <Button {...button} name='dropdown' type='reset' />
+      {expanded ? <Container {...content} /> : null}
     </div>
   )
 }
@@ -47,9 +53,34 @@ export const Dropdown = ({ 'data-button': pb, ...props }) => {
  */
 Dropdown.propTypes = {
   /**
+   * `Button` component properties.
+   */
+  button: PropTypes.shape({
+    children: PropTypes.node,
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
+    form: PropTypes.string,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    title: PropTypes.string,
+    type: PropTypes.oneOf(['submit', 'reset', 'button']),
+    value: PropTypes.any
+  }),
+
+  /**
    * `Dropdown` content.
    */
   children: PropTypes.element,
+
+  /**
+   * `Container` properties. `children` will be used as `Container.children`.
+   */
+  container: PropTypes.shape({
+    className: PropTypes.string,
+    'data-*': PropTypes.any,
+    id: PropTypes.string,
+    title: PropTypes.string
+  }),
 
   /**
    * A space-separated list of the classes of the element.
@@ -68,21 +99,6 @@ Dropdown.propTypes = {
   'data-*': PropTypes.any,
 
   /**
-   * `Button` component properties.
-   */
-  'data-button': PropTypes.shape({
-    children: PropTypes.node,
-    className: PropTypes.string,
-    disabled: PropTypes.bool,
-    form: PropTypes.string,
-    id: PropTypes.string,
-    name: PropTypes.string,
-    title: PropTypes.string,
-    type: PropTypes.oneOf(['submit', 'reset', 'button']),
-    value: PropTypes.any
-  }),
-
-  /**
    * Defines a unique identifier (ID) which must be unique in the whole
    * document. Its purpose is to identify the element when linking (using a
    * fragment identifier), scripting, or styling (with CSS).
@@ -91,11 +107,13 @@ Dropdown.propTypes = {
 }
 
 Dropdown.defaultProps = {
-  'data-button': {
+  button: {
     children: 'Dropdown',
     name: 'dropdown'
   },
-  'data-content': null
+  container: {
+    id: 'dropdown-content'
+  }
 }
 
 export default Dropdown

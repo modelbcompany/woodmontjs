@@ -11,31 +11,33 @@
 /// @param {String} $dimension [width] - Target width or height
 =respond-to($breakpoint, $bound: max, $dimension: width)
   @if $dimension == width
-    +respond-to-width(size($breakpoint), $bound)
+    +respond-to-width($breakpoint, $bound)
       @content
   @else
-    +respond-to-height(size($breakpoint), $bound)
+    +respond-to-height($breakpoint, $bound)
       @content
 
 // Responsive Height Media Query
+/// @require {function} size
 /// @param {Number} $breakpoint - Breakpoint value
 /// @param {String} $bound [max] - Target max or min height
 =respond-to-height($breakpoint, $bound: max)
   @if $bound == min
-    @media screen and (min-height: $breakpoint)
+    @media screen and (min-height: size($breakpoint + 1))
       @content
   @else
-    @media screen and (max-height: $breakpoint)
+    @media screen and (max-height: size($breakpoint))
       @content
 
-// Responsive Width Media Query
+/// Responsive Width Media Query
+/// @require {function} size
 /// @param {Number} $breakpoint - Breakpoint value
 /// @param {String} $bound [max] - Target max or min width
 /// @param {String} $dimension [width] - Target width or height
 =respond-to-width($breakpoint, $bound: max)
   @if $bound == min
-    @media screen and (min-width: $breakpoint)
+    @media screen and (min-width: size($breakpoint + 1))
       @content
   @else
-    @media screen and (max-width: $breakpoint)
+    @media screen and (max-width: size($breakpoint))
       @content

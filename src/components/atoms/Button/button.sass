@@ -42,7 +42,7 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 /// @param {String} $context [null]
 =is-floorplan-search-form-btn($context: null)
   @if $context == null
-    +constrain(size($magic-number * 1.5), height)
+    +constrain(size($magic-number * 1.75), height)
 
     +font-size
 
@@ -51,6 +51,10 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
     +is-uppercase
 
     +is-white-text
+
+    +respond-to($breakpoint-1024)
+      +font-size(14)
+
 
     font-family: $primary-font-family
     letter-spacing: $letter-spacing
@@ -61,14 +65,12 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 
     +set-bkg-color-and-hover($color-brand-rolling-stone)
 
-    padding: size($magic-number-75p) size($magic-number-50p) !important
+    padding: 0 size($magic-number-50p) !important
   @else if $context == submit
-    +constrain(size($magic-number * 4.5))
-
     $cape-palliser: #aa7b3f
 
     background: linear-gradient(to right, $cape-palliser, $color-brand-tussock)
-    padding: size($magic-number / 4) size($magic-number / 3)
+    padding: size($magic-number / 3)
 
   @content
 
@@ -151,16 +153,22 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 .floorplan-search-form-btn
   +is-floorplan-search-form-btn
 
-  &[name='dropdown']
+  &[aria-controls]
     +is-floorplan-search-form-btn(dropdown)
 
   &[type='submit']
     +is-floorplan-search-form-btn(submit)
 
 .floorplan-search-form .floorplan-search-form-btn[type='submit']
-  flex-grow: 0.125
-  max-width: none
-  width: auto
+  +respond-to($breakpoint-960, min)
+    flex-grow: 0.125
+    max-width: none
+    width: auto
+  +respond-to($breakpoint-960)
+    +is-full-width
+
+
+
 
 // Responsive Styles
 

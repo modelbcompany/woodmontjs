@@ -18,8 +18,7 @@
 /// @require {variable} $devices
 /// @param {string} $device_type - desktop | tablet | mobile
 /// @return {Number}
-@function grid-template-columns($device_type)
-  $track-config: map-get($devices, $device_type)
-  $track-size: map-get($track-config, 'columns')
+@function grid-template-columns($device-type)
+  $track-size: map-get(map-get($devices, $device-type), 'columns')
 
   @return #{repeat($track-size, 1fr)}

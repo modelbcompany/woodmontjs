@@ -37,15 +37,18 @@ export const Form = ({ children, ...props }) => (
 /**
  * Renders a @link Form component with the class `floorplan-search-form`.
  *
+ * @todo Toggle Button disabled state
+ * @todo Implement useFloorPlanSearch
+ *
  * @param {FloorplanSearchFormProps} props - Component data
  * @returns {Form}
  */
 export const FloorplanSearchForm = ({
   handleFilter,
   handleSearch,
-  ...props
+  ...rest
 }) => {
-  const attributes = useAttributes(props, 'floorplan-search-form')
+  const attributes = useAttributes(rest, 'floorplan-search-form')
 
   return (
     <Form {...attributes} id={FLOOR_PLAN_SEARCH_FORM_ID}>
@@ -56,6 +59,7 @@ export const FloorplanSearchForm = ({
 
       <Button
         className='floorplan-search-form-btn'
+        disabled
         form={FLOOR_PLAN_SEARCH_FORM_ID}
         onClick={handleSearch}
         type='submit'
@@ -270,6 +274,8 @@ Form.defaultProps = {
 }
 
 FloorplanSearchForm.defaultProps = {
+  handleFilter: e => console.warn('@todo handleFilter =>', e.target),
+  handleSearch: e => console.warn('@todo handleSearch =>', e.target),
   id: FLOOR_PLAN_SEARCH_FORM_ID
 }
 
