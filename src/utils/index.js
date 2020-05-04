@@ -4,6 +4,7 @@
  */
 
 export * from './app.utils'
+export * from './error.utils'
 export * from './object.utils'
 export * from './string.utils'
 export * from './ui.utils'
