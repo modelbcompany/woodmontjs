@@ -4,4 +4,4 @@
  */
 
 export * from './ButtonTypes'
-export * from './FloorplanSearchFormDropdownProps'
+export * from './FloorPlanSearchFormDropdownProps'
