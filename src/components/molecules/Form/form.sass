@@ -1,0 +1,55 @@
+// -----------------------------------------------------------------------------
+// Form variables, functions, mixins, placeholders, and styles
+// @group Form
+// -----------------------------------------------------------------------------
+
+// Variables
+
+// Functions
+
+// Mixins
+
+// Placeholders
+
+/// Form component styles
+/// @require {mixin} is-full-width
+%Form
+  +is-full-width
+
+/// FloorplanSearchForm component styles
+/// @require {mixin} display-flex
+/// @require {mixin} flex-align
+/// @require {mixin} flex-column
+/// @require {mixin} respond-to
+/// @require {variable} $breakpoint-960
+%FloorplanSearchForm
+  +respond-to($breakpoint-960)
+    +flex-column
+
+
+  +display-flex
+
+  +flex-align(flex-start)
+
+  justify-content: space-between
+
+  *:not(.icon)
+    +font-size(14)
+
+// Styles
+
+// Form
+.adm-form
+  @extend %Form
+
+// FloorplanSearchForm
+.floorplan-search-form
+  @extend %FloorplanSearchForm
+
+// Responsive Styles
+
+// Desktop
+
+// Tablet
+
+// Mobile
