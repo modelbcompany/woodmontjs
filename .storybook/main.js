@@ -61,7 +61,34 @@ module.exports = {
    * @returns {object} Webpack configuration
    */
   webpackFinal: async (config, { configType }) => {
-    // ! Compile Sass
+    config.module.rules.push(
+      {
+        test: /\.jsx?$/i,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              ignore: [
+                './node_modules/*',
+                './public/*',
+                './src/sass/*'
+              ],
+              plugins: [
+                '@babel/plugin-proposal-export-default-from',
+                '@babel/plugin-proposal-nullish-coalescing-operator',
+                '@babel/plugin-proposal-optional-chaining',
+                '@babel/plugin-proposal-throw-expressions'
+              ],
+              presets: [
+                '@babel/preset-env',
+                '@babel/preset-react'
+              ]
+            }
+          }
+        ]
+      }
+    )
+
     config.module.rules.push(
       {
         test: /\.s[ac]ss$/i,
