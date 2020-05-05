@@ -30,7 +30,7 @@
   "main": "src/index.js",
   "repository": "git://github.com/modelbcompany/woodmontjs.git",
   "scripts": {
-    "preinstall": "rm -rf node_modules/ package-lock.json",
+    "preinstall": "rm -rf node_modules/",
     "lint:js": "eslint ./*.js ./.storybook/*.js ./src/*.js ./src/**/*.js ./src/components/**/**/*.js --fix --ext .js,.jsx  --no-ignore",
     "lint:sass": "sass-lint --config .sass-lint.yml --verbose --no-exit",
     "lint": "run-p lint:*",
