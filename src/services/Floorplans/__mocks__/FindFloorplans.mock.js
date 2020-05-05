@@ -1,5 +1,5 @@
 /**
- * @file Mock Data - Floorplan.find response
+ * @file Mock Data - Floorplans.find response
  * @module services/Floorplans/__mocks__/FindFloorplans
  */
 
