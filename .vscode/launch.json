@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "firefox",
+      "request": "launch",
+      "name": "Storybook Debug",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceRoot}",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///*": "${webRoot}/*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///src/*": "${webRoot}/*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*"
+      }
+    }
+  ]
+}
