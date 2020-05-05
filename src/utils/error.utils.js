@@ -1,6 +1,9 @@
 // Packages
 import { errors } from '@feathersjs/client'
 
+// Config
+import RentCafeErrors from '../config/RentCafeErrors'
+
 // Utility Functions
 import { isObject, isNumber } from './validation.utils'
 
@@ -80,4 +83,26 @@ export const getFeathersError = (error, data, status = 500) => {
   }
 
   return error
+}
+
+/**
+ * Transform a RENTCafé API error into a @link FeathersError object.
+ *
+ * @param {object} param0 - RENTCafé error
+ * @param {string} param0.Error - RENTCafé error code
+ * @returns {FeathersError}
+ * @throws {Error}
+ */
+export const handleRentCafeError = ({ Error: code, ...rest }) => {
+  if (!code) return rest
+
+  const enumValue = Object.values(RentCafeErrors).find(value => {
+    if (value.data.code === code) return value
+  })
+
+  if (!enumValue) {
+    throw new Error(`handleRentCafeError: Cannot find RentCafeErrors enum value with code ${code}`)
+  }
+
+  return getFeathersError(...Object.values(enumValue))
 }
