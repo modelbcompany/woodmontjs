@@ -2,7 +2,7 @@
 import { sortObjectByKey } from './object.utils'
 
 /**
- * @file App Utilities
+ * @file Utilities - Feathers & Storybook apps
  * @module utils/app
  */
 
@@ -27,4 +27,22 @@ export const getComponentsForPropTable = mod => {
 
   // Return components
   return sortObjectByKey(components)
+}
+
+/**
+ * Registers a Feathers service.
+ *
+ * @param {Object} app - Feathers application
+ * @param {object} param1 - Service config
+ * @param {string} param1.id - Service key from @namespace API_CONFIG
+ * @param {object} param1.service - Service object
+ * @param {object} param1.hooks - Service hooks
+ * @returns {undefined}
+ */
+export const registerService = (app, { name, object, hooks }) => {
+  const path = app.get('services')[name]
+
+  app.use(path, object)
+
+  if (hooks) app.service(path).hooks(hooks)
 }

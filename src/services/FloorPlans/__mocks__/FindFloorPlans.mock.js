@@ -1,9 +1,9 @@
 /**
- * @file Mock Data - FloorPlan Service GET response
- * @module services/FloorPlans/__mocks__/GetFloorPlans
+ * @file Mock Data - FloorPlan.find response
+ * @module services/FloorPlans/__mocks__/FindFloorPlans
  */
 
-export const GetFloorPlansMock = [{
+export const FindFloorPlansMock = [{
   PropertyId: '20006',
   FloorPlanId: '431183',
   FloorPlanName: 'Birch',
