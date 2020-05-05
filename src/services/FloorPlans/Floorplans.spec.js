@@ -1,5 +1,5 @@
 // Service
-import Floorplans from './Floorplans'
+import Floorplans from './Floorplans.js'
 
 // Mock Data
 import FindFloorplansMock from './__mocks__/FindFloorplans.mock'
