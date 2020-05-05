@@ -8,15 +8,14 @@ module.exports = api => {
 
   return {
     ignore: [
-      './node_modules/*',
-      './public/*',
-      './src/sass/*'
+      './node_modules/*'
     ],
     plugins: [
       '@babel/plugin-proposal-export-default-from',
       '@babel/plugin-proposal-nullish-coalescing-operator',
       '@babel/plugin-proposal-optional-chaining',
-      '@babel/plugin-proposal-throw-expressions'
+      '@babel/plugin-proposal-throw-expressions',
+      ['@babel/plugin-transform-runtime', { regenerator: true }]
     ],
     presets: [
       '@babel/preset-env',

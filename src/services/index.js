@@ -1,5 +1,6 @@
 // Services
 import Floorplans from './Floorplans'
+import Scheduling from './Scheduling'
 
 /**
  * @file Library Services
@@ -14,6 +15,7 @@ import Floorplans from './Floorplans'
  */
 export const configureServices = app => {
   app.configure(Floorplans)
+  app.configure(Scheduling)
 }
 
 export default app => configureServices(app)
