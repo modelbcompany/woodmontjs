@@ -36,7 +36,7 @@ export default {
 export const Default = () => (
   <List
     className={`dropdown-list ${text('className')}`}
-    data-items={array('data-items', DropdownListMock)}
+    items={array('items', DropdownListMock)}
   />
 )
 
@@ -57,7 +57,7 @@ export const FloorPlansSearchFormDropdownList = () => {
   return (
     <List
       className='dropdown-list floorplan-search-form-dropdown-list'
-      data-items={FloorPlansSearchFormDropdownItems[key]}
+      items={FloorPlansSearchFormDropdownItems[key]}
     />
   )
 }

@@ -190,8 +190,8 @@ export const FloorPlansSearchFormDropdownProps = Object.freeze({
       type: 'List',
       props: {
         ...COMMON_PROPS.list,
-        'data-items': FloorPlansSearchFormDropdownItems.Bathrooms,
-        id: 'filters-bathrooms-list'
+        id: 'filters-bathrooms-list',
+        items: FloorPlansSearchFormDropdownItems.Bathrooms
       }
     },
     container: {
@@ -209,8 +209,8 @@ export const FloorPlansSearchFormDropdownProps = Object.freeze({
       type: 'List',
       props: {
         ...COMMON_PROPS.list,
-        'data-items': FloorPlansSearchFormDropdownItems.Bedrooms,
-        id: 'filters-bedrooms-list'
+        id: 'filters-bedrooms-list',
+        items: FloorPlansSearchFormDropdownItems.Bedrooms
       }
     },
     container: {
@@ -228,8 +228,8 @@ export const FloorPlansSearchFormDropdownProps = Object.freeze({
       type: 'List',
       props: {
         ...COMMON_PROPS.list,
-        'data-items': FloorPlansSearchFormDropdownItems.MaxPrice,
-        id: 'filter-max-price-list'
+        id: 'filter-max-price-list',
+        items: FloorPlansSearchFormDropdownItems.MaxPrice
       }
     },
     container: {
@@ -247,8 +247,8 @@ export const FloorPlansSearchFormDropdownProps = Object.freeze({
       type: 'List',
       props: {
         ...COMMON_PROPS.list,
-        'data-items': FloorPlansSearchFormDropdownItems.MoveInDate,
-        id: 'filter-move-in-date-list'
+        id: 'filter-move-in-date-list',
+        items: FloorPlansSearchFormDropdownItems.MoveInDate
       }
     },
     container: {

@@ -2,7 +2,7 @@
 import mdx from '../Link.mdx'
 
 // Config
-import { StorybookBackgrounds } from '../../../../config/palettes'
+import { StorybookBackgrounds } from '../../../../config'
 
 /**
  * @file Story Metadata - Link

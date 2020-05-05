@@ -26,7 +26,7 @@ import './list.sass'
  */
 export const List = ({
   children,
-  'data-items': di,
+  items: di,
   'data-item-type': item_type,
   'data-type': type,
   ...props
@@ -70,17 +70,6 @@ List.propTypes = {
   'data-*': PropTypes.any,
 
   /**
-   * Array of `Item` component **properties** or components.
-   */
-  'data-items': PropTypes.arrayOf(PropTypes.shape({
-    children: PropTypes.node,
-    className: PropTypes.string,
-    'data-*': PropTypes.any,
-    id: PropTypes.string,
-    title: PropTypes.string
-  })),
-
-  /**
    * Determines the type of list rendered.
    *
    * Possible values are:
@@ -95,12 +84,23 @@ List.propTypes = {
    * document. Its purpose is to identify the element when linking (using a
    * fragment identifier), scripting, or styling (with CSS).
    */
-  id: PropTypes.string
+  id: PropTypes.string,
+
+  /**
+   * Array of `Item` component **properties** or components.
+   */
+  items: PropTypes.arrayOf(PropTypes.shape({
+    children: PropTypes.node,
+    className: PropTypes.string,
+    'data-*': PropTypes.any,
+    id: PropTypes.string,
+    title: PropTypes.string
+  }))
 }
 
 List.defaultProps = {
-  'data-items': [],
-  'data-type': 'unordered'
+  'data-type': 'unordered',
+  items: []
 }
 
 export default List

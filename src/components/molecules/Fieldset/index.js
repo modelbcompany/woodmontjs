@@ -10,9 +10,10 @@ import Dropdown from '../Dropdown'
 import {
   FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME
 } from './config/Fieldset.constants'
-
+import { FLOOR_PLAN_SEARCH_FORM_ID } from '../Form/config/Form.constants'
 import {
-  FloorPlansSearchFormDropdownProps as FloorPlanSearchFilters
+  FloorPlansSearchFormDropdownProps as FloorPlanSearchFilters,
+  Logger
 } from '../../../config'
 
 // Hooks
@@ -65,12 +66,23 @@ export const FloorsPlanSearchFiltersField = ({ handleFilter, ...props }) => {
   const filters = Object.keys(FloorPlanSearchFilters)
 
   return (
-    <Fieldset {...attributes} name={FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME}>
+    <Fieldset
+      {...attributes}
+      form={FLOOR_PLAN_SEARCH_FORM_ID}
+      name={FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME}
+    >
       {filters.map(filter => {
-        const dropdown = getDropdownProps(FloorPlanSearchFilters[filter])
-        const key = `${filter.toLowerCase()}-filter`
+        let dropdown = FloorPlanSearchFilters[filter]
+        const { button, children } = dropdown
 
-        dropdown.button.form = props.form
+        button.form = props.form
+        children.props.items = children.props.items.map(item => ({
+          ...item, onClick: handleFilter, role: 'button'
+        }))
+
+        dropdown = getDropdownProps(dropdown)
+
+        const key = `${filter.toLowerCase()}-filter`
 
         return <Dropdown {...dropdown} key={key} />
       })}
@@ -150,12 +162,21 @@ FloorsPlanSearchFiltersField.propTypes = {
   /**
    * This value cannot be overridden.
    */
+  form: PropTypes.string,
+
+  /**
+   * This value cannot be overridden.
+   */
   name: PropTypes.string
 }
 
 Fieldset.defaultProps = {}
 
 FloorsPlanSearchFiltersField.defaultProps = {
+  form: FLOOR_PLAN_SEARCH_FORM_ID,
+  handleFilter: ({ target: { name, value } }) => {
+    Logger.warn('@todo handleFilter =>', { name, value })
+  },
   name: FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME
 }
 

@@ -8,6 +8,7 @@ import { FloorsPlanSearchFiltersField } from '../Fieldset'
 
 // Config
 import { FLOOR_PLAN_SEARCH_FORM_ID } from './config/Form.constants'
+import { Logger } from '../../../config'
 
 // Hooks
 import { useAttributes } from '../../../hooks'
@@ -274,8 +275,10 @@ Form.defaultProps = {
 }
 
 FloorPlansSearchForm.defaultProps = {
-  handleFilter: e => console.warn('@todo handleFilter =>', e.target),
-  handleSearch: e => console.warn('@todo handleSearch =>', e.target),
+  handleFilter: ({ target: { name, value } }) => {
+    Logger.warn('@todo handleFilter =>', { name, value })
+  },
+  handleSearch: event => Logger.warn('@todo handleSearch =>', event.target),
   id: FLOOR_PLAN_SEARCH_FORM_ID
 }
 

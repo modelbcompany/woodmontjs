@@ -2,7 +2,7 @@
 import mdx from '../Image.mdx'
 
 // Config
-import { StorybookBackgrounds } from '../../../../config/palettes'
+import { StorybookBackgrounds } from '../../../../config'
 
 /**
  * @file Story Metadata - Image

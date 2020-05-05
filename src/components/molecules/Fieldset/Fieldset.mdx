@@ -4,6 +4,9 @@ import { Props } from '@storybook/addon-docs/blocks'
 <!-- Components -->
 import { Fieldset, FloorsPlanSearchFiltersField } from '.'
 
+<!-- Config -->
+import { Logger } from '../../../config'
+
 # Fieldset
 
 `<fieldset>` element with the class `adm-fieldset`.  
@@ -31,7 +34,5 @@ with the class `fieldset-container` will wrap the child elements.
 - `className='floorplan-search-form-filters'`
 
 <Preview>
-  <FloorsPlanSearchFiltersField
-    handleFilter={event => console.warn('@todo handleFilter =>', event.target)}
-  />
+  <FloorsPlanSearchFiltersField />
 </Preview>
