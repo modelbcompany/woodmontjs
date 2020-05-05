@@ -12,7 +12,7 @@ import {
 } from '../metadata/List.meta'
 
 // Config
-import { FloorPlansSearchFormDropdownItems } from '../../../../config'
+import { FloorplansSearchFormDropdownItems } from '../../../../config'
 
 // Mock Data
 import DropdownListMock from '../__mocks__/DropdownList.mock'
@@ -45,24 +45,24 @@ Default.story = {
 }
 
 /**
- * @link FloorPlansSearchForm @link Dropdown @link List story.
+ * @link FloorplansSearchForm @link Dropdown @link List story.
  *
  * @returns {List}
  */
-export const FloorPlansSearchFormDropdownList = () => {
-  const prop_keys = Object.keys(FloorPlansSearchFormDropdownItems)
-  const knob_label = 'FloorPlansSearchFormDropdownItems.key'
+export const FloorplansSearchFormDropdownList = () => {
+  const prop_keys = Object.keys(FloorplansSearchFormDropdownItems)
+  const knob_label = 'FloorplansSearchFormDropdownItems.key'
   const key = select(knob_label, prop_keys, 'Bathrooms')
 
   return (
     <List
       className='dropdown-list floorplan-search-form-dropdown-list'
-      items={FloorPlansSearchFormDropdownItems[key]}
+      items={FloorplansSearchFormDropdownItems[key]}
     />
   )
 }
 
-FloorPlansSearchFormDropdownList.story = {
-  name: 'FloorPlansSearchForm',
+FloorplansSearchFormDropdownList.story = {
+  name: 'FloorplansSearchForm',
   parameters: DropdownListStoryParams
 }

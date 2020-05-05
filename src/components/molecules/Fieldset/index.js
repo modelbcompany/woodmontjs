@@ -12,7 +12,7 @@ import {
 } from './config/Fieldset.constants'
 import { FLOOR_PLAN_SEARCH_FORM_ID } from '../Form/config/Form.constants'
 import {
-  FloorPlansSearchFormDropdownProps as FloorPlanSearchFilters
+  FloorplansSearchFormDropdownProps as FloorplanSearchFilters
 } from '../../../config'
 import Logger from '../../../logger'
 
@@ -63,7 +63,7 @@ export const Fieldset = ({ children, ...props }) => (
  */
 export const FloorsPlanSearchFiltersField = ({ handleFilter, ...props }) => {
   const attributes = useAttributes(props, 'floorplan-search-form-filters')
-  const filters = Object.keys(FloorPlanSearchFilters)
+  const filters = Object.keys(FloorplanSearchFilters)
 
   return (
     <Fieldset
@@ -72,7 +72,7 @@ export const FloorsPlanSearchFiltersField = ({ handleFilter, ...props }) => {
       name={FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME}
     >
       {filters.map(filter => {
-        let dropdown = FloorPlanSearchFilters[filter]
+        let dropdown = FloorplanSearchFilters[filter]
         const { button, children } = dropdown
 
         button.form = props.form

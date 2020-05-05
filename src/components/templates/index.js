@@ -4,4 +4,4 @@
  * @see {@link http://atomicdesign.bradfrost.com/chapter-2/}
  */
 
-export * from './FloorPlans'
+export * from './Floorplans'

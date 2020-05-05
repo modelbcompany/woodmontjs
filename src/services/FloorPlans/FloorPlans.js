@@ -2,24 +2,25 @@
 import Logger from '../../logger'
 
 // Mocks
-import FindFloorPlansMock from './__mocks__/FindFloorPlans.mock'
+import FindFloorplansMock from './__mocks__/FindFloorplans.mock'
 
 /**
- * @file Service Object - FloorPlans
- * @module services/FloorPlans/FloorPlans
+ * @file Service Object - Floorplans
+ * @module services/Floorplans/Floorplans
  */
 
 /**
- * @typedef {FloorPlan}
+ * @typedef {Floorplan}
  * @property {string} AvailabilityURL
  * @property {string} AvailableUnitsCount
  * @property {string} Baths
  * @property {string} Beds
- * @property {string} FloorPlanHasSpecials
- * @property {string} FloorPlanImageName
- * @property {string} FloorPlanImageURL
- * @property {string} FloorPlanId
- * @property {string} FloorPlanName
+ * @property {string} FloorplanHasSpecials
+ * @property {string} FloorplanImageAltText
+ * @property {string} FloorplanImageName
+ * @property {string} FloorplanImageURL
+ * @property {string} FloorplanId
+ * @property {string} FloorplanName
  * @property {string} MaximumDeposit
  * @property {string} MinimumDeposit
  * @property {string} MaximumRent
@@ -31,13 +32,13 @@ import FindFloorPlansMock from './__mocks__/FindFloorPlans.mock'
  */
 
 /**
- * FloorPlan service.
+ * Floorplan service.
  *
  * @see {@link https://woodmontjs.modelb.now.sh/docs/rentcafe/web}
  *
- * @namespace FloorPlans
+ * @namespace Floorplans
  */
-export const FloorPlans = {
+export const Floorplans = {
   /**
    * Special service initialization method.
    *
@@ -71,7 +72,7 @@ export const FloorPlans = {
      */
     this.env = process.env.NODE_ENV
 
-    Logger.debug('[Service] FloorPlans: Initialized on path', this.path)
+    Logger.debug('[Service] Floorplans: Initialized on path', this.path)
   },
 
   /**
@@ -85,13 +86,13 @@ export const FloorPlans = {
    * @param {string} params.query.apiToken - Company token from RENTCafé
    * @param {string} params.query.propertyId - RENTCafé property identifier
    * @param {string} params.query.requestType - floorPlan
-   * @returns {FloorPlan[]} RENTCafé floor plan data
+   * @returns {Floorplan[]} RENTCafé floor plan data
    * @throws {FeathersError}
    */
   find: async function ({ query: { apiToken, propertyId } }) {
     let floorplans = null
 
-    floorplans = await (async () => FindFloorPlansMock)()
+    floorplans = await (async () => FindFloorplansMock)()
 
     if (propertyId) {
       floorplans = floorplans.filter(plan => plan.PropertyId === propertyId)
@@ -101,4 +102,4 @@ export const FloorPlans = {
   }
 }
 
-export default FloorPlans
+export default Floorplans

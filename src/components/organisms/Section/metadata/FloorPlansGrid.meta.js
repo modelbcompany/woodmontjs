@@ -2,19 +2,19 @@
 import mdx from '../Section.mdx'
 
 /**
- * @file Story Metadata - FloorPlansGrid
- * @module components/organisms/Section/metadata/FloorPlansGrid
+ * @file Story Metadata - FloorplansGrid
+ * @module components/organisms/Section/metadata/FloorplansGrid
  */
 
 /**
- * Storybook parameters for all @link FloorPlansGrid stories.
+ * Storybook parameters for all @link FloorplansGrid stories.
  *
- * @namespace FloorPlansGridStoryParams
+ * @namespace FloorplansGridStoryParams
  * @property {object} actions - Storybook Actions config
  * @property {object} docs - Storybook Docs config
  * @property {object} knobs - Storybook Knobs config
  */
-export const FloorPlansGridStoryParams = {
+export const FloorplansGridStoryParams = {
   actions: {
     disabled: true
   },

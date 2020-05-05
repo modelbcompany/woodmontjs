@@ -1,5 +1,5 @@
 // Services
-import FloorPlans from './FloorPlans'
+import Floorplans from './Floorplans'
 
 /**
  * @file Library Services
@@ -13,7 +13,7 @@ import FloorPlans from './FloorPlans'
  * @returns {undefined}
  */
 export const configureServices = app => {
-  app.configure(FloorPlans)
+  app.configure(Floorplans)
 }
 
 export default app => configureServices(app)

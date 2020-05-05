@@ -4,7 +4,7 @@
  */
 
 /**
- * `name` used in the @link FloorPlansSearchFormFilters component.
+ * `name` used in the @link FloorplansSearchFormFilters component.
  *
  * @readonly
  * @property {string} FLOOR_PLAN_SEARCH_FILTERS_FIELD_NAME

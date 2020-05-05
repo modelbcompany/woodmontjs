@@ -39,12 +39,12 @@ export const Form = ({ children, ...props }) => (
  * Renders a @link Form component with the class `floorplan-search-form`.
  *
  * @todo Toggle Button disabled state
- * @todo Implement useFloorPlanSearch
+ * @todo Implement useFloorplanSearch
  *
- * @param {FloorPlansSearchFormProps} props - Component data
+ * @param {FloorplansSearchFormProps} props - Component data
  * @returns {Form}
  */
-export const FloorPlansSearchForm = ({
+export const FloorplansSearchForm = ({
   handleFilter,
   handleSearch,
   ...rest
@@ -246,11 +246,11 @@ Form.propTypes = {
 }
 
 /**
- * @link FloorPlansSearchForm component properties.
+ * @link FloorplansSearchForm component properties.
  *
- * @typedef {FloorPlansSearchFormProps}
+ * @typedef {FloorplansSearchFormProps}
  */
-FloorPlansSearchForm.propTypes = {
+FloorplansSearchForm.propTypes = {
   /**
    * Code to call when the `click` event is raised.
    */
@@ -274,7 +274,7 @@ Form.defaultProps = {
   target: '_self'
 }
 
-FloorPlansSearchForm.defaultProps = {
+FloorplansSearchForm.defaultProps = {
   handleFilter: ({ target: { name, value } }) => {
     Logger.warn('@todo handleFilter =>', { name, value })
   },

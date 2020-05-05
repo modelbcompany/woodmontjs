@@ -2,27 +2,27 @@
 import React from 'react'
 
 // Component
-import FloorPlansTemplate from '..'
+import FloorplansTemplate from '..'
 
 // Metadata
 import {
-  FloorPlansTemplateStoryParams
-} from '../metadata/FloorPlansTemplate.meta'
+  FloorplansTemplateStoryParams
+} from '../metadata/FloorplansTemplate.meta'
 
 /**
- * @file Stories - FloorPlansTemplate
- * @module components/templates/Floorplans/stories/FloorPlansTemplate
+ * @file Stories - FloorplansTemplate
+ * @module components/templates/Floorplans/stories/FloorplansTemplate
  */
 
 export default {
-  title: 'Components/Templates/FloorPlansTemplate',
-  component: FloorPlansTemplate,
-  parameters: FloorPlansTemplateStoryParams
+  title: 'Components/Templates/FloorplansTemplate',
+  component: FloorplansTemplate,
+  parameters: FloorplansTemplateStoryParams
 }
 
 /**
- * Default @link FloorPlansTemplate story.
+ * Default @link FloorplansTemplate story.
  *
- * @returns {FloorPlansTemplate}
+ * @returns {FloorplansTemplate}
  */
-export const Default = () => <FloorPlansTemplate />
+export const Default = () => <FloorplansTemplate />

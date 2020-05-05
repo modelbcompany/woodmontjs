@@ -4,7 +4,7 @@
  */
 
 /**
- * `id` used in the @link FloorPlansSearchForm component.
+ * `id` used in the @link FloorplansSearchForm component.
  *
  * @readonly
  * @property {string} FLOOR_PLAN_SEARCH_FORM_ID

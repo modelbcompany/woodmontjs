@@ -5,4 +5,4 @@
 
 export * from './ButtonTypes'
 export * from './ColorPalettes'
-export * from './FloorPlansSearchFormDropdownProps'
+export * from './FloorplansSearchFormDropdownProps'

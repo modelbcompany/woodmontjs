@@ -8,7 +8,7 @@ import { FloorsPlanSearchFiltersField } from '..'
 // Metadata
 import {
   FloorsPlanSearchFiltersFieldStoryParams
-} from '../metadata/FloorPlansSearchFiltersField.meta'
+} from '../metadata/FloorplansSearchFiltersField.meta'
 
 /**
  * @file Stories - FloorsPlanSearchFiltersField

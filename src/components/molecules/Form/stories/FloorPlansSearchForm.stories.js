@@ -3,31 +3,31 @@ import React from 'react'
 import { action } from '@storybook/addon-actions'
 
 // Component
-import { FloorPlansSearchForm } from '..'
+import { FloorplansSearchForm } from '..'
 
 // Metadata
 import {
-  FloorPlansSearchFormStoryParams
-} from '../metadata/FloorPlansSearchForm.meta'
+  FloorplansSearchFormStoryParams
+} from '../metadata/FloorplansSearchForm.meta'
 
 /**
  * @file Stories - Form
- * @module components/molecules/Form/stories/FloorPlansSearchForm
+ * @module components/molecules/Form/stories/FloorplansSearchForm
  */
 
 export default {
-  title: 'Components/Molecules/Form/Components/FloorPlansSearchForm',
-  component: FloorPlansSearchForm,
-  parameters: FloorPlansSearchFormStoryParams
+  title: 'Components/Molecules/Form/Components/FloorplansSearchForm',
+  component: FloorplansSearchForm,
+  parameters: FloorplansSearchFormStoryParams
 }
 
 /**
- * Default @link FloorPlansSearchForm story.
+ * Default @link FloorplansSearchForm story.
  *
- * @returns {FloorPlansSearchForm}
+ * @returns {FloorplansSearchForm}
  */
 export const Default = () => (
-  <FloorPlansSearchForm
+  <FloorplansSearchForm
     handleFilter={event => action('handleFilter')(event.target)}
     handleSearch={event => action('handleSearch')(event.target)}
   />

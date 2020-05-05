@@ -1,6 +1,6 @@
 /**
- * @file @link FloorPlansSearchForm @link Dropdown properties
- * @module config/FloorPlansSearchFormDropdownProps
+ * @file @link FloorplansSearchForm @link Dropdown properties
+ * @module config/FloorplansSearchFormDropdownProps
  * @todo Update documentation
  */
 
@@ -33,13 +33,13 @@ const mergeDropdownStyles = ({ button = {}, ...dropdown }) => ({
 const mergeDropdownItemStyles = item => ({ ...item, ...COMMON_PROPS.item })
 
 /**
- * @link Item properties for the @link FloorPlansSearchForm @link Dropdown
+ * @link Item properties for the @link FloorplansSearchForm @link Dropdown
  * @link List.
  *
  * @readonly
- * @namespace FloorPlansSearchFormDropdownItems
+ * @namespace FloorplansSearchFormDropdownItems
  */
-export const FloorPlansSearchFormDropdownItems = Object.freeze({
+export const FloorplansSearchFormDropdownItems = Object.freeze({
   Bathrooms: [
     {
       children: '1',
@@ -173,13 +173,13 @@ export const FloorPlansSearchFormDropdownItems = Object.freeze({
 })
 
 /**
- * @link Dropdown properties for the @link FloorPlansSearchForm component,
+ * @link Dropdown properties for the @link FloorplansSearchForm component,
  * representing search filters.
  *
  * @readonly
  * @enum {DropdownProps}
  */
-export const FloorPlansSearchFormDropdownProps = Object.freeze({
+export const FloorplansSearchFormDropdownProps = Object.freeze({
   Bathrooms: mergeDropdownStyles({
     'aria-label': 'Filter floor plans by number of bathrooms',
     button: {
@@ -191,7 +191,7 @@ export const FloorPlansSearchFormDropdownProps = Object.freeze({
       props: {
         ...COMMON_PROPS.list,
         id: 'filters-bathrooms-list',
-        items: FloorPlansSearchFormDropdownItems.Bathrooms
+        items: FloorplansSearchFormDropdownItems.Bathrooms
       }
     },
     container: {
@@ -210,7 +210,7 @@ export const FloorPlansSearchFormDropdownProps = Object.freeze({
       props: {
         ...COMMON_PROPS.list,
         id: 'filters-bedrooms-list',
-        items: FloorPlansSearchFormDropdownItems.Bedrooms
+        items: FloorplansSearchFormDropdownItems.Bedrooms
       }
     },
     container: {
@@ -229,7 +229,7 @@ export const FloorPlansSearchFormDropdownProps = Object.freeze({
       props: {
         ...COMMON_PROPS.list,
         id: 'filter-max-price-list',
-        items: FloorPlansSearchFormDropdownItems.MaxPrice
+        items: FloorplansSearchFormDropdownItems.MaxPrice
       }
     },
     container: {
@@ -248,7 +248,7 @@ export const FloorPlansSearchFormDropdownProps = Object.freeze({
       props: {
         ...COMMON_PROPS.list,
         id: 'filter-move-in-date-list',
-        items: FloorPlansSearchFormDropdownItems.MoveInDate
+        items: FloorplansSearchFormDropdownItems.MoveInDate
       }
     },
     container: {
@@ -257,4 +257,4 @@ export const FloorPlansSearchFormDropdownProps = Object.freeze({
   })
 })
 
-export default FloorPlansSearchFormDropdownProps
+export default FloorplansSearchFormDropdownProps

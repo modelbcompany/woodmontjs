@@ -1,12 +1,12 @@
 /**
- * @file Mock Data - FloorPlan.find response
- * @module services/FloorPlans/__mocks__/FindFloorPlans
+ * @file Mock Data - Floorplan.find response
+ * @module services/Floorplans/__mocks__/FindFloorplans
  */
 
-export const FindFloorPlansMock = [{
+export const FindFloorplansMock = [{
   PropertyId: '20006',
-  FloorPlanId: '431183',
-  FloorPlanName: 'Birch',
+  FloorplanId: '431183',
+  FloorplanName: 'Birch',
   Beds: '1',
   Baths: '1.0',
   MinimumSqFt: '523',
@@ -17,11 +17,11 @@ export const FindFloorPlansMock = [{
   MaximumDeposit: '500',
   AvailableUnitsCount: '0',
   AvailabilityURL: 'https://gardenviewterrace.securecafe.com/onlineleasing/gardenview-terrace/oleapplication.aspx?stepname=Apartments&myOlePropertyId=20006&floorPlans=969074',
-  FloorPlanImageURL: 'http://cdn.rentcafe.com/dmslivecafe/3/20006/3_20006_981101.jpg',
-  FloorPlanImageName: 'Gardenview1bedroom.jpg',
+  FloorplanImageURL: 'http://cdn.rentcafe.com/dmslivecafe/3/20006/3_20006_981101.jpg',
+  FloorplanImageName: 'Gardenview1bedroom.jpg',
   PropertyShowsSpecials: '0',
-  FloorPlanHasSpecials: '0',
+  FloorplanHasSpecials: '0',
   UnitTypeMapping: 'ca011b1b'
 }]
 
-export default FindFloorPlansMock
+export default FindFloorplansMock

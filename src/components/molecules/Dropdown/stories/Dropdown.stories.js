@@ -6,12 +6,12 @@ import { select } from '@storybook/addon-knobs'
 import Dropdown from '..'
 
 // Config
-import { FloorPlansSearchFormDropdownProps } from '../../../../config'
+import { FloorplansSearchFormDropdownProps } from '../../../../config'
 
 // Metadata
 import {
   DropdownStoryParams,
-  FloorPlansSearchFormDropdownStoryParams
+  FloorplansSearchFormDropdownStoryParams
 } from '../metadata/Dropdown.meta'
 
 // Utility Functions
@@ -29,21 +29,21 @@ export default {
 }
 
 /**
- * @link FloorPlansSearchForm @link Dropdown story.
+ * @link FloorplansSearchForm @link Dropdown story.
  *
  * @returns {Dropdown}
  */
-export const FloorPlansSearchFormDropdown = () => {
-  const prop_keys = Object.keys(FloorPlansSearchFormDropdownProps)
-  const knob_label = 'FloorPlansSearchFormDropdownProps.key'
+export const FloorplansSearchFormDropdown = () => {
+  const prop_keys = Object.keys(FloorplansSearchFormDropdownProps)
+  const knob_label = 'FloorplansSearchFormDropdownProps.key'
   const key = select(knob_label, prop_keys, 'Bathrooms')
 
   return (
-    <Dropdown {...getDropdownProps(FloorPlansSearchFormDropdownProps[key])} />
+    <Dropdown {...getDropdownProps(FloorplansSearchFormDropdownProps[key])} />
   )
 }
 
-FloorPlansSearchFormDropdown.story = {
-  name: 'FloorPlansSearchForm',
-  parameters: FloorPlansSearchFormDropdownStoryParams
+FloorplansSearchFormDropdown.story = {
+  name: 'FloorplansSearchForm',
+  parameters: FloorplansSearchFormDropdownStoryParams
 }

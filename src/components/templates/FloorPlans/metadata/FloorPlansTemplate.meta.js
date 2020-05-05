@@ -1,20 +1,20 @@
 // Documentation
-import mdx from '../FloorPlansTemplate.mdx'
+import mdx from '../FloorplansTemplate.mdx'
 
 /**
- * @file Story Metadata - FloorPlansTemplate
- * @module components/templates/Floorplans/metadata/FloorPlansTemplate
+ * @file Story Metadata - FloorplansTemplate
+ * @module components/templates/Floorplans/metadata/FloorplansTemplate
  */
 
 /**
- * Storybook parameters for all @link FloorPlansTemplate stories.
+ * Storybook parameters for all @link FloorplansTemplate stories.
  *
- * @namespace FloorPlansTemplateStoryParams
+ * @namespace FloorplansTemplateStoryParams
  * @property {object} actions - Storybook Actions config
  * @property {object} docs - Storybook Docs config
  * @property {object} knobs - Storybook Knobs config
  */
-export const FloorPlansTemplateStoryParams = {
+export const FloorplansTemplateStoryParams = {
   actions: {
     disabled: true
   },

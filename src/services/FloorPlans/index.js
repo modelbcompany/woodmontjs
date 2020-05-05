@@ -1,22 +1,22 @@
 // Service object
-import FloorPlans from './FloorPlans'
+import Floorplans from './Floorplans'
 
 // Utility Functions
 import { registerService } from '../../utils'
 
 /**
- * @file Service - FloorPlans
- * @module services/FloorPlans
+ * @file Service - Floorplans
+ * @module services/Floorplans
  */
 
 /**
- * @namespace FloorPlansServiceConfig
+ * @namespace FloorplansServiceConfig
  * @property {string} name
  * @property {object} object
  */
-export const FloorPlansServiceConfig = Object.freeze({
-  name: 'FloorPlans',
-  object: FloorPlans
+export const FloorplansServiceConfig = Object.freeze({
+  name: 'Floorplans',
+  object: Floorplans
 })
 
-export default app => registerService(app, FloorPlansServiceConfig)
+export default app => registerService(app, FloorplansServiceConfig)

@@ -2,28 +2,28 @@
 import React from 'react'
 
 // Component
-import { FloorPlansGrid } from '..'
+import { FloorplansGrid } from '..'
 
 // Metadata
-import { FloorPlansGridStoryParams } from '../metadata/FloorPlansGrid.meta'
+import { FloorplansGridStoryParams } from '../metadata/FloorplansGrid.meta'
 
 // Mock Data
 import { FloorplansMock } from '../__mocks__/Floorplans.mock'
 
 /**
- * @file Stories - FloorPlansGrid
- * @module components/organisms/Section/stories/FloorPlansGrid
+ * @file Stories - FloorplansGrid
+ * @module components/organisms/Section/stories/FloorplansGrid
  */
 
 export default {
-  title: 'Components/Organisms/Section/Components/FloorPlansGrid',
-  component: FloorPlansGrid,
-  parameters: FloorPlansGridStoryParams
+  title: 'Components/Organisms/Section/Components/FloorplansGrid',
+  component: FloorplansGrid,
+  parameters: FloorplansGridStoryParams
 }
 
 /**
  * Default @link Section story.
  *
- * @returns {FloorPlansGrid}
+ * @returns {FloorplansGrid}
  */
-export const Default = () => <FloorPlansGrid floorplans={FloorplansMock} />
+export const Default = () => <FloorplansGrid floorplans={FloorplansMock} />

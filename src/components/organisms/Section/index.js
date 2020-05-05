@@ -44,13 +44,13 @@ export const Section = ({
 /**
  * Renders a `Section` component with the class `floorplans-grid`.
  *
- * @todo Integrate @module FloorPlanSearch
+ * @todo Integrate @module FloorplanSearch
  *
- * @class FloorPlansGrid
- * @param {FloorPlansGridProps} props - Component data
+ * @class FloorplansGrid
+ * @param {FloorplansGridProps} props - Component data
  * @returns {Section}
  */
-export const FloorPlansGrid = ({ floorplans, ...rest }) => {
+export const FloorplansGrid = ({ floorplans, ...rest }) => {
   const { title } = rest
   const attributes = useAttributes(rest, 'floorplans-grid')
 
@@ -123,13 +123,13 @@ Section.defaultProps = {
 }
 
 /**
- * @link FloorPlansGrid component properties.
+ * @link FloorplansGrid component properties.
  *
  * @todo Update documentation
  *
- * @typedef {FloorPlansGridProps}
+ * @typedef {FloorplansGridProps}
  */
-FloorPlansGrid.propTypes = {
+FloorplansGrid.propTypes = {
   floorplans: PropTypes.arrayOf(PropTypes.shape({
     apt: PropTypes.shape({
       apply: PropTypes.string,
@@ -156,7 +156,7 @@ FloorPlansGrid.propTypes = {
   title: PropTypes.string
 }
 
-FloorPlansGrid.defaultProps = {
+FloorplansGrid.defaultProps = {
   floorplans: [],
   title: 'One Bedroom'
 }

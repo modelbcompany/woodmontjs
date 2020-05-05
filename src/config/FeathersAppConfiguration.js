@@ -16,7 +16,7 @@ import * as ValidationUtils from '../utils/validation.utils'
  */
 export const FeathersAppConfiguration = {
   services: {
-    FloorPlans: 'floorplans',
+    Floorplans: 'floorplans',
     Scheduling: 'scheduling'
   },
   utilities: {
