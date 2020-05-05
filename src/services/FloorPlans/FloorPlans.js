@@ -84,18 +84,18 @@ export const Floorplans = {
    * @param {object} params - Additional information for the service method
    * @param {object} params.query - Query parameters
    * @param {string} params.query.apiToken - Company token from RENTCafé
-   * @param {string} params.query.propertyId - RENTCafé property identifier
+   * @param {string} params.query.floorplanId - Floorplan ID
    * @param {string} params.query.requestType - floorPlan
    * @returns {Floorplan[]} RENTCafé floor plan data
    * @throws {FeathersError}
    */
-  find: async function ({ query: { apiToken, propertyId } }) {
+  find: async function ({ query: { apiToken, floorplanId } }) {
     let floorplans = null
 
     floorplans = await (async () => FindFloorplansMock)()
 
-    if (propertyId) {
-      floorplans = floorplans.filter(plan => plan.PropertyId === propertyId)
+    if (floorplanId) {
+      floorplans = floorplans.filter(plan => plan.FloorplanId === floorplanId)
     }
 
     return floorplans
