@@ -20,6 +20,6 @@ export const Logger = pino({
   }
 })
 
-Logger.info('Initialized Pino logger =>', Logger)
+Logger.debug('Initialized Pino logger =>', Logger)
 
 export default Logger
