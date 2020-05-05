@@ -43,7 +43,7 @@ module.exports = {
    */
   stories: [
     '../src/index.stories.mdx',
-    '../src/modules/**/*.stories.mdx',
+    '../src/services/**/*.stories.mdx',
     '../src/components/**/**/stories/*.(stories|chapters).(js|mdx)'
   ],
 

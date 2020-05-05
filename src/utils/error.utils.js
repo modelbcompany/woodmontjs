@@ -1,10 +1,10 @@
 // Packages
 import {
   BadGateway, BadRequest, Conflict, Forbidden, GeneralError, LengthRequired, NotAuthenticated, NotFound, NotImplemented, PaymentError, MethodNotAllowed, NotAcceptable, Timeout, TooManyRequests, Unavailable, Unprocessable
-} from '@feathersjs/errors'
+} from '@feathersjs/client'
 
 // Utility Functions
-import { isObject } from './validation.utils'
+import { isObject, isNumber } from './validation.utils'
 
 /**
  * @file Utility Functions - Error Handling
@@ -24,6 +24,7 @@ import { isObject } from './validation.utils'
  */
 export const getFeathersError = (error, data, status = 500) => {
   if (!isObject(data)) data = {}
+  if (!isNumber(status)) status = 500
 
   switch (status) {
     case 400:
