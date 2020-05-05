@@ -3,7 +3,7 @@
  * @module services/Floorplans/__mocks__/FindFloorplans
  */
 
-export const FindFloorplansMock = [[
+export const FindFloorplansMock = [
   {
     PropertyId: '1131409',
     FloorplanId: '3215320',
@@ -655,6 +655,6 @@ export const FindFloorplansMock = [[
     FloorplanHasSpecials: '0',
     UnitTypeMapping: '9w-d01'
   }
-]]
+]
 
 export default FindFloorplansMock

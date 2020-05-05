@@ -10,11 +10,11 @@ import FeathersAppConfiguration from './config/FeathersAppConfiguration'
  */
 
 describe('WoodmontAPI', () => {
-  it('Is defined.', () => {
+  it('Is defined', () => {
     expect(WoodmontAPI).toBeDefined()
   })
 
-  it('Is intialized.', () => {
+  it('Is intialized', () => {
     expect(Object.keys(WoodmontAPI.services)).toEqual(
       expect.arrayContaining(Object.values(FeathersAppConfiguration.services))
     )

@@ -78,27 +78,32 @@ export const Floorplans = {
   /**
    * Returns floor plan data.
    *
+   * Data can be filtered by `id` or `name`, with `id` taking priority.
+   *
    * @todo Request RENTCafé Web Service API
    *
    * @async
    * @param {object} params - Additional information for the service method
    * @param {object} params.query - Query parameters
    * @param {string} params.query.apiToken - Company token from RENTCafé
-   * @param {string} params.query.floorplanId - Floorplan ID
+   * @param {string} params.query.id - Floorplan ID
+   * @param {string} params.query.name - Floorplan name
    * @param {string} params.query.requestType - floorPlan
-   * @returns {Floorplan[]} RENTCafé floor plan data
+   * @returns {Floorplan[] | Floorplan | null} RENTCafé floor plan data
    * @throws {FeathersError}
    */
-  find: async function ({ query: { apiToken, floorplanId } }) {
+  find: async function ({ query: { apiToken, id, name } }) {
     let floorplans = null
 
     floorplans = await (async () => FindFloorplansMock)()
 
-    if (floorplanId) {
-      floorplans = floorplans.filter(plan => plan.FloorplanId === floorplanId)
+    if (id) {
+      floorplans = floorplans.filter(plan => plan.FloorplanId === id)
+    } else if (name) {
+      floorplans = floorplans.filter(plan => plan.FloorplanName === name)
     }
 
-    return floorplans
+    return id || name ? (floorplans[0] || null) : floorplans
   }
 }
 
