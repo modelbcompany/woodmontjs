@@ -16,7 +16,7 @@ import { viewports } from './viewports'
 /**
  * @file Storybook Configuration
  * @see
- * {@link https://woodmontjs.modelb.now.sh/ref/storybook-config}
+ * {@link https://woodmontjs.modelb.now.sh/docs/storybook-config}
  */
 
 // Customize Storybook UI

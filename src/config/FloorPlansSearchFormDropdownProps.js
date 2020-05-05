@@ -1,6 +1,6 @@
 /**
  * @file @link FloorPlansSearchForm @link Dropdown properties
- * @module config/constants/FloorPlansSearchFormDropdownProps
+ * @module config/FloorPlansSearchFormDropdownProps
  * @todo Update documentation
  */
 

@@ -31,7 +31,12 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/ref/storybook-config",
+      "source": "/docs/react-components-elements-and-instances",
+      "destination": "https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html",
+      "statusCode": 308
+    },
+    {
+      "source": "/docs/storybook-config",
       "destination": "https://medium.com/storybookjs/declarative-storybook-configuration-49912f77b78",
       "statusCode": 308
     },

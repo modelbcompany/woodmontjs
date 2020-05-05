@@ -1,10 +1,13 @@
 // Packages
-import {
-  BadGateway, BadRequest, Conflict, Forbidden, GeneralError, LengthRequired, NotAuthenticated, NotFound, NotImplemented, PaymentError, MethodNotAllowed, NotAcceptable, Timeout, TooManyRequests, Unavailable, Unprocessable
-} from '@feathersjs/client'
+import { errors } from '@feathersjs/client'
 
 // Utility Functions
 import { isObject, isNumber } from './validation.utils'
+
+// Imported constants
+const {
+  BadGateway, BadRequest, Conflict, Forbidden, GeneralError, LengthRequired, NotAuthenticated, NotFound, NotImplemented, PaymentError, MethodNotAllowed, NotAcceptable, Timeout, TooManyRequests, Unavailable, Unprocessable
+} = errors
 
 /**
  * @file Utility Functions - Error Handling

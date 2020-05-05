@@ -8,7 +8,7 @@ import { FloorsPlanSearchFiltersField } from '../Fieldset'
 
 // Config
 import { FLOOR_PLAN_SEARCH_FORM_ID } from './config/Form.constants'
-import { Logger } from '../../../config'
+import Logger from '../../../logger'
 
 // Hooks
 import { useAttributes } from '../../../hooks'

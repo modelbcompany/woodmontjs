@@ -1,6 +1,6 @@
 /**
  * @file Storybook Configuration
- * @see {@link https://woodmontjs.modelb.now.sh/ref/storybook-config}
+ * @see {@link https://woodmontjs.modelb.now.sh/docs/storybook-config}
  */
 
 module.exports = {

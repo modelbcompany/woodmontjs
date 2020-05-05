@@ -2,7 +2,7 @@
 import { isArray, isObject, isString } from './validation.utils'
 
 /**
- * @file String Utilities
+ * @file Utilities - Strings
  * @module utils/string
  */
 

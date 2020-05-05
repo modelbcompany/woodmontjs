@@ -2,7 +2,7 @@
 import { isObject } from './validation.utils'
 
 /**
- * @file Object Utilities
+ * @file Utilties - Objects
  * @module utils/object
  */
 

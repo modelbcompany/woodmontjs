@@ -1,5 +1,5 @@
 // Config
-import { ButtonTypes } from '../config/constants'
+import { ButtonTypes } from '../config'
 
 // Hooks
 import useObject from './useObject'

@@ -2,15 +2,16 @@
 import React from 'react'
 
 // Components
-import Components from '../components'
+import * as Components from '../components'
 
 // Utility Functions
 import { isObject } from './validation.utils'
 
 /**
- * @file React component utilities
+ * @file Utilities - React
  * @module utils/react
- * @see {@link https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html}
+ * @see
+ * {@link https://woodmontjs.modelb.now.sh/docs/react-components-elements-and-instances}
  */
 
 /**

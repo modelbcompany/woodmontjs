@@ -5,7 +5,7 @@ import { addons } from '@storybook/addons'
  * @file Storybook UI Configuration
  * @see {@link https://storybook.js.org/docs/configurations/options-parameter/}
  * @see
- * {@link https://woodmontjs.modelb.now.sh/ref/storybook-config}
+ * {@link https://woodmontjs.modelb.now.sh/docs/storybook-config}
  */
 
 addons.setConfig({

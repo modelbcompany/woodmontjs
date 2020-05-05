@@ -1,5 +1,5 @@
 /**
- * @file Data Validation Utilities
+ * @file Utilities - Data Validation
  * @module utils/validation
  */
 

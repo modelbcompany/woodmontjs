@@ -37,6 +37,7 @@
     "predev": "npm run lint",
     "dev": "start-storybook -s ./public -p 3000 --ci",
     "dev:debug": "start-storybook -s ./public -p 3000 --ci --debug-webpack",
+    "dev:docs": "start-storybook -s ./public -p 3001 --docs --ci",
     "pretest": "NODE_ENV=test",
     "test": "jest --detectOpenHandles --passWithNoTests",
     "prebuild": "npm run lint && rm -rf ./build",

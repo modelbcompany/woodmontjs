@@ -1,9 +1,9 @@
 // Utility Functions
-import { animateScroll } from '../../utils'
+import { animateScroll } from '../utils'
 
 /**
  * @file @link Button properties
- * @module config/constants/ButtonTypes
+ * @module config/ButtonTypes
  */
 
 /**

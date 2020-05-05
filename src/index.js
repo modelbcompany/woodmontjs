@@ -1,7 +1,13 @@
-// Components
-import { Components as WoodmontComponents } from './components'
+// Feathers application
+import WoodmontAPI from './api'
 
-// Utilities
+// UI components
+import * as WoodmontComponents from './components'
+
+// Component Libary config
+import * as WoodmontConfig from './config'
+
+// Utility functions
 import * as WoodmontUtils from './utils'
 
 /**
@@ -9,4 +15,20 @@ import * as WoodmontUtils from './utils'
  * @author Lexus Drumgold <lexus.drumgold@modelb.com>
  */
 
-export { WoodmontComponents as default, WoodmontUtils }
+/**
+ * @namespace WoodmontJS
+ */
+export const WoodmontJS = {
+  api: WoodmontAPI,
+  components: WoodmontComponents,
+  config: WoodmontConfig,
+  utils: WoodmontUtils
+}
+
+export {
+  WoodmontJS as default,
+  WoodmontAPI,
+  WoodmontComponents,
+  WoodmontConfig,
+  WoodmontUtils
+}

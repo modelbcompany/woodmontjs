@@ -23,3 +23,5 @@ export const FindFloorPlansMock = [{
   FloorPlanHasSpecials: '0',
   UnitTypeMapping: 'ca011b1b'
 }]
+
+export default FindFloorPlansMock

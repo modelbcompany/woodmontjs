@@ -12,9 +12,9 @@ import {
 } from './config/Fieldset.constants'
 import { FLOOR_PLAN_SEARCH_FORM_ID } from '../Form/config/Form.constants'
 import {
-  FloorPlansSearchFormDropdownProps as FloorPlanSearchFilters,
-  Logger
+  FloorPlansSearchFormDropdownProps as FloorPlanSearchFilters
 } from '../../../config'
+import Logger from '../../../logger'
 
 // Hooks
 import { useAttributes } from '../../../hooks'

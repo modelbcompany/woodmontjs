@@ -1,5 +1,5 @@
 // Config
-import Logger from '../../config/logger'
+import Logger from '../../logger'
 
 // Mocks
 import FindFloorPlansMock from './__mocks__/FindFloorPlans.mock'
@@ -37,7 +37,7 @@ import FindFloorPlansMock from './__mocks__/FindFloorPlans.mock'
  *
  * @namespace FloorPlans
  */
-export const FloorPlans = Object.freeze({
+export const FloorPlans = {
   /**
    * Special service initialization method.
    *
@@ -99,6 +99,6 @@ export const FloorPlans = Object.freeze({
 
     return floorplans
   }
-})
+}
 
 export default FloorPlans

@@ -2,11 +2,11 @@
 import $ from 'jquery'
 
 // Utility Functions
-import { mergeStrings } from './string.utils'
+import { mergeStrings } from './strings.utils'
 import { isNumber, isString } from './validation.utils'
 
 /**
- * @file UI utilities
+ * @file Utilities - UI
  * @module utils/ui
  */
 

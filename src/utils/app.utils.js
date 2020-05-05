@@ -1,5 +1,5 @@
 // Utility Functions
-import { sortObjectByKey } from './object.utils'
+import { sortObjectByKey } from './objects.utils'
 
 /**
  * @file Utilities - Feathers & Storybook apps
