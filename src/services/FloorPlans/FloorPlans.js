@@ -71,7 +71,7 @@ export const FloorPlans = Object.freeze({
      */
     this.env = process.env.NODE_ENV
 
-    Logger.debug('[Service] FloorPlan: Initialized on path', this.path)
+    Logger.debug('[Service] FloorPlans: Initialized on path', this.path)
   },
 
   /**
