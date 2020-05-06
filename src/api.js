@@ -69,14 +69,10 @@ WoodmontAPI.hooks({
        * @param {object} params.params.query - Query parameters
        * @returns {object} Updated @param context
        */
-      ({ params, ...rest }) => {
-        params.query = isObject(params.query) || {}
-
-        return {
-          ...rest,
-          params: { ...params, query: isObject(params.query) || {} }
-        }
-      },
+      ({ params, ...rest }) => ({
+        ...rest,
+        params: { ...params, query: isObject(params.query) || {} }
+      }),
 
       /**
        * Attaches the RENTCafé API credentials to the incoming query based on
@@ -90,15 +86,18 @@ WoodmontAPI.hooks({
        */
       ({ params, path, ...rest }) => {
         const {
-          apiToken, companyCode, marketingAPIKey, propertyId
+          apiToken,
+          companyCode,
+          marketingAPIKey,
+          propertyId
         } = process.env
 
         if (path === 'apartments' || path === 'floorplans') {
           params.query = Object.assign(params.query, {
-            apiToken,
-            propertyId,
             requestType: path === 'apartments'
-              ? 'apartmentAvailability' : 'floorPlan'
+              ? 'apartmentAvailability' : 'floorPlan',
+            apiToken,
+            propertyId
           })
         } else if (path === 'scheduling') {
           params.query = Object.assign(params.query, {
@@ -109,35 +108,47 @@ WoodmontAPI.hooks({
         }
 
         return { path, params, ...rest }
+      },
+
+      /**
+       * Updates the value of @param context.params.url based on the value of
+       * @param context.path and @param context.params.query .
+       *
+       * Our service methods will use @param context.params.url when
+       * requesting the RENTCafé APIs.
+       *
+       * ! Our project uses Axios, allowing us to attach the search parameters
+       * ! as an object, but the RENTCafé API has only successfully responded
+       * ! when the query parameters were part of the URL string.
+       * ! The latter is the current workaround for this issue.
+       *
+       * @param {object} context - Service call information
+       * @param {string} context.path - Path service is initialized on
+       * @param {object} context.params - Service method parameters
+       * @param {object} context.params.query - Query parameters
+       * @returns {object} Updated @param context
+       */
+      ({ path, params, ...rest }) => {
+        const {
+          apiToken,
+          companyCode,
+          marketingAPIKey,
+          propertyId,
+          requestType
+        } = params.query
+
+        let url = ''
+
+        if (path !== 'scheduling') {
+          url = `https://api.rentcafe.com/rentcafeapi.aspx?requestType=${requestType}&apiToken=${apiToken}&propertyId=${propertyId}`
+        } else {
+          url = `https://marketingapi.rentcafe.com/marketingapi/api/appointments/${requestType}&companyCode=${companyCode}&marketingAPIKey=${marketingAPIKey}`
+        }
+
+        return { ...rest, path, params: { ...params, url } }
       }
     ]
   }
-
-  /**
-   * Checks if @param result is a RENTCafé error.
-   *
-   * The RentCafé APIs only returns 200 responses.
-   * An error from the Web Service API will define the property `Error`.
-   *
-   * If @param context.result.Error is defined and a valid RENTCafé error code,
-   * the value of @param context.error will be updated.
-   *
-   * @todo Handle Marketing API response format
-   *
-   * @param {object} context - Service call information
-   * @param {object} context.result - Data from successful method call
-   * @param {string | undefined} context.result.Error - RENTCafé error code
-   * @returns {object} @param context
-   */
-  // after({ error, result, ...rest }) {
-  //   const { Error: code } = result
-
-  //   if (code) {
-  //     error = rest.app.service().handleRentCafeError({ Error: code })
-  //   }
-
-  //   return { error, result, ...rest }
-  // }
 })
 
 // Debug fully configured Feathers app

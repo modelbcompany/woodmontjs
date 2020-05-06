@@ -48,6 +48,30 @@ export const Apartments = {
     this.env = process.env.NODE_ENV
 
     Logger.debug('[Service] Apartments: Initialized on path', this.path)
+  },
+
+  /**
+   * Returns apartment data.
+   *
+   * Data can be filtered by apartment, available move-in date, floor plan id,
+   * number of bedrooms and bathrooms, as well as rent range.
+   *
+   * @async
+   * @param {object} param0 - Additional information for the service method
+   * @param {object} param0.query - Query parameters
+   * @param {string} param0.query.apartmentName - Voyager unit code
+   * @param {string} param0.query.apiToken - Company token from RENTCafé
+   * @param {string} param0.query.floorPlanId - RENTCafé floorplan identifier
+   * @param {string} param0.query.numberOfBaths - Number of bathrooms
+   * @param {string} param0.query.numberOfBeds - Number of bedrooms
+   * @param {string} param0.query.rentRange - Monthly rent amount range
+   * @param {string} param0.query.requestType - apartmentAvailability
+   * @returns {Apartment[] | RentCafeError} RENTCafé floor plan data
+   */
+  find: async function ({ query }) {
+    const { apiToken, propertyId, requestType } = query
+
+    return []
   }
 }
 

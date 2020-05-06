@@ -4,14 +4,19 @@ import axios from 'axios'
 // Config
 import RentCafeErrors from './RentCafeErrors'
 
+// Utility Functions
+import { interceptRentCafeResponse } from '../utils'
+
 /**
  * @file Config - Feathers Application
  * @module config/FeathersAppConfiguration
+ *
+ * @todo Update documentation
  */
 
-// Extract data from Axios responses
-// ! Do not need handle status because RENTCafé only return 200 codes
-axios.interceptors.response.use(response => response.data || response)
+// ! RENTCafé APIs only return 200-status responses, so we must check for an
+// ! error before returning the response data
+axios.interceptors.response.use(interceptRentCafeResponse)
 
 /**
  * Feathers application constants.
@@ -19,8 +24,8 @@ axios.interceptors.response.use(response => response.data || response)
  * @namespace FeathersAppConfiguration
  */
 export const FeathersAppConfiguration = {
+  axios,
   RentCafeErrors,
-  RentCafeAPI: axios,
   services: {
     Apartments: 'apartments',
     Floorplans: 'floorplans',

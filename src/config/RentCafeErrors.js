@@ -33,7 +33,7 @@ export const RentCafeErrors = {
     data: {
       code: '1010'
     },
-    status: 400
+    status: 401
   },
   InvalidProperty: {
     message: 'Invalid Property',

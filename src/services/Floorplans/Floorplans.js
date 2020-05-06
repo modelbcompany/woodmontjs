@@ -70,10 +70,10 @@ export const Floorplans = {
     this.env = process.env.NODE_ENV
 
     /**
-     * @property {axios} RentCafeAPI - Axios HTTP client
+     * @property {axios} requestRentCafeWebAPI - Axios instance
      * @instance
      */
-    this.RentCafeAPI = app.get('RentCafeAPI')
+    this.requestRentCafeWebAPI = app.get('axios')
 
     Logger.debug('[Service] Floorplans: Initialized on path', this.path)
   },
@@ -83,8 +83,6 @@ export const Floorplans = {
    *
    * Data can be filtered by `id` or `name`, with `id` taking priority.
    *
-   * @todo Request RENTCafé Web Service API
-   *
    * @async
    * @param {object} param0 - Additional information for the service method
    * @param {object} param0.query - Query parameters
@@ -93,17 +91,18 @@ export const Floorplans = {
    * @param {string} param0.query.name - Floorplan name
    * @param {string} param0.query.propertyId - RENTCafé property identifier
    * @param {string} param0.query.requestType - floorPlan
-   * @returns {Floorplan[] | RentCafeError} RENTCafé floor plan data
-   * @throws {FeathersError}
+   * @param {object} param0.url - RENTCafé URL to request
+   * @returns {Floorplan[]} RENTCafé floor plan data
    */
-  find: async function ({
-    query: {
-      apiToken, id, name, propertyId, requestType
+  find: async function ({ query: { id, name }, url }) {
+    let floorplans = []
+
+    try {
+      floorplans = await this.requestRentCafeWebAPI(url)
+    } catch (err) {
+      Logger.error({ 'Floorplans.find': err })
+      throw err
     }
-  }) {
-    let floorplans = await this.RentCafeAPI.request({
-      url: `https://api.rentcafe.com/rentcafeapi.aspx?requestType=${requestType}&apiToken=${apiToken}&propertyId=${propertyId}`
-    })
 
     if (id) {
       floorplans = floorplans.filter(plan => plan.FloorplanId === id)

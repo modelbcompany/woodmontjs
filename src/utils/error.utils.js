@@ -3,9 +3,10 @@ import { errors } from '@feathersjs/client'
 
 // Config
 import RentCafeErrors from '../config/RentCafeErrors'
+import Logger from '../logger'
 
 // Utility Functions
-import { isObject, isNumber } from './validation.utils'
+import { isArray, isObject, isNumber } from './validation.utils'
 
 // Imported constants
 const {
@@ -105,4 +106,32 @@ export const handleRentCafeError = ({ Error: code, ...rest }) => {
   }
 
   return getFeathersError(...Object.values(enumValue))
+}
+
+/**
+ * Axios interceptor for RENTCafé responses.
+ * Used to check for an error from a RENTCafé response.
+ *
+ * @param {axios.Response} param0 - Axios Response object
+ * @returns {*} Data if valid
+ * @throws {FeathersError}
+ */
+export const interceptRentCafeResponse = ({ data, ...rest }) => {
+  if (!data) return rest
+
+  const marketing = data?.ErrorCode > 0
+  const web = isArray(data) && data[0]?.Error
+
+  if (marketing || web) {
+    const err = handleRentCafeError(web ? data[0] : { Error: data.ErrorCode })
+
+    Logger.error(rest)
+    const { params, url } = rest.config
+    err.data = Object.assign(err.data, { config: { params, url } })
+
+    Logger.error({ interceptRentCafeResponse: err.message })
+    throw err
+  }
+
+  return data
 }
