@@ -61,6 +61,9 @@ module.exports = {
    * @returns {object} Webpack configuration
    */
   webpackFinal: async (config, { configType }) => {
+    // Fixes "Can't resolve 'fs' in ${__dirname}/node_modules/dotenv/lib' error"
+    config.node = { fs: 'empty' }
+
     config.module.rules.push(
       {
         test: /\.jsx?$/i,

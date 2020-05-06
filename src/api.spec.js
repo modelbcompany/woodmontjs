@@ -4,10 +4,6 @@ import WoodmontAPI from './api'
 // Config
 import FeathersAppConfiguration from './config/FeathersAppConfiguration'
 
-// Mocks
-import FindFloorplansMock from
-  './services/Floorplans/__mocks__/FindFloorplans.mock'
-
 /**
  * @file Tests - WoodmontAPI
  * @module tests/api
@@ -62,7 +58,7 @@ describe('Service: Floorplans', () => {
     const floorplan = await Floorplans.find({ query: { id: '-1' } })
     const floorplan2 = await Floorplans.find({ query: { name: 'floorplan' } })
 
-    expect(floorplan).toEqual({})
+    expect(floorplan).toBe(null)
     expect(floorplan2).toEqual(floorplan)
   })
 })

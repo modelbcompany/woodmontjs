@@ -1,4 +1,5 @@
 // Packages
+import dotenv from 'dotenv'
 import feathers from '@feathersjs/client'
 
 // Config
@@ -18,6 +19,9 @@ import { getFeathersError, isObject } from './utils'
  * @file API Initialization
  * @module api
  */
+
+// Configure environment variables
+dotenv.config()
 
 /**
  * @constant {FeathersError} ServicesInitializationError
@@ -107,7 +111,7 @@ WoodmontAPI.hooks({
         return { path, params, ...rest }
       }
     ]
-  },
+  }
 
   /**
    * Checks if @param result is a RENTCafé error.
@@ -125,13 +129,15 @@ WoodmontAPI.hooks({
    * @param {string | undefined} context.result.Error - RENTCafé error code
    * @returns {object} @param context
    */
-  after({ error, result = {}, ...rest }) {
-    const { Error: code } = result
+  // after({ error, result, ...rest }) {
+  //   const { Error: code } = result
 
-    if (code) error = rest.app.service().handleRentCafeError({ Error: code })
+  //   if (code) {
+  //     error = rest.app.service().handleRentCafeError({ Error: code })
+  //   }
 
-    return { error, result, ...rest }
-  }
+  //   return { error, result, ...rest }
+  // }
 })
 
 // Debug fully configured Feathers app

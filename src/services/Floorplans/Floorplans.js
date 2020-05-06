@@ -1,9 +1,6 @@
 // Config
 import Logger from '../../logger'
 
-// Mocks
-import FindFloorplansMock from './__mocks__/FindFloorplans.mock'
-
 /**
  * @file Service Object - Floorplans
  * @module services/Floorplans/Floorplans
@@ -72,6 +69,12 @@ export const Floorplans = {
      */
     this.env = process.env.NODE_ENV
 
+    /**
+     * @property {axios} RentCafeAPI - Axios HTTP client
+     * @instance
+     */
+    this.RentCafeAPI = app.get('RentCafeAPI')
+
     Logger.debug('[Service] Floorplans: Initialized on path', this.path)
   },
 
@@ -83,19 +86,24 @@ export const Floorplans = {
    * @todo Request RENTCafé Web Service API
    *
    * @async
-   * @param {object} params - Additional information for the service method
-   * @param {object} params.query - Query parameters
-   * @param {string} params.query.apiToken - Company token from RENTCafé
-   * @param {string} params.query.id - Floorplan ID
-   * @param {string} params.query.name - Floorplan name
-   * @param {string} params.query.requestType - floorPlan
-   * @returns {Floorplan[]} RENTCafé floor plan data
+   * @param {object} param0 - Additional information for the service method
+   * @param {object} param0.query - Query parameters
+   * @param {string} param0.query.apiToken - Company token from RENTCafé
+   * @param {string} param0.query.id - Floorplan ID
+   * @param {string} param0.query.name - Floorplan name
+   * @param {string} param0.query.propertyId - RENTCafé property identifier
+   * @param {string} param0.query.requestType - floorPlan
+   * @returns {Floorplan[] | RentCafeError} RENTCafé floor plan data
    * @throws {FeathersError}
    */
-  find: async function ({ query: { apiToken, id, name } }) {
-    let floorplans = null
-
-    floorplans = await (async () => FindFloorplansMock)()
+  find: async function ({
+    query: {
+      apiToken, id, name, propertyId, requestType
+    }
+  }) {
+    let floorplans = await this.RentCafeAPI.request({
+      url: `https://api.rentcafe.com/rentcafeapi.aspx?requestType=${requestType}&apiToken=${apiToken}&propertyId=${propertyId}`
+    })
 
     if (id) {
       floorplans = floorplans.filter(plan => plan.FloorplanId === id)
