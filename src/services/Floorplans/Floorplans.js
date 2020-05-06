@@ -89,7 +89,7 @@ export const Floorplans = {
    * @param {string} params.query.id - Floorplan ID
    * @param {string} params.query.name - Floorplan name
    * @param {string} params.query.requestType - floorPlan
-   * @returns {Floorplan[] | Floorplan | null} RENTCafé floor plan data
+   * @returns {Floorplan[]} RENTCafé floor plan data
    * @throws {FeathersError}
    */
   find: async function ({ query: { apiToken, id, name } }) {
@@ -103,7 +103,7 @@ export const Floorplans = {
       floorplans = floorplans.filter(plan => plan.FloorplanName === name)
     }
 
-    return id || name ? (floorplans[0] || null) : floorplans
+    return floorplans
   }
 }
 

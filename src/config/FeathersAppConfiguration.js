@@ -1,8 +1,5 @@
-// Utilities
-import * as ErrorUtils from '../utils/error.utils'
-import * as ObjectUtils from '../utils/objects.utils'
-import * as StringUtils from '../utils/strings.utils'
-import * as ValidationUtils from '../utils/validation.utils'
+// Config
+import RentCafeErrors from './RentCafeErrors'
 
 /**
  * @file Config - Feathers Application
@@ -15,16 +12,11 @@ import * as ValidationUtils from '../utils/validation.utils'
  * @namespace FeathersAppConfiguration
  */
 export const FeathersAppConfiguration = {
+  RentCafeErrors,
   services: {
     Apartments: 'apartments',
     Floorplans: 'floorplans',
     Scheduling: 'scheduling'
-  },
-  utilities: {
-    ...ErrorUtils,
-    ...ObjectUtils,
-    ...StringUtils,
-    ...ValidationUtils
   }
 }
 

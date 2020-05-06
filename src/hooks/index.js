@@ -3,7 +3,6 @@
  * @module hooks
  */
 
-export * from './api'
 export * from './useArray'
 export * from './useAttributes'
 export * from './useBoolean'

@@ -5,6 +5,9 @@ import feathers from '@feathersjs/client'
 import FeathersAppConfiguration from './config/FeathersAppConfiguration'
 import Logger from './logger'
 
+// Mixins
+import * as mixins from './mixins'
+
 // Services
 import services from './services'
 
@@ -36,6 +39,11 @@ let WoodmontAPI = feathers()
 for (const key in FeathersAppConfiguration) {
   WoodmontAPI.set(key, FeathersAppConfiguration[key])
 }
+
+// ! Mixins have to be added before registering any services
+WoodmontAPI.mixins.push(service => {
+  for (const key in mixins) service[key] = mixins[key]
+})
 
 // Configure library services (see `services/index.js`)
 WoodmontAPI = WoodmontAPI.configure(services).setup()
@@ -99,6 +107,30 @@ WoodmontAPI.hooks({
         return { path, params, ...rest }
       }
     ]
+  },
+
+  /**
+   * Checks if @param result is a RENTCafé error.
+   *
+   * The RentCafé APIs only returns 200 responses.
+   * An error from the Web Service API will define the property `Error`.
+   *
+   * If @param context.result.Error is defined and a valid RENTCafé error code,
+   * the value of @param context.error will be updated.
+   *
+   * @todo Handle Marketing API response format
+   *
+   * @param {object} context - Service call information
+   * @param {object} context.result - Data from successful method call
+   * @param {string | undefined} context.result.Error - RENTCafé error code
+   * @returns {object} @param context
+   */
+  after({ error, result = {}, ...rest }) {
+    const { Error: code } = result
+
+    if (code) error = rest.app.service().handleRentCafeError({ Error: code })
+
+    return { error, result, ...rest }
   }
 })
 

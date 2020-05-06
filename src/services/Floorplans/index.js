@@ -1,6 +1,9 @@
 // Service object
 import Floorplans from './Floorplans'
 
+// Hooks
+import hooks from './Floorplans.hooks'
+
 // Utility Functions
 import { registerService } from '../../utils'
 
@@ -16,7 +19,8 @@ import { registerService } from '../../utils'
  */
 export const FloorplansServiceConfig = Object.freeze({
   name: 'Floorplans',
-  object: Floorplans
+  object: Floorplans,
+  hooks
 })
 
 export default app => registerService(app, FloorplansServiceConfig)
