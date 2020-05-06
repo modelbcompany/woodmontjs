@@ -42,32 +42,27 @@ describe('Service: Floorplans', () => {
   })
 
   it('[find] Returns floor plan data', async () => {
-    expect(await Floorplans.find()).toEqual(
-      expect.arrayContaining(FindFloorplansMock.map(floorplan => {
-        return Floorplans.parseFloorplanData(floorplan)
-      }))
-    )
+    const floorplans = await Floorplans.find()
+
+    expect(floorplans).toBeInstanceOf(Array)
+    floorplans.map(floorplan => expect(floorplan.id).toBeDefined())
   })
 
   it('[find] Queries floor plans by id', async () => {
-    expect(await Floorplans.find({ query: { id: '3215320' } })).toEqual(
-      FloorplanMock
-    )
+    const floorplan = await Floorplans.find({ query: { id: '3215320' } })
+    expect(floorplan).toEqual(FloorplanMock)
   })
 
   it('[find] Queries floor plans by name', async () => {
-    expect(await Floorplans.find({ query: { name: 'A01' } })).toEqual(
-      FloorplanMock
-    )
+    const floorplan = await Floorplans.find({ query: { name: 'A01' } })
+    expect(floorplan).toEqual(FloorplanMock)
   })
 
   it('[find] Returns null for bad queries', async () => {
-    const empty = {}
+    const floorplan = await Floorplans.find({ query: { id: '-1' } })
+    const floorplan2 = await Floorplans.find({ query: { name: 'floorplan' } })
 
-    expect(await Floorplans.find({ query: { id: '-1' } })).toEqual(empty)
-
-    expect(await Floorplans.find({ query: { name: 'floorplan' } })).toEqual(
-      empty
-    )
+    expect(floorplan).toEqual({})
+    expect(floorplan2).toEqual(floorplan)
   })
 })
