@@ -8,11 +8,8 @@ import Logger from './logger'
 // Services
 import services from './services'
 
-// Hooks
-import { useRentCafeAPI } from './hooks/api'
-
 // Utilities
-import { getFeathersError } from './utils/error.utils'
+import { getFeathersError, isObject } from './utils'
 
 /**
  * @file API Initialization
@@ -52,8 +49,55 @@ if (!WoodmontAPI) {
 WoodmontAPI.hooks({
   before: {
     all: [
-      // Update query authentication and request type based on service
-      context => useRentCafeAPI(context)
+      /**
+       * Sanitizes the incoming query.
+       *
+       * @param {object} context - Service call information
+       * @param {object} context.params - Service method parameters
+       * @param {object} params.params.query - Query parameters
+       * @returns {object} Updated @param context
+       */
+      ({ params, ...rest }) => {
+        params.query = isObject(params.query) || {}
+
+        return {
+          ...rest,
+          params: { ...params, query: isObject(params.query) || {} }
+        }
+      },
+
+      /**
+       * Attaches the RENTCafé API credentials to the incoming query based on
+       * service path.
+       *
+       * @param {object} context - Service call information
+       * @param {object} context.params - Service method parameters
+       * @param {object} params.params.query - Query parameters
+       * @param {string} context.path - Service name (or path) w/o slashes
+       * @returns {object} Updated @param context
+       */
+      ({ params, path, ...rest }) => {
+        const {
+          apiToken, companyCode, marketingAPIKey, propertyId
+        } = process.env
+
+        if (path === 'apartments' || path === 'floorplans') {
+          params.query = Object.assign(params.query, {
+            apiToken,
+            propertyId,
+            requestType: path === 'apartments'
+              ? 'apartmentAvailability' : 'floorPlan'
+          })
+        } else if (path === 'scheduling') {
+          params.query = Object.assign(params.query, {
+            companyCode,
+            marketingAPIKey,
+            propertyId
+          })
+        }
+
+        return { path, params, ...rest }
+      }
     ]
   }
 })

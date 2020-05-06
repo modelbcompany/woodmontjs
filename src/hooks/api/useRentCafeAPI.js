@@ -1,7 +1,9 @@
+// Utility Functions
+import { isObject } from '../../utils/validation.utils'
+
 /**
  * @file Add Rent Café credentials and constants to context
  * @module hooks/api/useRentCafeAPI
- * @todo Update documentation
  */
 
 // Get environment variables
@@ -40,6 +42,8 @@ const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
  * @returns {object}
  */
 export const useRentCafeAPI = ({ params, path, ...rest }) => {
+  params.query = isObject(params.query) || {}
+
   if (path === 'apartments' || path === 'floorplans') {
     params.query = Object.assign(params.query, {
       apiToken,
