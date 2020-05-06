@@ -4,7 +4,7 @@
   "alias": "woodmontjs.modelb.now.sh",
   "github": {
     "autoAlias": true,
-    "enabled": false,
+    "enabled": true,
     "silent": false
   },
   "scope": "modelb",
