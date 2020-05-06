@@ -39,7 +39,7 @@
     "dev:debug": "start-storybook -s ./public -p 3000 --ci --debug-webpack",
     "dev:docs": "start-storybook -s ./public -p 3001 --docs --ci",
     "pretest": "NODE_ENV=test",
-    "test": "jest --detectOpenHandles --passWithNoTests",
+    "test": "jest --env=node --detectOpenHandles --passWithNoTests",
     "prebuild": "npm run lint && rm -rf ./build",
     "build": "build-storybook -o build",
     "postbuild:docs": "build-storybook -o build/docs --docs && cp -R docs/rentcafe build/docs/rentcafe",
