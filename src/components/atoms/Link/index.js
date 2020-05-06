@@ -76,8 +76,10 @@ Link.propTypes = {
    * `Icon` properties.
    *
    * If defined, `children` will be rendered next to an `Icon`.
+   *
+   * @todo Copy Icon properties
    */
-  'data-icon': Icon.propTypes,
+  'data-icon': PropTypes.object,
 
   /**
    * Prompts the user to save the linked URL instead of navigating to it.

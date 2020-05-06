@@ -34,7 +34,7 @@
     "lint:js": "eslint ./*.js ./.storybook/*.js ./src/*.js ./src/**/*.js ./src/components/**/**/*.js --fix --ext .js,.jsx  --no-ignore",
     "lint:sass": "sass-lint --config .sass-lint.yml --verbose --no-exit",
     "lint": "run-p lint:*",
-    "predev": "npm run lint",
+    "predev": "npm run lint && now env pull",
     "dev": "start-storybook -s ./public -p 3000 --ci",
     "dev:debug": "start-storybook -s ./public -p 3000 --ci --debug-webpack",
     "dev:docs": "start-storybook -s ./public -p 3001 --docs --ci",

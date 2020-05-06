@@ -58,10 +58,10 @@ export const Fieldset = ({ children, ...props }) => (
  *
  * @todo Implement handleFilter - map over dropdown items
  *
- * @param {FloorsPlanSearchFiltersFieldProps} props - Component data
+ * @param {FloorplansSearchFiltersFieldProps} props - Component data
  * @returns {Fieldset}
  */
-export const FloorsPlanSearchFiltersField = ({ handleFilter, ...props }) => {
+export const FloorplansSearchFiltersField = ({ handleFilter, ...props }) => {
   const attributes = useAttributes(props, 'floorplan-search-form-filters')
   const filters = Object.keys(FloorplanSearchFilters)
 
@@ -149,11 +149,11 @@ Fieldset.propTypes = {
 }
 
 /**
- * @link FloorsPlanSearchFiltersField component properties.
+ * @link FloorplansSearchFiltersField component properties.
  *
- * @typedef {FloorsPlanSearchFiltersFieldProps}
+ * @typedef {FloorplansSearchFiltersFieldProps}
  */
-FloorsPlanSearchFiltersField.propTypes = {
+FloorplansSearchFiltersField.propTypes = {
   /**
    * Code to call when the `click` event is raised.
    */
@@ -172,7 +172,7 @@ FloorsPlanSearchFiltersField.propTypes = {
 
 Fieldset.defaultProps = {}
 
-FloorsPlanSearchFiltersField.defaultProps = {
+FloorplansSearchFiltersField.defaultProps = {
   form: FLOOR_PLAN_SEARCH_FORM_ID,
   handleFilter: ({ target: { name, value } }) => {
     Logger.warn('@todo handleFilter =>', { name, value })

@@ -39,7 +39,7 @@ export const Dropdown = ({ button: btn, container, ...props }) => {
   })
 
   return (
-    <div {...attributes} data-open={open}>
+    <div {...attributes} data-open={expanded}>
       <Button {...button} name='dropdown' type='reset' />
       {expanded ? <Container {...content} /> : null}
     </div>

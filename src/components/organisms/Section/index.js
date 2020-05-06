@@ -62,7 +62,9 @@ export const FloorplansGrid = ({ floorplans, ...rest }) => {
 
       <Container className='floorplans-grid-container is-full-width'>
         {floorplans.map(floorplan => (
-          <Floorplan {...floorplan} key={`${floorplans.id}_floorplan`} />
+          <Floorplan
+            {...floorplan} key={`floorplan_${floorplan.floorplan.id}`}
+          />
         ))}
       </Container>
     </Section>

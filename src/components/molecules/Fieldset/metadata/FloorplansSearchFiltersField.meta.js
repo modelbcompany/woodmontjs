@@ -2,18 +2,18 @@
 import mdx from '../Fieldset.mdx'
 
 /**
- * @file Story Metadata - FloorsPlanSearchFiltersField
- * @module components/molecules/Fieldset/metadata/FloorsPlanSearchFiltersField
+ * @file Story Metadata - FloorplansSearchFiltersField
+ * @module components/molecules/Fieldset/metadata/FloorplansSearchFiltersField
  */
 
 /**
- * Storybook parameters for all @link FloorsPlanSearchFiltersField stories.
+ * Storybook parameters for all @link FloorplansSearchFiltersField stories.
  *
- * @namespace FloorsPlanSearchFiltersFieldStoryParams
+ * @namespace FloorplansSearchFiltersFieldStoryParams
  * @property {object} docs - Storybook Docs config
  * @property {object} knobs - Storybook Knobs config
  */
-export const FloorsPlanSearchFiltersFieldStoryParams = {
+export const FloorplansSearchFiltersFieldStoryParams = {
   docs: { page: mdx },
   knobs: {
     disabled: true

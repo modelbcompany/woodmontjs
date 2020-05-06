@@ -3,31 +3,31 @@ import React from 'react'
 import { action } from '@storybook/addon-actions'
 
 // Component
-import { FloorsPlanSearchFiltersField } from '..'
+import { FloorplansSearchFiltersField } from '..'
 
 // Metadata
 import {
-  FloorsPlanSearchFiltersFieldStoryParams
+  FloorplansSearchFiltersFieldStoryParams
 } from '../metadata/FloorplansSearchFiltersField.meta'
 
 /**
- * @file Stories - FloorsPlanSearchFiltersField
- * @module components/molecules/Fieldset/stories/FloorsPlanSearchFiltersField
+ * @file Stories - FloorplansSearchFiltersField
+ * @module components/molecules/Fieldset/stories/FloorplansSearchFiltersField
  */
 
 export default {
-  title: 'Components/Molecules/Fieldset/Components/FloorsPlanSearchFiltersField',
-  component: FloorsPlanSearchFiltersField,
-  parameters: FloorsPlanSearchFiltersFieldStoryParams
+  title: 'Components/Molecules/Fieldset/Components/FloorplansSearchFiltersField',
+  component: FloorplansSearchFiltersField,
+  parameters: FloorplansSearchFiltersFieldStoryParams
 }
 
 /**
- * Default @link FloorsPlanSearchFiltersField story.
+ * Default @link FloorplansSearchFiltersField story.
  *
- * @returns {FloorsPlanSearchFiltersField}
+ * @returns {FloorplansSearchFiltersField}
  */
 export const Default = () => (
-  <FloorsPlanSearchFiltersField
+  <FloorplansSearchFiltersField
     handleFilter={event => action('handleFilter')(event.target)}
   />
 )

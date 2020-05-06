@@ -4,26 +4,14 @@
  * @todo Update documentation
  */
 
-const {
-  JBG_SMITH_COMPANY_CODE = null,
-  JBG_SMITH_MARKETING_API_TOKEN = null,
-  JBG_SMITH_WEB_API_TOKEN = null
-} = process.env
-
-export const JBG_SMITH_MARKETING_CREDENTIALS = {
-  CompanyCode: JBG_SMITH_COMPANY_CODE,
-  MarketingAPIKey: JBG_SMITH_MARKETING_API_TOKEN
-}
-
-export const JBG_SMITH_WEB_CREDENTIALS = {
-  apiToken: JBG_SMITH_WEB_API_TOKEN
-}
+// Get environment variables
+const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
 
 /**
- * Adds the property `authentication` to @param context.params .
+ * Authenticates @param context.params.query .
  *
  * The type of authentication to be used will be determined by the value of
- * @param context.service .
+ * @param context.path .
  *
  * @param {object} context - Service call information
  * @param {Object} context.app - Feathers application object
@@ -51,28 +39,23 @@ export const JBG_SMITH_WEB_CREDENTIALS = {
  * @param {string} context.type - Hook type (before | after | error)
  * @returns {object}
  */
-export const useRentCafeAPI = context => {
-  if (!context) return null
-
-  const { params: { query }, path } = context
-
+export const useRentCafeAPI = ({ params, path, ...rest }) => {
   if (path === 'apartments' || path === 'floorplans') {
-    context.params.authentication = JBG_SMITH_WEB_CREDENTIALS
-
-    context.params.query = {
-      ...query,
-      ...JBG_SMITH_WEB_CREDENTIALS
-    }
+    params.query = Object.assign(params.query, {
+      apiToken,
+      propertyId,
+      requestType: path === 'apartments'
+        ? 'apartmentAvailability' : 'floorPlan'
+    })
   } else if (path === 'scheduling') {
-    context.params.authentication = JBG_SMITH_MARKETING_CREDENTIALS
-    context.params.query = JBG_SMITH_MARKETING_CREDENTIALS
+    params.query = Object.assign(params.query, {
+      companyCode,
+      marketingAPIKey,
+      propertyId
+    })
   }
 
-  if (path === 'apartments') {
-    context.params.query.requestType = 'apartmentAvailability'
-  } else if (path === 'floorplans') {
-    context.params.query.requestType = 'floorPlan'
-  }
+  return { path, params, ...rest }
 }
 
 export default useRentCafeAPI

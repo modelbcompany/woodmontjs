@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 // Components
 import { Button } from '../../atoms'
-import { FloorsPlanSearchFiltersField } from '../Fieldset'
+import { FloorplansSearchFiltersField } from '../Fieldset'
 
 // Config
 import { FLOOR_PLAN_SEARCH_FORM_ID } from './config/Form.constants'
@@ -53,7 +53,7 @@ export const FloorplansSearchForm = ({
 
   return (
     <Form {...attributes} id={FLOOR_PLAN_SEARCH_FORM_ID}>
-      <FloorsPlanSearchFiltersField
+      <FloorplansSearchFiltersField
         form={FLOOR_PLAN_SEARCH_FORM_ID}
         handleFilter={handleFilter}
       />
