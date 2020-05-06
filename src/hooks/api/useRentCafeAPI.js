@@ -56,17 +56,22 @@ export const useRentCafeAPI = context => {
 
   const { params: { query }, path } = context
 
-  if (path === 'floorplans') {
+  if (path === 'apartments' || path === 'floorplans') {
     context.params.authentication = JBG_SMITH_WEB_CREDENTIALS
 
     context.params.query = {
       ...query,
-      ...JBG_SMITH_WEB_CREDENTIALS,
-      requestType: 'floorplan'
+      ...JBG_SMITH_WEB_CREDENTIALS
     }
   } else if (path === 'scheduling') {
     context.params.authentication = JBG_SMITH_MARKETING_CREDENTIALS
     context.params.query = JBG_SMITH_MARKETING_CREDENTIALS
+  }
+
+  if (path === 'apartments') {
+    context.params.query.requestType = 'apartmentAvailability'
+  } else if (path === 'floorplans') {
+    context.params.query.requestType = 'floorPlan'
   }
 }
 
