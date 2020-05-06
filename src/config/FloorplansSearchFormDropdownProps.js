@@ -61,7 +61,7 @@ export const FloorplansSearchFormDropdownItems = Object.freeze({
       children: '3',
       value: 3
     }
-  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'bathrooms' })),
+  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'numberOfBeds' })),
 
   Bedrooms: [
     {
@@ -80,96 +80,85 @@ export const FloorplansSearchFormDropdownItems = Object.freeze({
       children: '3 BR',
       value: 3
     }
-  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'bedrooms' })),
+  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'numberOfBaths' })),
 
   MaxPrice: [
     {
       children: '<$2k',
-      value: {
-        min: 0,
-        max: 2000
-      }
+      value: '0-2000'
     },
     {
       children: '$2k - $2.5k',
-      value: {
-        min: 2001,
-        max: 2500
-      }
+      value: '2001-2500'
     },
     {
       children: '$2.5k - $3k',
-      value: {
-        min: 2501,
-        max: 3000
-      }
+      value: '2501-3000'
     },
     {
       children: '$3k - $3.5k',
-      value: {
-        min: 3001,
-        max: 3500
-      }
+      value: '3001-3500'
     },
     {
       children: '>$3.5k',
-      value: {
-        min: 3501,
-        max: Number.MAX_SAFE_INTEGER
-      }
+      value: '3501'
     }
-  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'max-price' })),
+  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'rentRange' })),
 
   MoveInDate: [
     {
       children: 'Janaury',
-      value: 'january'
+      value: '01'
     },
     {
       children: 'February',
-      value: 'february'
+      value: '02'
     },
     {
       children: 'March',
-      value: 'march'
+      value: '03'
     },
     {
       children: 'April',
-      value: 'april'
+      value: '04'
     },
     {
       children: 'May',
-      value: 'may'
+      value: '05'
     },
     {
       children: 'June',
-      value: 'june'
+      value: '06'
     },
     {
       children: 'July',
-      value: 'july'
+      value: '07'
     },
     {
       children: 'August',
-      value: 'august'
+      value: '08'
     },
     {
       children: 'September',
-      value: 'september'
+      value: '09'
     },
     {
       children: 'October',
-      value: 'october'
+      value: '10'
     },
     {
       children: 'November',
-      value: 'november'
+      value: '11'
     },
     {
       children: 'December',
-      value: 'december'
+      value: '12'
     }
-  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'move-in-date' }))
+  ].map(item => ({
+    ...mergeDropdownItemStyles(item),
+    name: 'availableDate',
+    value: `${item.value}/${new Date().getFullYear()}`
+  }))
 })
 
 /**

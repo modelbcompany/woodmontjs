@@ -1,4 +1,5 @@
 // Services
+import Apartments from './Apartments'
 import Floorplans from './Floorplans'
 import Scheduling from './Scheduling'
 
@@ -14,6 +15,7 @@ import Scheduling from './Scheduling'
  * @returns {undefined}
  */
 export const configureServices = app => {
+  app.configure(Apartments)
   app.configure(Floorplans)
   app.configure(Scheduling)
 }
