@@ -2,9 +2,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// Components
-import { Icon } from '../Span'
-
 // Hooks
 import { useAttributes, useIcon } from '../../../hooks'
 

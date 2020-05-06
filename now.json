@@ -11,8 +11,7 @@
   "env": {},
   "build": {
     "env": {
-      "NODE_VERSION": "12",
-      "NPM_RC": "registry=https://registry.npmjs.org @modelbcompany:registry=https://npm.pkg.github.com/modelbcompany"
+      "NODE_VERSION": "12"
     }
   },
   "builds": [
