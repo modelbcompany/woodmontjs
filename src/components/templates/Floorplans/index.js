@@ -7,11 +7,7 @@ import { Container, FloorplansSearchForm } from '../../molecules'
 import { FloorplansGrid, Main } from '../../organisms'
 
 // Hooks
-import { useApartments, useAttributes, useFloorplans } from '../../../hooks'
-
-// Mock Data
-import { FloorplansMock } from
-  '../../organisms/Section/__mocks__/Floorplans.mock'
+import { useAttributes, useApartmentsWithFloorplans } from '../../../hooks'
 
 // Stylesheets
 import './floorplans-template.sass'
@@ -36,21 +32,15 @@ import './floorplans-template.sass'
 export const FloorplansTemplate = props => {
   const attributes = useAttributes(props, 'adt-floorplans')
 
-  const { floorplans } = useFloorplans()
-  const { apartments } = useApartments()
-
-  console.debug('[FloorplansTemplate]', floorplans, apartments)
+  const { aptsWithPlans } = useApartmentsWithFloorplans({})
 
   return (
     <Main {...attributes}>
       <Container className='form-container is-full-width'>
-        <FloorplansSearchForm
-          handleFilter={e => console.warn('@todo handleFilter =>', e.target)}
-          handleSearch={e => console.warn('@todo handleSearch =>', e.target)}
-        />
+        <FloorplansSearchForm />
       </Container>
 
-      <FloorplansGrid floorplans={FloorplansMock} title='One Bedroom' />
+      <FloorplansGrid apartments={aptsWithPlans} title='One Bedroom' />
     </Main>
   )
 }

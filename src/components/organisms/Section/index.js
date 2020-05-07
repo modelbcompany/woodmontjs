@@ -50,7 +50,7 @@ export const Section = ({
  * @param {FloorplansGridProps} props - Component data
  * @returns {Section}
  */
-export const FloorplansGrid = ({ floorplans, ...rest }) => {
+export const FloorplansGrid = ({ apartments, ...rest }) => {
   const { title } = rest
   const attributes = useAttributes(rest, 'floorplans-grid')
 
@@ -61,10 +61,8 @@ export const FloorplansGrid = ({ floorplans, ...rest }) => {
       </Heading>
 
       <Container className='floorplans-grid-container is-full-width'>
-        {floorplans.map(floorplan => (
-          <Floorplan
-            {...floorplan} key={`floorplan_${floorplan.floorplan.id}`}
-          />
+        {apartments.map(apt => (
+          <Floorplan aptWithPlan={apt} key={`apt_${apt.ApartmentName}`} />
         ))}
       </Container>
     </Section>
@@ -132,24 +130,44 @@ Section.defaultProps = {
  * @typedef {FloorplansGridProps}
  */
 FloorplansGrid.propTypes = {
-  floorplans: PropTypes.arrayOf(PropTypes.shape({
-    apt: PropTypes.shape({
-      apply: PropTypes.string,
-      name: PropTypes.string
-    }),
-    floorplan: PropTypes.shape({
-      id: PropTypes.string,
-      image: PropTypes.shape({
-        src: PropTypes.string
-      }),
-      name: PropTypes.string,
-      type: PropTypes.string
-    }),
-    rent: PropTypes.shape({
-      max: PropTypes.string,
-      min: PropTypes.string
-    }),
-    sqft: PropTypes.string
+  /**
+   * Array of `ApartmentWithPlan` objects.
+   */
+  apartments: PropTypes.arrayOf(PropTypes.shape({
+    aptWithPlan: PropTypes.shape({
+      Amenities: PropTypes.string,
+      ApartmentId: PropTypes.string,
+      ApartmentName: PropTypes.string,
+      ApplyOnlineURL: PropTypes.string,
+      AvailabilityURL: PropTypes.string,
+      AvailableDate: PropTypes.string,
+      AvailableUnitsCount: PropTypes.string,
+      Baths: PropTypes.string,
+      Beds: PropTypes.string,
+      Deposit: PropTypes.string,
+      FloorplanHasSpecials: PropTypes.string,
+      FloorplanId: PropTypes.string,
+      FloorplanImageAltText: '',
+      FloorplanImageName: PropTypes.string,
+      FloorplanImageURL: PropTypes.string,
+      FloorplanName: PropTypes.string,
+      MaximumDeposit: PropTypes.string,
+      MaximumRent: PropTypes.string,
+      MaximumSQFT: PropTypes.string,
+      MinimumDeposit: PropTypes.string,
+      MinimumRent: PropTypes.string,
+      MinimumSQFT: PropTypes.string,
+      PropertyId: PropTypes.string,
+      PropertyShowsSpecials: PropTypes.string,
+      SQFT: PropTypes.string,
+      Specials: PropTypes.string,
+      UnitImageAltText: PropTypes.string,
+      UnitImageURLs: PropTypes.arrayOf(PropTypes.string),
+      UnitStatus: PropTypes.string,
+      UnitTypeMapping: PropTypes.string,
+      VoyagerPropertyCode: PropTypes.string,
+      VoyagerPropertyId: PropTypes.string
+    })
   })),
 
   /**
@@ -159,7 +177,7 @@ FloorplansGrid.propTypes = {
 }
 
 FloorplansGrid.defaultProps = {
-  floorplans: [],
+  apartments: [{ aptWithPlan: null }],
   title: 'One Bedroom'
 }
 

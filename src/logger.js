@@ -12,14 +12,19 @@ import pino from 'pino'
  * @namespace {pino.Logger} Logger
  */
 export const Logger = pino({
+  browser: {
+    asObject: true
+  },
+  level: 'debug',
   prettyPrint: {
     colorize: true,
     errorProps: 'className,code,data,errors,message,name',
     levelFirst: true,
     translateTime: true
-  }
+  },
+  translateTime: true
 })
 
-Logger.debug('Initialized Pino logger =>', Logger)
+Logger.debug({ pino: true })
 
 export default Logger

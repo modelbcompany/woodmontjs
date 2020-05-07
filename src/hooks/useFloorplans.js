@@ -13,10 +13,11 @@ import WoodmontAPI from '../api'
  * @module hooks/useFloorplans
  *
  * @todo Review documentation
+ * @todo DRY Refactor - This logic is duplicated in useApartments
  */
 
 /**
- * Pulls Floor Plan data from the RENTCafé Web API.
+ * Pulls Floorplan data from the RENTCafé Web API.
  *
  * @param {Object} search - Search parameters
  * @param {string} search.id - Floorplan ID, "1131409"
@@ -56,3 +57,5 @@ export const useFloorplans = search => {
     setFloorplansQuery: setQuery
   }
 }
+
+export default useFloorplans

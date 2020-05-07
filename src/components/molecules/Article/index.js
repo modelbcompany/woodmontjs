@@ -1,5 +1,5 @@
 // Packages
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 // Components
@@ -8,7 +8,10 @@ import Column from '../Column'
 import Container from '../Container'
 
 // Hooks
-import { useAttributes } from '../../../hooks'
+import { useAttributes, useObject } from '../../../hooks'
+
+// Utility Functions
+import { isObject } from '../../../utils'
 
 // Stylesheets
 import './article.sass'
@@ -49,48 +52,97 @@ export const Article = ({
  * @param {FloorplanProps} props - Component data
  * @returns {Article}
  */
-export const Floorplan = ({ apt, floorplan, rent, sqft, ...rest }) => {
+export const Floorplan = ({ aptWithPlan, ...rest }) => {
   const attributes = useAttributes(rest, 'floorplan')
+  const { empty, object: floorplan, setObject: setFloorplan } = useObject({
+    ...(isObject(aptWithPlan) || {}),
+    Baths: JSON.parse(aptWithPlan?.Baths || ''),
+    Beds: JSON.parse(aptWithPlan?.Beds || '')
+  })
 
-  floorplan.image.alt = `Floorplan for apartment #${apt.name}`
+  useEffect(() => {
+    const getMoneyString = value => {
+      if (value.length < 4) return `$${value}`
+
+      return `$${value.slice(0, 1)},${value.slice(1, value.length)}`
+    }
+
+    setFloorplan(state => ({
+      ...state,
+      ApartmentName: ApartmentName.substring(2, ApartmentName.length),
+      MinimumRent: getMoneyString(aptWithPlan.MinimumRent)
+    }))
+  }, [aptWithPlan.MinimumRent, setFloorplan])
+
+  if (empty) return <Article {...attributes} />
+
+  const {
+    ApartmentName,
+    ApplyOnlineURL,
+    AvailabilityURL,
+    Baths,
+    Beds,
+    FloorplanId,
+    FloorplanImageAltText,
+    FloorplanImageName,
+    FloorplanImageURL,
+    FloorplanName,
+    MinimumRent,
+    SQFT
+  } = floorplan
 
   return (
-    <Article {...attributes} title={floorplan?.id ?? 'floorplan'}>
+    <Article {...attributes} title={`Floorplan ${FloorplanId}`}>
       <Column className='floorplan-column'>
         <Column className='image-column'>
-          <Image {...floorplan.image} className='floorplan-img' />
+          <Image
+            alt={FloorplanImageAltText}
+            className='floorplan-img'
+            src={FloorplanImageURL}
+            title={FloorplanImageName}
+          />
         </Column>
 
         <Column className='text-column'>
-          <Heading className='apartment-name' data-size={4}>
-            {`#${apt.name}`}
+          <Heading className='floorplan-heading' data-size={3}>
+            {`#${ApartmentName || FloorplanId}`}
           </Heading>
           <Paragraph className='floorplan-details'>
-            <Span className='unit-type'>
-              {floorplan.type.substring(5, floorplan.type.length)}&nbsp;
-            </Span>
             <Span className='floorplan-name'>
-              {` | ${(floorplan?.name ?? '').replace(',', ' |')}`}
+              {FloorplanName}&nbsp;
+            </Span>
+            <Span className='floorplan-beds'>
+              {`| ${Beds} Bedroom${Beds === 1 ? '' : 's'}`}&nbsp;
+            </Span>
+            <Span className='floorplan-baths'>
+              {`| ${Baths} Bathroom${Baths === 1 ? '' : 's'}`}
             </Span>
           </Paragraph>
-          <Paragraph className='sqft'>
-            {`${sqft} SQ. FT.`}
+          <Paragraph className='floorplan-sqft'>
+            {`${SQFT} SQ. FT.`}
           </Paragraph>
-          <Paragraph className='rent'>
-            {`$${rent.min.slice(0, 1)},${rent.min.slice(1, rent.min.length)}`}
+          <Paragraph className='floorplan-rent'>
+            {MinimumRent}
           </Paragraph>
         </Column>
 
         <Column className='link-column'>
           <Link
             className='floorplan-link'
-            href={apt.apply}
+            href={ApplyOnlineURL || AvailabilityURL}
             target='_blank'
+            title={ApplyOnlineURL ? `Apply for ${ApartmentName}` : `Check floorplan availability for ${FloorplanId}`}
           >
             Apply Now
           </Link>
 
-          <Link className='floorplan-link' href={floorplan.image.src} download>
+          <Link
+            className='floorplan-link'
+            href={FloorplanImageURL}
+            download
+            target='_blank'
+            title={FloorplanImageName}
+          >
             Download Floorplan
           </Link>
         </Column>
@@ -106,7 +158,7 @@ export const Floorplan = ({ apt, floorplan, rent, sqft, ...rest }) => {
  */
 Article.propTypes = {
   /**
-   * `Article` content
+   * `Article` content.
    */
   children: PropTypes.node,
 
@@ -149,23 +201,40 @@ Article.propTypes = {
  * @typedef {FloorplanProps}
  */
 Floorplan.propTypes = {
-  apt: PropTypes.shape({
-    apply: PropTypes.string,
-    name: PropTypes.string
-  }),
-  floorplan: PropTypes.shape({
-    id: PropTypes.string,
-    image: PropTypes.shape({
-      src: PropTypes.string
-    }),
-    name: PropTypes.string,
-    type: PropTypes.string
-  }),
-  rent: PropTypes.shape({
-    max: PropTypes.string,
-    min: PropTypes.string
-  }),
-  sqft: PropTypes.string
+  aptWithPlan: PropTypes.shape({
+    Amenities: PropTypes.string,
+    ApartmentId: PropTypes.string,
+    ApartmentName: PropTypes.string,
+    ApplyOnlineURL: PropTypes.string,
+    AvailabilityURL: PropTypes.string,
+    AvailableDate: PropTypes.string,
+    AvailableUnitsCount: PropTypes.string,
+    Baths: PropTypes.string,
+    Beds: PropTypes.string,
+    Deposit: PropTypes.string,
+    FloorplanHasSpecials: PropTypes.string,
+    FloorplanId: PropTypes.string,
+    FloorplanImageAltText: '',
+    FloorplanImageName: PropTypes.string,
+    FloorplanImageURL: PropTypes.string,
+    FloorplanName: PropTypes.string,
+    MaximumDeposit: PropTypes.string,
+    MaximumRent: PropTypes.string,
+    MaximumSQFT: PropTypes.string,
+    MinimumDeposit: PropTypes.string,
+    MinimumRent: PropTypes.string,
+    MinimumSQFT: PropTypes.string,
+    PropertyId: PropTypes.string,
+    PropertyShowsSpecials: PropTypes.string,
+    SQFT: PropTypes.string,
+    Specials: PropTypes.string,
+    UnitImageAltText: PropTypes.string,
+    UnitImageURLs: PropTypes.arrayOf(PropTypes.string),
+    UnitStatus: PropTypes.string,
+    UnitTypeMapping: PropTypes.string,
+    VoyagerPropertyCode: PropTypes.string,
+    VoyagerPropertyId: PropTypes.string
+  })
 }
 
 Article.defaultProps = {
@@ -173,23 +242,40 @@ Article.defaultProps = {
 }
 
 Floorplan.defaultProps = {
-  apt: {
-    apply: '#',
-    name: '101'
-  },
-  floorplan: {
-    id: null,
-    image: {
-      src: '/assets/images/fp-image-944x1024.jpg'
-    },
-    name: '1 Bedroom, 1 Bathroom',
-    type: 'ca011b1b'
-  },
-  rent: {
-    max: '2300',
-    min: '2300'
-  },
-  sqft: '875'
+  aptWithPlan: {
+    Amenities: '',
+    ApartmentId: '18168076',
+    ApartmentName: '9W0316',
+    ApplyOnlineURL: 'https://901wdc.securecafe.com/onlineleasing/901-w-street-nw-washington-dc-20001/oleapplication.aspx?stepname=RentalOptions&myOlePropertyId=1131409&FloorPlanID=3215320&UnitID=18168076&header=1',
+    AvailabilityURL: 'https://901wdc.securecafe.com/onlineleasing/901-w-street-nw-washington-dc-20001/oleapplication.aspx?stepname=Apartments&myOlePropertyId=1131409&floorPlans=3215320',
+    AvailableDate: '4/17/2020',
+    AvailableUnitsCount: '1',
+    Baths: '1.00',
+    Beds: '1',
+    Deposit: '0',
+    FloorplanHasSpecials: '0',
+    FloorplanId: '3215320',
+    FloorplanImageAltText: '',
+    FloorplanImageName: '901W_Floorplan_PNG_800x800_A01[1].png',
+    FloorplanImageURL: 'https://cdn.rentcafe.com/dmslivecafe/3/1131409/901W_Floorplan_PNG_800x800_A01[1].png',
+    FloorplanName: 'A01',
+    MaximumDeposit: '0',
+    MaximumRent: '2670.00',
+    MaximumSQFT: '613',
+    MinimumDeposit: '0',
+    MinimumRent: '2670.00',
+    MinimumSQFT: '613',
+    PropertyId: '1131409',
+    PropertyShowsSpecials: '0',
+    SQFT: '613',
+    Specials: '',
+    UnitImageAltText: '',
+    UnitImageURLs: [''],
+    UnitStatus: 'Vacant Unrented Not Ready',
+    UnitTypeMapping: '9w-a01',
+    VoyagerPropertyCode: '248203',
+    VoyagerPropertyId: '4382'
+  }
 }
 
 export default Article

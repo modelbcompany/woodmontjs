@@ -13,6 +13,7 @@ import WoodmontAPI from '../api'
  * @module hooks/useApartments
  *
  * @todo Update documentation
+ * @todo DRY Refactor - This logic is duplicated in useFloorplans
  */
 
 /**
@@ -54,3 +55,5 @@ export const useApartments = search => {
     setApartmentsQuery: setQuery
   }
 }
+
+export default useApartments

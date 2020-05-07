@@ -153,6 +153,6 @@ WoodmontAPI.hooks({
 })
 
 // Debug fully configured Feathers app
-Logger.debug('Configured WoodmontAPI =>', WoodmontAPI)
+Logger.debug({ WoodmontAPI: WoodmontAPI._isSetup })
 
 export default WoodmontAPI

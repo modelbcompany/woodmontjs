@@ -7,7 +7,7 @@ import Logger from '../../logger'
  */
 
 /**
- * @typedef {Floorplan}
+ * @typedef {RentCafeFloorplan}
  * @property {string} AvailabilityURL
  * @property {string} AvailableUnitsCount
  * @property {string} Baths
@@ -75,7 +75,7 @@ export const Floorplans = {
      */
     this.requestRentCafeWebAPI = app.get('axios')
 
-    Logger.debug('[Service] Floorplans: Initialized on path', this.path)
+    Logger.debug({ Floorplans: this.path })
   },
 
   /**
@@ -92,7 +92,7 @@ export const Floorplans = {
    * @param {string} param0.query.propertyId - RENTCafé property identifier
    * @param {string} param0.query.requestType - floorPlan
    * @param {string} param0.url - RENTCafé URL to request
-   * @returns {Floorplan[]} RENTCafé floor plan data
+   * @returns {RentCafeFloorplan[]} RENTCafé floor plan data
    */
   find: async function ({ query: { id, name }, url }) {
     let floorplans = []

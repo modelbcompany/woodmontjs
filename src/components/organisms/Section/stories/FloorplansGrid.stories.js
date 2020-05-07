@@ -8,7 +8,7 @@ import { FloorplansGrid } from '..'
 import { FloorplansGridStoryParams } from '../metadata/FloorplansGrid.meta'
 
 // Mock Data
-import { FloorplansMock } from '../__mocks__/Floorplans.mock'
+import ApartmentsWithPlansMock from '../__mocks__/ApartmentsWithPlans.mock'
 
 /**
  * @file Stories - FloorplansGrid
@@ -26,4 +26,6 @@ export default {
  *
  * @returns {FloorplansGrid}
  */
-export const Default = () => <FloorplansGrid floorplans={FloorplansMock} />
+export const Default = () => (
+  <FloorplansGrid apartments={ApartmentsWithPlansMock} />
+)

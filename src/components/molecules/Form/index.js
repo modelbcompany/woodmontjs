@@ -60,7 +60,7 @@ export const FloorplansSearchForm = ({
 
       <Button
         className='floorplan-search-form-btn'
-        disabled
+        disabled={!handleSearch}
         form={FLOOR_PLAN_SEARCH_FORM_ID}
         onClick={handleSearch}
         type='submit'
@@ -275,10 +275,10 @@ Form.defaultProps = {
 }
 
 FloorplansSearchForm.defaultProps = {
-  handleFilter: ({ target: { name, value } }) => {
-    Logger.warn('@todo handleFilter =>', { name, value })
+  handleSearch: event => {
+    Logger.debug({ '@todo': { handleSearch: event.target } })
+    event.preventDefault()
   },
-  handleSearch: event => Logger.warn('@todo handleSearch =>', event.target),
   id: FLOOR_PLAN_SEARCH_FORM_ID
 }
 

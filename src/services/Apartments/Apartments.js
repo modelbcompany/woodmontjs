@@ -53,7 +53,7 @@ export const Apartments = {
      */
     this.requestRentCafeWebAPI = app.get('axios')
 
-    Logger.debug('[Service] Apartments: Initialized on path', this.path)
+    Logger.debug({ Apartments: this.path })
   },
 
   /**

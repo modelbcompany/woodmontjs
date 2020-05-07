@@ -47,7 +47,7 @@ export const Scheduling = {
      */
     this.env = process.env.NODE_ENV
 
-    Logger.debug('[Service] Scheduling: Initialized on path', this.path)
+    Logger.debug({ Scheduling: this.path })
   }
 }
 

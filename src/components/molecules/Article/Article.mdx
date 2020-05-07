@@ -4,6 +4,9 @@ import { Props } from '@storybook/addon-docs/blocks'
 <!-- Components -->
 import { Article, Floorplan } from '.'
 
+<!-- Mocks -->
+import FloorplanMock from './__mocks__/Floorplan.mock'
+
 # Article
 
 `<article>` element with the class `adm-article`.
@@ -28,4 +31,12 @@ import { Article, Floorplan } from '.'
 
 <Preview>
   <Floorplan />
+</Preview>
+
+##### With Rent Café data
+
+- `data={RentCafeFloorplan}`
+
+<Preview>
+  <Floorplan data={FloorplanMock} />
 </Preview>
