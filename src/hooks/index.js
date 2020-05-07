@@ -3,12 +3,14 @@
  * @module hooks
  */
 
+export * from './useApartments'
 export * from './useArray'
 export * from './useAttributes'
 export * from './useBoolean'
 export * from './useButtonTypes'
 export * from './useDisclosure'
 export * from './useDocumentTitle'
+export * from './useFloorplans'
 export * from './useIcon'
 export * from './useItems'
 export * from './useObject'

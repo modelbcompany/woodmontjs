@@ -7,7 +7,7 @@ import { Container, FloorplansSearchForm } from '../../molecules'
 import { FloorplansGrid, Main } from '../../organisms'
 
 // Hooks
-import { useAttributes } from '../../../hooks'
+import { useApartments, useAttributes, useFloorplans } from '../../../hooks'
 
 // Mock Data
 import { FloorplansMock } from
@@ -35,6 +35,11 @@ import './floorplans-template.sass'
  */
 export const FloorplansTemplate = props => {
   const attributes = useAttributes(props, 'adt-floorplans')
+
+  const { floorplans } = useFloorplans()
+  const { apartments } = useApartments()
+
+  console.debug('[FloorplansTemplate]', floorplans, apartments)
 
   return (
     <Main {...attributes}>
