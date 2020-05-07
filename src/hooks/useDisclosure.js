@@ -6,7 +6,7 @@ import useBoolean from './useBoolean'
 import useObject from './useObject'
 
 // Utility Functions
-import { isObject } from '../utils'
+import { classNames, isObject } from '../utils'
 
 /**
  * @file Use the Disclosure Design Pattern
@@ -73,7 +73,11 @@ export const useDisclosure = (config = { button: {}, content: {} }) => {
       }
     }))
 
-    setContent(content => ({ ...content, 'data-controlled': true }))
+    setContent(content => ({
+      ...content,
+      'data-controlled': true,
+      'data-expanded': expanded
+    }))
   }, [
     button['aria-haspopup'],
     config.button.onClick,

@@ -1,5 +1,5 @@
 // Packages
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import $ from 'jquery'
 
@@ -40,15 +40,16 @@ export const Dropdown = ({ button: btn, container, ...props }) => {
   })
 
   useEffect(() => {
-    $('*').click(event => { if (expanded) setDisclosure(false) })
-
-    return () => $(document).off('click')
+    $('*').click(event => {
+      event.preventDefault()
+      if (expanded) setDisclosure(false)
+    })
   }, [expanded])
 
   return (
     <div {...attributes} data-open={expanded}>
       <Button {...button} name='dropdown' type='reset' />
-      {expanded ? <Container {...content} /> : null}
+      <Container {...content} />
     </div>
   )
 }
