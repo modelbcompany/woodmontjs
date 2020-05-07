@@ -44,12 +44,17 @@ export const useApartments = search => {
 
       setApartments(apartments)
     })()
-  }, [query])
+  }, [
+    query.availabilityDate,
+    query.numberOfBaths,
+    query.numberOfBeds,
+    query.rentRange
+  ])
 
   return {
     apartments,
-    apartmetntsError: empty ? null : error,
-    apartmetntsQuery: query,
+    apartmentsError: empty ? null : error,
+    apartmentsQuery: query,
     setApartmentsError: setError,
     setApartments,
     setApartmentsQuery: setQuery

@@ -42,122 +42,135 @@ const mergeDropdownItemStyles = item => ({ ...item, ...COMMON_PROPS.item })
 export const FloorplansSearchFormDropdownItems = Object.freeze({
   Bathrooms: [
     {
-      children: '1',
-      value: 1
+      children: '1'
     },
     {
-      children: '1.5',
-      value: 1.5
+      children: '1.5'
     },
     {
-      children: '2',
-      value: 2
+      children: '2'
     },
     {
-      children: '2.5',
-      value: 2.5
+      children: '2.5'
     },
     {
-      children: '3',
-      value: 3
+      children: '3'
     }
-  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'numberOfBeds' })),
+  ].map(item => ({
+    ...mergeDropdownItemStyles(item),
+    'data-name': 'numberOfBaths',
+    'data-value': item['data-value'] || item.children
+  })),
 
   Bedrooms: [
     {
       children: 'Studio',
-      value: 0
+      'data-value': 0
     },
     {
       children: '1 BR',
-      value: 1
+      'data-value': 1
     },
     {
       children: '2 BR',
-      value: 2
+      'data-value': 2
     },
     {
       children: '3 BR',
-      value: 3
-    }
-  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'numberOfBaths' })),
-
-  MaxPrice: [
-    {
-      children: '<$2k',
-      value: '0-2000'
-    },
-    {
-      children: '$2k - $2.5k',
-      value: '2001-2500'
-    },
-    {
-      children: '$2.5k - $3k',
-      value: '2501-3000'
-    },
-    {
-      children: '$3k - $3.5k',
-      value: '3001-3500'
-    },
-    {
-      children: '>$3.5k',
-      value: '3501'
-    }
-  ].map(item => ({ ...mergeDropdownItemStyles(item), name: 'rentRange' })),
-
-  MoveInDate: [
-    {
-      children: 'Janaury',
-      value: '01'
-    },
-    {
-      children: 'February',
-      value: '02'
-    },
-    {
-      children: 'March',
-      value: '03'
-    },
-    {
-      children: 'April',
-      value: '04'
-    },
-    {
-      children: 'May',
-      value: '05'
-    },
-    {
-      children: 'June',
-      value: '06'
-    },
-    {
-      children: 'July',
-      value: '07'
-    },
-    {
-      children: 'August',
-      value: '08'
-    },
-    {
-      children: 'September',
-      value: '09'
-    },
-    {
-      children: 'October',
-      value: '10'
-    },
-    {
-      children: 'November',
-      value: '11'
-    },
-    {
-      children: 'December',
-      value: '12'
+      'data-value': 3
     }
   ].map(item => ({
     ...mergeDropdownItemStyles(item),
-    name: 'availableDate',
-    value: `${item.value}/${new Date().getFullYear()}`
+    'data-name': 'numberOfBeds'
+  })),
+
+  MaxPrice: [
+    {
+      children: 'Clear',
+      'data-value': ''
+    },
+    {
+      children: '<$2k',
+      'data-value': '0-2000'
+    },
+    {
+      children: '$2k - $2.5k',
+      'data-value': '2001-2500'
+    },
+    {
+      children: '$2.5k - $3k',
+      'data-value': '2501-3000'
+    },
+    {
+      children: '$3k - $3.5k',
+      'data-value': '3001-3500'
+    },
+    {
+      children: '>$3.5k',
+      'data-value': '3501'
+    }
+  ].map(item => ({
+    ...mergeDropdownItemStyles(item),
+    'data-name': 'rentRange'
+  })),
+
+  MoveInDate: [
+    {
+      children: 'Clear',
+      'data-value': ''
+    },
+    {
+      children: 'Janaury',
+      'data-value': '01'
+    },
+    {
+      children: 'February',
+      'data-value': '02'
+    },
+    {
+      children: 'March',
+      'data-value': '03'
+    },
+    {
+      children: 'April',
+      'data-value': '04'
+    },
+    {
+      children: 'May',
+      'data-value': '05'
+    },
+    {
+      children: 'June',
+      'data-value': '06'
+    },
+    {
+      children: 'July',
+      'data-value': '07'
+    },
+    {
+      children: 'August',
+      'data-value': '08'
+    },
+    {
+      children: 'September',
+      'data-value': '09'
+    },
+    {
+      children: 'October',
+      'data-value': '10'
+    },
+    {
+      children: 'November',
+      'data-value': '11'
+    },
+    {
+      children: 'December',
+      'data-value': '12'
+    }
+  ].map(item => ({
+    ...mergeDropdownItemStyles(item),
+    'data-name': 'availableDate',
+    'data-value': `${item['data-value']}/${new Date().getFullYear()}`
   }))
 })
 

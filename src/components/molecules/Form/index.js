@@ -11,7 +11,7 @@ import { FLOOR_PLAN_SEARCH_FORM_ID } from './config/Form.constants'
 import Logger from '../../../logger'
 
 // Hooks
-import { useAttributes } from '../../../hooks'
+import { useAttributes, useObject } from '../../../hooks'
 
 // Stylesheets
 import './form.sass'
@@ -44,25 +44,28 @@ export const Form = ({ children, ...props }) => (
  * @param {FloorplansSearchFormProps} props - Component data
  * @returns {Form}
  */
-export const FloorplansSearchForm = ({
-  handleFilter,
-  handleSearch,
-  ...rest
-}) => {
+export const FloorplansSearchForm = ({ handleSearch, ...rest }) => {
   const attributes = useAttributes(rest, 'floorplan-search-form')
+  const { object: form, setObject: setForm } = useObject()
 
   return (
     <Form {...attributes} id={FLOOR_PLAN_SEARCH_FORM_ID}>
       <FloorplansSearchFiltersField
         form={FLOOR_PLAN_SEARCH_FORM_ID}
-        handleFilter={handleFilter}
+        handleFilter={event => {
+          const { target: { dataset: { name, value } } } = event
+          setForm(state => ({ ...state, [name]: `${value}` }))
+        }}
       />
 
       <Button
         className='floorplan-search-form-btn'
         disabled={!handleSearch}
         form={FLOOR_PLAN_SEARCH_FORM_ID}
-        onClick={handleSearch}
+        onClick={event => {
+          handleSearch(form)
+          event.preventDefault()
+        }}
         type='submit'
       >
         Search

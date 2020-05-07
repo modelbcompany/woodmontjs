@@ -8,6 +8,7 @@ import Logger from '../logger'
 import useApartments from './useApartments'
 import useArray from './useArray'
 import useFloorplans from './useFloorplans'
+import useObject from './useObject'
 
 /**
  * @file Use Apartment and Floorplan data
@@ -19,14 +20,12 @@ import useFloorplans from './useFloorplans'
 /**
  * Merges Apartment and Floorplan data.
  *
- * @param {object} param0
- * @param {object} param0.fpQuery - Floorplans service query
- * @param {object} param0.aptQuery - Apartments service query
+ * @param {object} search
  * @returns {object}
  */
-export const useApartmentsWithFloorplans = ({ fpQuery, aptQuery }) => {
-  const { floorplans } = useFloorplans(fpQuery)
-  const { apartments } = useApartments(aptQuery)
+export const useApartmentsWithFloorplans = search => {
+  const { apartments, setApartmentsQuery: setAptQuery } = useApartments(search)
+  const { floorplans } = useFloorplans({})
 
   const { array: aptsWithPlans, setArray: setAptsWithPlans } = useArray()
 
@@ -44,9 +43,9 @@ export const useApartmentsWithFloorplans = ({ fpQuery, aptQuery }) => {
       Logger.debug({ hook: true, useApartmentsWithFloorplans: aptsWithPlans })
       setAptsWithPlans(aptsWithPlans)
     })()
-  }, [apartments, floorplans])
+  }, [apartments])
 
-  return { floorplans, apartments, aptsWithPlans }
+  return { floorplans, apartments, aptsWithPlans, setAptQuery }
 }
 
 export default useApartmentsWithFloorplans

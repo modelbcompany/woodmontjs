@@ -1,5 +1,5 @@
 // Packages
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 // Components
@@ -7,7 +7,11 @@ import { Container, FloorplansSearchForm } from '../../molecules'
 import { FloorplansGrid, Main } from '../../organisms'
 
 // Hooks
-import { useAttributes, useApartmentsWithFloorplans } from '../../../hooks'
+import {
+  useAttributes,
+  useApartmentsWithFloorplans,
+  useObject
+} from '../../../hooks'
 
 // Stylesheets
 import './floorplans-template.sass'
@@ -32,15 +36,27 @@ import './floorplans-template.sass'
 export const FloorplansTemplate = props => {
   const attributes = useAttributes(props, 'adt-floorplans')
 
-  const { aptsWithPlans } = useApartmentsWithFloorplans({})
+  const [gridTitle, setGridTitle] = useState('One Bedroom')
+  const { aptsWithPlans, setAptQuery } = useApartmentsWithFloorplans()
 
   return (
     <Main {...attributes}>
       <Container className='form-container is-full-width'>
-        <FloorplansSearchForm />
+        <FloorplansSearchForm
+          handleSearch={query => {
+            const { numberOfBeds: beds } = query
+
+            setAptQuery(query)
+
+            if (beds) {
+              setGridTitle(beds === 0
+                ? 'Studios' : `${beds} Bedroom${beds === 1 ? '' : 's'}`)
+            }
+          }}
+        />
       </Container>
 
-      <FloorplansGrid apartments={aptsWithPlans} title='One Bedroom' />
+      <FloorplansGrid apartments={aptsWithPlans} title={gridTitle} />
     </Main>
   )
 }
