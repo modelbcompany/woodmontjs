@@ -6,7 +6,7 @@ import useBoolean from './useBoolean'
 import useObject from './useObject'
 
 // Utility Functions
-import { classNames, isObject } from '../utils'
+import { isObject } from '../utils'
 
 /**
  * @file Use the Disclosure Design Pattern
