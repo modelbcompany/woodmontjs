@@ -1,6 +1,7 @@
 // Packages
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
+import $ from 'jquery'
 
 // Components
 import { Button } from '../../atoms'
@@ -29,7 +30,7 @@ import './dropdown.sass'
 export const Dropdown = ({ button: btn, container, ...props }) => {
   const attributes = useAttributes(props, 'adm-dropdown')
   const { children } = useIcon(props)
-  const { button, content, expanded } = useDisclosure({
+  const { button, content, expanded, setDisclosure } = useDisclosure({
     button: btn,
     content: {
       ...container,
@@ -37,6 +38,12 @@ export const Dropdown = ({ button: btn, container, ...props }) => {
       children
     }
   })
+
+  useEffect(() => {
+    $('*').click(event => { if (expanded) setDisclosure(false) })
+
+    return () => $(document).off('click')
+  }, [expanded])
 
   return (
     <div {...attributes} data-open={expanded}>
