@@ -8,7 +8,6 @@ import Logger from '../logger'
 import useApartments from './useApartments'
 import useArray from './useArray'
 import useFloorplans from './useFloorplans'
-import useObject from './useObject'
 
 /**
  * @file Use Apartment and Floorplan data

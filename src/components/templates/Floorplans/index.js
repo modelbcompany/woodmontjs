@@ -7,11 +7,7 @@ import { Container, FloorplansSearchForm } from '../../molecules'
 import { FloorplansGrid, Main } from '../../organisms'
 
 // Hooks
-import {
-  useAttributes,
-  useApartmentsWithFloorplans,
-  useObject
-} from '../../../hooks'
+import { useAttributes, useApartmentsWithFloorplans } from '../../../hooks'
 
 // Stylesheets
 import './floorplans-template.sass'
