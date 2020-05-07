@@ -47,13 +47,19 @@ export const Apartments = {
      */
     this.env = process.env.NODE_ENV
 
+    /**
+     * @property {axios} requestRentCafeWebAPI - Axios instance
+     * @instance
+     */
+    this.requestRentCafeWebAPI = app.get('axios')
+
     Logger.debug('[Service] Apartments: Initialized on path', this.path)
   },
 
   /**
    * Returns apartment data.
    *
-   * Data can be filtered by apartment, available move-in date, floor plan id,
+   * Data can be filtered by unit code, available move-in date, floor plan id,
    * number of bedrooms and bathrooms, as well as rent range.
    *
    * @async
@@ -66,12 +72,20 @@ export const Apartments = {
    * @param {string} param0.query.numberOfBeds - Number of bedrooms
    * @param {string} param0.query.rentRange - Monthly rent amount range
    * @param {string} param0.query.requestType - apartmentAvailability
-   * @returns {Apartment[] | RentCafeError} RENTCafé floor plan data
+   * @param {string} param0.url - RENTCafé URL to request
+   * @returns {Apartment[] | RentCafeError} RENTCafé apartment data
    */
-  find: async function ({ query }) {
-    const { apiToken, propertyId, requestType } = query
+  find: async function ({ query, url }) {
+    let apartments = []
 
-    return []
+    try {
+      apartments = await this.requestRentCafeWebAPI(url, { params: query })
+    } catch (err) {
+      Logger.error({ 'Apartments.find': err })
+      throw err
+    }
+
+    return apartments
   }
 }
 

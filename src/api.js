@@ -119,7 +119,7 @@ WoodmontAPI.hooks({
        *
        * ! Our project uses Axios, allowing us to attach the search parameters
        * ! as an object, but the RENTCafé API has only successfully responded
-       * ! when the query parameters were part of the URL string.
+       * ! when the credential query parameters were part of the URL string.
        * ! The latter is the current workaround for this issue.
        *
        * @param {object} context - Service call information
@@ -134,7 +134,8 @@ WoodmontAPI.hooks({
           companyCode,
           marketingAPIKey,
           propertyId,
-          requestType
+          requestType,
+          ...query
         } = params.query
 
         let url = ''
@@ -145,7 +146,7 @@ WoodmontAPI.hooks({
           url = `https://marketingapi.rentcafe.com/marketingapi/api/appointments/${requestType}&companyCode=${companyCode}&marketingAPIKey=${marketingAPIKey}`
         }
 
-        return { ...rest, path, params: { ...params, url } }
+        return { ...rest, path, params: { ...params, query, url } }
       }
     ]
   }

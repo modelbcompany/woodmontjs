@@ -8,5 +8,8 @@ import '@testing-library/jest-dom/extend-expect'
  * @see {@link https://github.com/testing-library/jest-dom}
  */
 
+// Set timeout
+jest.setTimeout(10000)
+
 // Configure Enzyme
 configure({ adapter: new Adapter() })
