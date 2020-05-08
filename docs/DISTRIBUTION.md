@@ -28,7 +28,7 @@ Package Registry.
     # Package Development Aliases
     [alias]
       # Test packages locally
-      link = "!f() { npm run build; npm link; }; f"
+      link = "!f() { npm run build; webpack --config webpack/webpack.pkg.js; npm link; }; f"
 
       # Run local scripts to build package and prepare for publishing
       prepub = "!f() { npm run build; rm -rf ./dist; webpack --config webpack/webpack.pkg.js; cp -R ./src/* ./dist && cp README.md ./dist; node prepublish.js; }; f"
@@ -60,8 +60,8 @@ Package Registry.
   
    From the [_`npm-link`_][1] documentation:
 
-   > This will create a symbolic link will create a symbolic link from
-   > globally-installed `package-name` to `node_modules/` of the current folder.
+   > This will create a symbolic link from globally-installed `package-name` to
+   > `node_modules/` of the current folder.
    >
    > Note that `package-name` is taken from package.json, not from directory
    > name.
