@@ -1,6 +1,8 @@
 /**
  * @file RENTCafé Error Messages
  * @module config/RentCafeErrors
+ *
+ * @todo Update documentation
  */
 
 /**
@@ -21,6 +23,34 @@
  * @namespace RentCafeErrors
  */
 export const RentCafeErrors = {
+  APIKey: {
+    message: 'Invalid Credentials',
+    data: {
+      code: '1000'
+    },
+    status: 401
+  },
+  MaximumEvents: {
+    message: 'Can not create appointment since this slot is already booked for maximum events',
+    data: {
+      code: '200'
+    },
+    status: 400
+  },
+  PropertyIdOrCodeRequired: {
+    message: 'Property ID or Code is required',
+    data: {
+      code: '300'
+    },
+    status: 400
+  },
+  MissingRequiredFields: {
+    message: 'Incorrect data',
+    data: {
+      code: '800'
+    },
+    status: 400
+  },
   InvalidCredentials: {
     message: 'Invalid Credentials',
     data: {
@@ -73,7 +103,7 @@ export const RentCafeErrors = {
   PropertyNotConfigured: {
     message: 'Property not configured for API',
     data: {
-      code: '1060'
+      code: '1070'
     },
     status: 501
   },
@@ -83,6 +113,20 @@ export const RentCafeErrors = {
       code: '1100'
     },
     status: 500
+  }
+}
+
+for (const key in RentCafeErrors) {
+  const { data: { code }, ...rest } = RentCafeErrors[key]
+
+  RentCafeErrors[key] = {
+    ...rest,
+    data: {
+      code,
+      docs: (JSON.parse(code) > 1000)
+        ? 'https://woodmontjs.modelb.now.sh/docs/rentcafe/web'
+        : 'https://woodmontjs.modelb.now.sh/docs/rentcafe/marketing'
+    }
   }
 }
 

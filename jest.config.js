@@ -7,6 +7,7 @@ module.exports = {
   moduleNameMapper: {
     '^.+\\.(css|sass|scss|less)$': 'identity-obj-proxy'
   },
+  modulePathIgnorePatterns: ['<rootDir>/dist/'],
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',

@@ -64,12 +64,6 @@ export const Floorplans = {
     this.path = path
 
     /**
-     * @property {string} environment - Node environment
-     * @instance
-     */
-    this.env = process.env.NODE_ENV
-
-    /**
      * @property {axios} requestRentCafeWebAPI - Axios instance
      * @instance
      */

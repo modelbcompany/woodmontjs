@@ -141,7 +141,7 @@ WoodmontAPI.hooks({
         if (path !== 'scheduling') {
           url = `https://api.rentcafe.com/rentcafeapi.aspx?requestType=${requestType}&apiToken=${apiToken}&propertyId=${propertyId}`
         } else {
-          url = `https://marketingapi.rentcafe.com/marketingapi/api/appointments/${requestType}&companyCode=${companyCode}&marketingAPIKey=${marketingAPIKey}`
+          url = `https://marketingapi.rentcafe.com/marketingapi/api/appointments/${requestType}?companyCode=${companyCode}&marketingAPIKey=${marketingAPIKey}&propertyId=${propertyId}`
         }
 
         return { ...rest, path, params: { ...params, query, url } }

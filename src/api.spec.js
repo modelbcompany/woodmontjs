@@ -40,7 +40,7 @@ describe('API', () => {
 describe('Service: Floorplans', () => {
   const Floorplans = WoodmontAPI.service('floorplans')
 
-  it('Is defined', async () => {
+  it('Is defined', () => {
     expect(Floorplans).toBeDefined()
   })
 
@@ -79,7 +79,7 @@ describe('Service: Floorplans', () => {
 describe('Service: Apartments', () => {
   const Apartments = WoodmontAPI.service('apartments')
 
-  it('Is defined', async () => {
+  it('Is defined', () => {
     expect(Apartments).toBeDefined()
   })
 
@@ -120,5 +120,38 @@ describe('Service: Apartments', () => {
     })
 
     expect(apartments.length >= 1).toBeTruthy()
+  })
+})
+
+describe('Service: Scheduling', () => {
+  const Scheduling = WoodmontAPI.service('scheduling')
+
+  it('Is defined', () => {
+    expect(Scheduling).toBeDefined()
+  })
+
+  it('[find] Returns available appointments', async () => {
+    const { ErrorCode } = await Scheduling.find({
+      query: { requestType: 'AvailableSlots' }
+    })
+
+    expect(ErrorCode).toBe(0)
+  })
+
+  // ! Date must be changed with every test, or else a 200 error will be thrown
+  it('[create] Creates an appointment', async () => {
+    const { ErrorCode } = await Scheduling.create({
+      apptDate: '08/31/2020',
+      apptTime: '04:00PM',
+      email: 'web@modelb.com',
+      firstName: 'Model B',
+      lastName: 'Web Team',
+      phone: '1234567896',
+      source: 'DEVELOPMENT'
+    }, {
+      query: { requestType: 'createleadwithappointment' }
+    })
+
+    expect(ErrorCode).toBe(0)
   })
 })

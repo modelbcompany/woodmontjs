@@ -90,19 +90,20 @@ export const getFeathersError = (error, data, status = 500) => {
  * Transform a RENTCafé API error into a @link FeathersError object.
  *
  * @param {object} param0 - RENTCafé error
- * @param {string} param0.Error - RENTCafé error code
+ * @param {string| undefined} param0.Error - Web API error code
+ * @param {number | undefined} param0.ErrorCode - Marketing API error code
  * @returns {FeathersError}
  * @throws {Error}
  */
-export const handleRentCafeError = ({ Error: code, ...rest }) => {
+export const handleRentCafeError = ({ Error: code, ErrorCode, ...rest }) => {
   if (!code) return rest
 
   const enumValue = Object.values(RentCafeErrors).find(value => {
-    if (value.data.code === code) return value
+    if ([code, ErrorCode].includes(value.data.code)) return value
   })
 
   if (!enumValue) {
-    throw new Error(`handleRentCafeError: Cannot find RentCafeErrors enum value with code ${code}`)
+    return getFeathersError(rest.message, { code: code || ErrorCode, ...rest })
   }
 
   return getFeathersError(...Object.values(enumValue))

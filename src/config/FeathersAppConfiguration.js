@@ -16,7 +16,7 @@ import { interceptRentCafeResponse } from '../utils'
 
 // ! RENTCafé APIs only return 200-status responses, so we must check for an
 // ! error before returning the response data
-axios.interceptors.response.use(interceptRentCafeResponse)
+axios.interceptors.response.use(res => interceptRentCafeResponse(res))
 
 /**
  * Feathers application constants.
