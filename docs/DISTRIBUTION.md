@@ -7,7 +7,7 @@ Package Registry.
 
 [Prerequisites](#prerequisites)  
 [Local Distribution](#local-distribution)  
-[Github Package Registry](#github-package-registry)  
+[Github Package Registry](#github-package-registry-+-npm)  
 
 ## Prerequisites
 
@@ -21,35 +21,36 @@ Package Registry.
 
    Be sure to update your `.gitconfig`.
 
-   The following aliases are neccessary to publish the package to the Github
-   Package Registry
+   The following aliases are necessary to publish the package to the Github
+   Package and NPM registries:
 
     ```ini
-      [alias]
-        # Test packages locally
-        link = "!f() { npm run build; npm link; }; f"
+    # Package Development Aliases
+    [alias]
+      # Test packages locally
+      link = "!f() { npm run build; npm link; }; f"
 
-        # Run build script and local prepublish script
-        prepub = "!f() { npm run build; node prepublish.js; }; f"
+      # Run local scripts to build package and prepare for publishing
+      prepub = "!f() { npm run build; rm -rf ./dist; webpack --config webpack/webpack.pkg.js; cp -R ./src/* ./dist && cp README.md ./dist; node prepublish.js; }; f"
 
-        # Publish package
-        pub = "!f() { git prepub; npm publish ./dist; }; f"
+      # Publish package
+      pub = "!f() { git prepub; npm publish ./dist; }; f"
     ```
 
 ## Local Distribution
 
 1. **Prepare your the package for distribution and create a symlink**
 
-   From the root of your design system project, run the following command:
+   From the root of your project, run the following command:
 
    ```bash
    git link
    ```
 
-   This will build the project, as well as create a symlink in the global folder
-   for your design system.
+   This will build the project, as well as create a symlink in your machine's
+   global folder.
 
-2. **Link the design system to your dependant project**
+2. **Link to your dependant project**
 
    From the root of the dependant project, run the following:
 
@@ -69,13 +70,13 @@ Package Registry.
 
 3. **Turn off any CI/CD integrations**
 
-   If using an integration similar to [ZEIT Now for GitHub][1], be sure to
+   If using an integration similar to [Vercel for GitHub][1], be sure to
    disable the integration. Unless your package has been published, your
    automatic deployments will fail.
 
-   [1]: https://zeit.co/docs/v2/git-integrations/zeit-now-for-github
+   [1]: https://vercel.com/docs/v2/git-integrations/vercel-for-github
 
-## Github Package Registry
+## Github Package Registry (+ NPM)
 
 1. **Update the version number in the `package.json`**
 
@@ -89,3 +90,6 @@ Package Registry.
    This will rebuild the Storybook app and documentation website, build
    the production distrubution package, and then publish the package to the
    Github Package Registry.
+
+   Afterwards, the `postpublish` script will run automatically and publish the
+   package to the NPM Registry as well.
