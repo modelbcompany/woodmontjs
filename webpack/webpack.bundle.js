@@ -1,5 +1,5 @@
 // Default Config
-const defaultWebpackConfig = require('./webpack.config')
+const defaultWebpackConfig = require('./webpack.config.js')
 
 /**
  * @file Webpack Configuration - Production
@@ -13,6 +13,6 @@ module.exports = {
   mode: 'production',
   output: {
     ...output,
-    filename: 'bundle.min.js'
+    filename: 'woodmont.min.js'
   }
 }

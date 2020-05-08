@@ -8,7 +8,7 @@ import { withKnobs } from '@storybook/addon-knobs'
 
 // Components
 import Preview from './components/Preview'
-import Components from '../src'
+import * as Components from '../src'
 
 // Custom Viewports
 import { viewports } from './viewports'

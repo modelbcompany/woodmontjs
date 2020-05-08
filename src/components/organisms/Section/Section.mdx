@@ -5,8 +5,7 @@ import { Props } from '@storybook/addon-docs/blocks'
 import { Section, FloorplansGrid } from '.'
 
 <!-- Mock Data -->
-import FindFloorplansMock from
-  '../../../services/Floorplans/__mocks__/FindFloorplans.mock'
+import ApartmentsWithPlansMock from './__mocks__/ApartmentsWithPlans.mock'
 
 # Section
 
@@ -31,5 +30,5 @@ Usage
 - `className='floorplans-grid'`
 
 <Preview>
-  <FloorplansGrid floorplans={FindFloorplansMock} />
+  <FloorplansGrid apartments={ApartmentsWithPlansMock} />
 </Preview>

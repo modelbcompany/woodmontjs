@@ -24,6 +24,8 @@
   $padding-multiplier: 2.5
   $padding-default: size($magic-number * $padding-multiplier)
 
+  +is-full-height
+
   +respond-to($breakpoint-1024)
     padding: $padding-default size($magic-number * ($padding-multiplier * 0.5))
 

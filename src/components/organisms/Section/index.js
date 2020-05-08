@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 // Components
-import { Heading } from '../../atoms'
+import { Heading, Icon } from '../../atoms'
 import { Container, Floorplan } from '../../molecules'
 
 // Hooks
@@ -54,16 +54,22 @@ export const FloorplansGrid = ({ apartments, ...rest }) => {
   const { title } = rest
   const attributes = useAttributes(rest, 'floorplans-grid')
 
+  const container_style = `floorplans-grid-container ${apartments.length === 0 ? 'display-flex' : ''}`
+
   return (
     <Section {...attributes}>
       <Heading className='floorplans-grid-title' data-size={2}>
         {title}
       </Heading>
 
-      <Container className='floorplans-grid-container is-full-width'>
-        {apartments.map(apt => (
-          <Floorplan aptWithPlan={apt} key={`apt_${apt.ApartmentName}`} />
-        ))}
+      <Container className={container_style}>
+        {
+          apartments.length === 0
+            ? <Icon className='fa-spinner fa-spin' />
+            : apartments.map(apt => (
+              <Floorplan aptWithPlan={apt} key={`apt_${apt.ApartmentName}`} />
+            ))
+        }
       </Container>
     </Section>
   )

@@ -94,7 +94,7 @@
 # Package Development Aliases
 [alias]
   # Test packages locally
-  link = "!f() { npm run build; webpack --config webpack/webpack.pkg.js; npm link; }; f"
+  link = "!f() { run-p build bundle; cd ./dist; npm link; cd ..; }; f"
 
   # Run local scripts to build package and prepare for publishing
   prepub = "!f() { npm run build; rm -rf ./dist; cp -R ./src ./dist && cp README.md ./dist; node prepublish.js; }; f"

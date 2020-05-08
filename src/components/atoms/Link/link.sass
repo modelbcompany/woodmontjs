@@ -42,12 +42,12 @@ $dropdown-element-padding: size($magic-number-50p)
     +color($white, $color-brand-tussock)
 
     +event
-      +color($color-brand-tussock, $white)
+      +color($color-brand-tussock, $white, important, important)
   @else if $context == light
     +color($color-brand-tussock, $white)
 
     +event
-      +color($white, $color-brand-tussock)
+      +color($white, $color-brand-tussock, important, important)
 
 /// Active state styles
 /// @example <Link className='is-active'>

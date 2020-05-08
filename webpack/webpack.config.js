@@ -1,4 +1,5 @@
 // Packages
+const Dotenv = require('dotenv-webpack')
 const path = require('path')
 
 /**
@@ -13,7 +14,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: 'bundle.js',
+    filename: 'woodmont.js',
     library: 'WoodmontJS',
     libraryTarget: 'global'
   },
@@ -76,6 +77,12 @@ module.exports = {
     ]
   },
   target: 'web',
-  externals: ['react'],
-  node: { fs: 'empty' }
+  externals: {},
+  node: {
+    fs: 'empty',
+    process: true
+  },
+  plugins: [
+    new Dotenv({})
+  ]
 }

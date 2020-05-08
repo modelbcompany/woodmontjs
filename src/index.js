@@ -1,3 +1,6 @@
+// Packages
+import ReactDOM from 'react-dom'
+
 // Feathers application
 import WoodmontAPI from './api'
 
@@ -15,20 +18,10 @@ import * as WoodmontUtils from './utils'
  * @author Lexus Drumgold <lexus.drumgold@modelb.com>
  */
 
-/**
- * @namespace WoodmontJS
- */
-export const WoodmontJS = {
-  api: WoodmontAPI,
-  components: WoodmontComponents,
-  config: WoodmontConfig,
-  utils: WoodmontUtils
-}
-
 export {
-  WoodmontJS as default,
   WoodmontAPI,
   WoodmontComponents,
   WoodmontConfig,
-  WoodmontUtils
+  WoodmontUtils,
+  ReactDOM
 }

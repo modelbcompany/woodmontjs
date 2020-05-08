@@ -85,12 +85,10 @@ WoodmontAPI.hooks({
        * @returns {object} Updated @param context
        */
       ({ params, path, ...rest }) => {
-        const {
-          apiToken,
-          companyCode,
-          marketingAPIKey,
-          propertyId
-        } = process.env
+        const apiToken = process.env.apiToken
+        const companyCode = process.env.companyCode
+        const marketingAPIKey = process.env.marketingAPIKey
+        const propertyId = process.env.propertyId
 
         if (path === 'apartments' || path === 'floorplans') {
           params.query = Object.assign(params.query, {
