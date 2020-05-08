@@ -44,10 +44,11 @@
     "build": "build-storybook -o build",
     "postbuild:docs": "build-storybook -o build/docs --docs && cp -R docs/rentcafe build/docs/rentcafe",
     "postbuild:public": "cp -R public/assets build && cp -R public/assets build/docs",
+    "postbuild:bundle": "webpack --config webpack/webpack.public.js",
     "postbuild": "run-s postbuild:*",
     "start": "now dev",
     "prebundle": "rm -rf ./dist",
-    "bundle": "webpack --config webpack/webpack.config.js && webpack --config webpack/webpack.bundle.js",
+    "bundle": "webpack --config webpack/webpack.config.js && webpack --config webpack/webpack.pkg.js",
     "postpublish": "npm publish --ignore-scripts --@modelbcompany:registry='https://registry.npmjs.org'"
   },
   "dependencies": {
