@@ -1,9 +1,6 @@
 // Packages
 import axios from 'axios'
 
-// Config
-import RentCafeErrors from './RentCafeErrors'
-
 // Utility Functions
 import { interceptRentCafeResponse } from '../utils'
 
@@ -25,7 +22,6 @@ axios.interceptors.response.use(res => interceptRentCafeResponse(res))
  */
 export const FeathersAppConfiguration = {
   axios,
-  RentCafeErrors,
   services: {
     Apartments: 'apartments',
     Floorplans: 'floorplans',

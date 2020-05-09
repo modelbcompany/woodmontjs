@@ -138,20 +138,37 @@ describe('Service: Scheduling', () => {
     expect(ErrorCode).toBe(0)
   })
 
-  // ! Date must be changed with every test, or else a 200 error will be thrown
-  it('[create] Creates an appointment', async () => {
-    const { ErrorCode } = await Scheduling.create({
-      apptDate: '08/31/2020',
-      apptTime: '04:00PM',
-      email: 'web@modelb.com',
+  // ! Change value of `apptDate` after failed tests or an error will be thrown
+  it('[create / remove] Creates and cancels an appointment', async () => {
+    const appt = {
+      apptDate: '06/13/2020',
+      apptTime: '03:00PM',
+      email: 'devtesting@modelb.com',
       firstName: 'Model B',
       lastName: 'Web Team',
       phone: '1234567896',
       source: 'DEVELOPMENT'
-    }, {
+    }
+
+    const {
+      ErrorCode: createApptErrCode,
+      Response: { 0: { VoyProspectApptId, VoyProspectId } }
+    } = await Scheduling.create(appt, {
       query: { requestType: 'createleadwithappointment' }
     })
 
-    expect(ErrorCode).toBe(0)
+    expect(createApptErrCode).toBe(0)
+
+    const { ErrorCode: cancelApptErrCode } = await Scheduling.remove(null, {
+      data: {
+        apptDate: appt.apptDate,
+        apptTime: appt.apptTime,
+        voyApptId: VoyProspectApptId,
+        VoyProspectId
+      },
+      query: { requestType: 'cancelappointment' }
+    })
+
+    expect(cancelApptErrCode).toBe(createApptErrCode)
   })
 })

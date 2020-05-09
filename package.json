@@ -44,7 +44,7 @@
     "build": "build-storybook -o build",
     "postbuild:docs": "build-storybook -o build/docs --docs && cp -R docs/rentcafe build/docs/rentcafe",
     "postbuild:public": "cp -R public/assets build && cp -R public/assets build/docs",
-    "postbuild:bundle": "webpack --config webpack/webpack.public.js",
+    "postbuild:scripts": "webpack --config webpack/webpack.public.js",
     "postbuild": "run-s postbuild:*",
     "start": "now dev",
     "prebundle": "rm -rf ./dist",
@@ -54,6 +54,7 @@
   "dependencies": {
     "@babel/runtime": "^7.9.6",
     "@feathersjs/client": "^4.5.4",
+    "@feathersjs/errors": "^4.5.3",
     "@material-ui/core": "^4.9.12",
     "axios": "0.18.1",
     "dotenv": "^8.2.0",

@@ -2,8 +2,10 @@
 import { errors } from '@feathersjs/client'
 
 // Config
-import RentCafeErrors from '../config/RentCafeErrors'
 import Logger from '../logger'
+
+// Models
+import RentCafeAPIError from '../models/RentCafeAPIError'
 
 // Utility Functions
 import { isArray, isObject, isNumber } from './validation.utils'
@@ -87,29 +89,6 @@ export const getFeathersError = (error, data, status = 500) => {
 }
 
 /**
- * Transform a RENTCafé API error into a @link FeathersError object.
- *
- * @param {object} param0 - RENTCafé error
- * @param {string| undefined} param0.Error - Web API error code
- * @param {number | undefined} param0.ErrorCode - Marketing API error code
- * @returns {FeathersError}
- * @throws {Error}
- */
-export const handleRentCafeError = ({ Error: code, ErrorCode, ...rest }) => {
-  if (!code) return rest
-
-  const enumValue = Object.values(RentCafeErrors).find(value => {
-    if ([code, ErrorCode].includes(value.data.code)) return value
-  })
-
-  if (!enumValue) {
-    return getFeathersError(rest.message, { code: code || ErrorCode, ...rest })
-  }
-
-  return getFeathersError(...Object.values(enumValue))
-}
-
-/**
  * Axios interceptor for RENTCafé responses.
  * Used to check for an error from a RENTCafé response.
  *
@@ -117,22 +96,22 @@ export const handleRentCafeError = ({ Error: code, ErrorCode, ...rest }) => {
  * @returns {*} Data if valid
  * @throws {FeathersError}
  */
-export const interceptRentCafeResponse = ({ data, ...rest }) => {
-  if (!data) return rest
+export const interceptRentCafeResponse = ({ data: res, config, ...rest }) => {
+  if (!res) return { config, ...rest }
 
-  const marketing = data?.ErrorCode > 0
-  const web = isArray(data) && data[0]?.Error
+  const marketing = isNumber(res.ErrorCode)
+  const web = isArray(res) && res[0]?.Error
+
+  if (web) res = res[0]
 
   if (marketing || web) {
-    const err = handleRentCafeError(web ? data[0] : { Error: data.ErrorCode })
+    const { method, url, data } = config
 
-    Logger.error(rest)
-    const { params, url } = rest.config
-    err.data = Object.assign(err.data, { config: { params, url } })
+    const error = new RentCafeAPIError(res, { config: { method, url, data } })
 
-    Logger.error({ interceptRentCafeResponse: err.message })
-    throw err
+    Logger.error({ interceptRentCafeResponse: error })
+    throw error.toJSON()
   }
 
-  return data
+  return res
 }

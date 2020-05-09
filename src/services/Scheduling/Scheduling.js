@@ -55,7 +55,7 @@ export const Scheduling = {
    * Either adds a guest card or matches and updates an existing card.
    *
    * @async
-   * @param {object} data - Additional information for the service method
+   * @param {object} data - Request data
    * @param {string} data.apptDate - Appointment date
    * @param {string} data.apptTime - Appointment time
    * @param {string} data.email - Lead email
@@ -105,6 +105,39 @@ export const Scheduling = {
       response = await this.requestRentCafeWebAPI({ method: 'post', url })
     } catch (err) {
       Logger.error({ 'Scheduling.find': err })
+      throw err
+    }
+
+    return response
+  },
+
+  /**
+   * Cancels a scheduled appointment.
+   *
+   * @async
+   * @param {undefined} id
+   * @param {object} param1 - Additional information for the service method
+   * @param {object} param1.data - Request data
+   * @param {string} param1.data.apptDate - Appointment date
+   * @param {string} param1.data.apptTime - Appointment time
+   * @param {string} param1.data.voyApptId - Voyager Appt ID
+   * @param {string} param1.data.voyProspectId - Voyager prospect ID
+   * @param {object} param1.query - Query parameters
+   * @param {string} param1.query.companyCode - Company token from RENTCafé
+   * @param {string} param1.query.marketingAPIKey - Yardi API Key
+   * @param {string} param1.query.propertyId - RENTCafé property identifier
+   * @param {string} param1.query.requestType - Marketing API endpoint to
+   * request (without trailing slashes)
+   * @param {string} param2.url - RENTCafé URL to request
+   * @returns {CancelledApptResponse | RentCafeError}
+   */
+  remove: async function (id, { data, query, url }) {
+    let response = {}
+
+    try {
+      response = await this.requestRentCafeWebAPI({ method: 'post', url, data })
+    } catch (err) {
+      Logger.error({ 'Scheduling.remove': err })
       throw err
     }
 
