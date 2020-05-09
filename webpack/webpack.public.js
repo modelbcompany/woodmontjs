@@ -16,7 +16,7 @@ module.exports = {
   mode: 'production',
   output: {
     ...output,
-    path: path.resolve(__dirname, '../build/packages'),
+    path: path.resolve(__dirname, '../build/scripts'),
     filename: 'woodmont.min.js'
   }
 }
