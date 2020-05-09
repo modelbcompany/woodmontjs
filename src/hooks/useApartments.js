@@ -20,12 +20,13 @@ import WoodmontAPI from '../api'
  * Pulls Apartment data from the RENTCafé Web API.
  *
  * @param {Object} search - Search parameters
+ * @param {Object} authentication - RENTCafé API credentials
  * @returns {Apartment[]}
  */
-export const useApartments = search => {
-  const { array: apartments, setArray: setApartments } = useArray()
+export const useApartments = (search, authentication = {}) => {
+  const { array: apartments, setArray: setApartments } = useArray([])
   const { object: query, setObject: setQuery } = useObject(search)
-  const { object: error, setObject: setError, empty } = useObject()
+  const { object: error, setObject: setError, empty } = useObject({})
 
   const Apartments = WoodmontAPI.service('apartments')
 
@@ -34,12 +35,10 @@ export const useApartments = search => {
       let apartments = null
 
       try {
-        apartments = await Apartments.find({ query })
+        apartments = await Apartments.find({ query, authentication })
       } catch (err) {
-        setError(err)
         setApartments([])
-
-        throw err
+        setError(err)
       }
 
       setApartments(apartments)

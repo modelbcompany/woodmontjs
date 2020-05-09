@@ -42,8 +42,7 @@ export class RentCafeAPIError extends FeathersError {
     let {
       Error: webErrCode,
       ErrorCode: marketingErrCode,
-      ErrorMessage,
-      ErrorTrace
+      ErrorMessage
     } = error
 
     if (webErrCode) {
@@ -93,7 +92,6 @@ export class RentCafeAPIError extends FeathersError {
     data.docs = webErrCode
       ? 'https://woodmontjs.modelb.now.sh/docs/rentcafe/web'
       : 'https://woodmontjs.modelb.now.sh/docs/rentcafe/marketing'
-    data.trace = ErrorTrace
 
     // ! Regardless of success, the RENT Café API ALWAYS responds with a 200
     // ! status code.

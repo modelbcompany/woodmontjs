@@ -21,38 +21,42 @@ import './floorplans-template.sass'
 /**
  * Renders a `<main>` element with the class `adt-floorplans`.
  *
- * @todo Implement state
- * @todo handleFilter
- * @todo handleSearch
- *
  * @class FloorplansTemplate
  * @param {FloorplansTemplateProps} props - Component data
  * @returns {HTMLElement}
  */
-export const FloorplansTemplate = props => {
-  const attributes = useAttributes(props, 'adt-floorplans')
+export const FloorplansTemplate = ({ auth, ...rest }) => {
+  const attributes = useAttributes(rest, 'adt-floorplans')
 
+  const {
+    aptsWithPlans, aptsWithPlansError, setAptQuery
+  } = useApartmentsWithFloorplans({}, auth)
   const [gridTitle, setGridTitle] = useState('One Bedroom')
-  const { aptsWithPlans, setAptQuery } = useApartmentsWithFloorplans()
+
+  const handleSearch = aptsWithPlansError
+    ? null
+    : query => {
+      const { numberOfBeds: beds } = query
+
+      setAptQuery(query)
+
+      if (beds) {
+        setGridTitle(beds === 0
+          ? 'Studios' : `${beds} Bedroom${beds === 1 ? '' : 's'}`)
+      }
+    }
 
   return (
     <Main {...attributes}>
       <Container className='form-container is-full-width'>
-        <FloorplansSearchForm
-          handleSearch={query => {
-            const { numberOfBeds: beds } = query
-
-            setAptQuery(query)
-
-            if (beds) {
-              setGridTitle(beds === 0
-                ? 'Studios' : `${beds} Bedroom${beds === 1 ? '' : 's'}`)
-            }
-          }}
-        />
+        <FloorplansSearchForm handleSearch={handleSearch} />
       </Container>
 
-      <FloorplansGrid apartments={aptsWithPlans} title={gridTitle} />
+      <FloorplansGrid
+        apartments={aptsWithPlans}
+        error={aptsWithPlansError}
+        title={gridTitle}
+      />
     </Main>
   )
 }

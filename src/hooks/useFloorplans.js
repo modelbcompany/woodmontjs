@@ -22,9 +22,10 @@ import WoodmontAPI from '../api'
  * @param {Object} search - Search parameters
  * @param {string} search.id - Floorplan ID, "1131409"
  * @param {string} search.name - Floorplan name, "A01"
+ * @param {Object} authentication - RENTCafé API credentials
  * @returns {Floorplan[]}
  */
-export const useFloorplans = search => {
+export const useFloorplans = (search, authentication = {}) => {
   const { array: floorplans, setArray: setFloorplans } = useArray()
   const { object: query, setObject: setQuery } = useObject(search)
   const { object: error, setObject: setError, empty } = useObject()
@@ -36,17 +37,18 @@ export const useFloorplans = search => {
       let plans = null
 
       try {
-        plans = await Floorplans.find({ query })
+        plans = await Floorplans.find({ authentication, query })
       } catch (err) {
-        setError(err)
         setFloorplans([])
-
-        throw err
+        setError(err)
       }
 
       setFloorplans(plans)
     })()
-  }, [query])
+  }, [
+    query.id,
+    query.name
+  ])
 
   return {
     floorplans,

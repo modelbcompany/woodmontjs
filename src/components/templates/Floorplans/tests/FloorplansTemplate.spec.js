@@ -3,15 +3,17 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 // Test component
-import Button from '..'
+import FloorplansTemplate from '..'
 
 /**
- * @file App component tests
+ * @file Component Tests
  * @see {@link https://github.com/testing-library/jest-dom}
+ *
+ * @todo Test render when props.auth is invalid
  */
 
-describe('<Button />', () => {
+describe('<FloorplansTemplate />', () => {
   it('Renders without crashing', () => {
-    shallow(<Button />)
+    shallow(<FloorplansTemplate />)
   })
 })

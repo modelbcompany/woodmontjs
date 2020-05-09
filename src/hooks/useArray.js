@@ -27,7 +27,7 @@ export const useArray = initial => {
     array,
     clear: useCallback(() => setArray(() => []), []),
     empty: array.length === 0,
-    setArray,
+    setArray: arr => setArray(isArray(arr) || []),
     removeByIndex: useCallback(index => setArray(arr => {
       arr.splice(isNumber(index) || -1, 1)
       return arr

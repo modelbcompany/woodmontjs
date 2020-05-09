@@ -6,152 +6,79 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # WoodmontJS
 
-<br/>
-
-## Overview
-
 [Introduction](#introduction)  
 [Usage](#usage)  
 [Github Repository](https://woodmontjs.modelb.now.sh/repo)  
 
-## Introduction
-
-WoodmontJS is a component and utility module library written in JavaScript.
-
-This project was built with [Storybook][2]. For more information about building
-component libraries with Storybook, visit [Design Systems for Developers][3] from the [Learn Storybook][4] docs.
-
-[1]: https://www.learnstorybook.com/design-systems-for-developers/react/en/introduction/
-[2]: https://storybook.js.org/
-[3]: https://www.learnstorybook.com/design-systems-for-developers
-[4]: https://www.learnstorybook.com
-
-## Usage
-
 <br/>
 
-### Components
-
-Components are developed in [React][1]; stories and documentation are written in
-[MDX][2] using [Storybook Docs][3].
-
-[1]: https://reactjs.org/
-[2]: https://mdxjs.com/
-[3]: https://github.com/storybookjs/storybook/tree/master/addons/docs
-
-#### Architecture
-
-Components are organized according to the [Atomic Design Methodology][1].
-
-[1]: https://atomicdesign.bradfrost.com/chapter-2/
-
-#### Sass
-
-Stylesheets are written in [Sass][1]. Sass is a CSS preprocessor used
-to add variables, functions, placeholders, mixins, and more to CSS development.
-
-[1]: https://sass-lang.com/
-
-### Services
+## Introduction
 
 **Attention: This section is under construction.**
 
-### Installation
+WoodmontJS is a React component and client-side RENT Café API library.
 
-Before installing the design system package, you'll need to install React. Visit
-[Getting Started][1] from the React docs to learn more about installing React in
-your project. After you've installed React, run the following command:
+Organized according to the [Atomic Design Methodology][1], components are
+developed in [React][2], and styled using [Sass][3]. Their stories and
+documentation are written in [MDX][4] using [Storybook Docs][5].
 
-```bash
-  npm i @modelbcompany/woodmontjs@latest
+[1]: https://atomicdesign.bradfrost.com/chapter-2/
+[2]: https://reactjs.org/
+[3]: https://sass-lang.com/
+[4]: https://mdxjs.com/
+[5]: https://github.com/storybookjs/storybook/tree/master/addons/docs
+
+## Usage
+
+WoodmontJS is available via CDN. After adding the script to your page, the `WoodmontJS` module will be exposed.
+
+```html
+<!-- WoodmontJS -->
+<script src="https://woodmontjs.modelb.now.sh/scripts/woodmont.min.js">
+</script>
+
+<script>
+  (() => console.debug('Imported WoodmontJS =>', WoodmontJS))() 
+</script>
 ```
 
-[1]: https://reactjs.org/docs/getting-started.html
+### Component Library
 
-#### Transpiling ES6 Modules
+Components have an additional React dependency:
 
-Components and other modules are written in ES6 and need to be transpiled before
-using them in a project. 
-
-Add the following to your [Babel configuration][1]:
-
-```javascript
-{
-  exclude: /node_modules\/(?!@modelbcompany/woodmontjs)/
-}
+```html
+<!-- React -->
+<script crossorigin src="https://unpkg.com/react/umd/react.production.min.js">
+</script>
 ```
 
-**Example `babel.config.js`**
+Components are written in ES6 and need to be transpiled before using them in a
+project. To do so in the browser, add [Babel standalone][1]: 
 
-```javascript
-/**
- * @file Project Wide Babel Configuration
- * @see {@link https://babeljs.io/docs/en/config-files}
- */
-
-module.exports = api => {
-  api.cache(true)
-
-  return {
-    ignore: [
-      './node_modules/*'
-    ],
-    plugins: [
-      '@babel/plugin-proposal-export-default-from',
-      '@babel/plugin-proposal-nullish-coalescing-operator',
-      '@babel/plugin-proposal-optional-chaining',
-      '@babel/plugin-proposal-throw-expressions',
-      ['@babel/plugin-transform-runtime', { regenerator: true }]
-    ],
-    presets: [
-      '@babel/preset-env',
-      '@babel/preset-react'
-    ]
-  }
-}
+```html
+<!-- Babel Standalone -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
 ```
 
-##### Gatsby
+[1]: https://github.com/babel/babel/tree/master/packages/babel-standalone
 
-If you're using Gatsby, add the following to your `gatsby-config.js`:
+#### Font & Icon Dependencies
 
-```javascript
-{
-  plugins: [
-    {
-      resolve: 'gatsby-plugin-compile-es6-packages',
-      options: {
-        modules: ['@modelbcompany/woodmontjs']
-      }
-    }
-  ]
-}
+To ensure styles render properly, add the following dependencies:
+
+```html
+<!-- Normalize -->
+<link href="https://unpkg.com/@csstools/normalize.css" rel="stylesheet" />
+
+<!-- Material Icons (Outlined Theme) -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
+
+<!-- Font Awesome Free -->
+<script src="https://kit.fontawesome.com/51f4b7d93a.js" crossorigin="anonymous"></script>
+
+<!-- IBM Plex Mono -->
+<link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;300;400;500;600;700&display=swap" />
+
+<!-- Swiss 721 -->
+<link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/ea5e2124-bbdb-4e91-8a98-9b549b432fdb.css" />
 ```
-
-**Example `gatsby-config.js`**
-
-```javascript
-// Metadata
-const metadata = require('./config/metadata.json')
-
-/**
- * @file Gatsby Site Configuration
- * @see {@link https://www.gatsbyjs.org/docs/gatsby-config/}
- */
-
-module.exports = {
-  siteMetadata: {
-    ...metadata, siteUrl: dev ? 'http://localhost:3000' : metadata.siteUrl
-  },
-  plugins: [
-    {
-      resolve: 'gatsby-plugin-compile-es6-packages',
-      options: {
-        modules: ['@modelbcompany/woodmontjs']
-      }
-    }
-  ]
-}
-```
-
-[1]: https://babeljs.io/docs/en/configuration

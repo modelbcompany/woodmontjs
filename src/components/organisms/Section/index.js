@@ -50,11 +50,14 @@ export const Section = ({
  * @param {FloorplansGridProps} props - Component data
  * @returns {Section}
  */
-export const FloorplansGrid = ({ apartments, ...rest }) => {
+export const FloorplansGrid = ({ apartments: apts, error, ...rest }) => {
   const { title } = rest
   const attributes = useAttributes(rest, 'floorplans-grid')
 
-  const container_style = `floorplans-grid-container ${apartments.length === 0 ? 'display-flex' : ''}`
+  const container_style = `floorplans-grid-container ${apts.length === 0
+    ? 'display-flex' : ''}`
+
+  if (error) return null
 
   return (
     <Section {...attributes}>
@@ -64,9 +67,9 @@ export const FloorplansGrid = ({ apartments, ...rest }) => {
 
       <Container className={container_style}>
         {
-          apartments.length === 0
+          apts.length === 0
             ? <Icon className='fa-spinner fa-spin' />
-            : apartments.map(apt => (
+            : apts.map(apt => (
               <Floorplan aptWithPlan={apt} key={`apt_${apt.ApartmentName}`} />
             ))
         }
@@ -177,6 +180,11 @@ FloorplansGrid.propTypes = {
   })),
 
   /**
+   * Error from API call.
+   */
+  error: PropTypes.object,
+
+  /**
    * `Section` `Heading` text.
    */
   title: PropTypes.string
@@ -184,6 +192,7 @@ FloorplansGrid.propTypes = {
 
 FloorplansGrid.defaultProps = {
   apartments: [{ aptWithPlan: null }],
+  error: null,
   title: 'One Bedroom'
 }
 

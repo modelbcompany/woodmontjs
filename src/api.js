@@ -1,5 +1,4 @@
 // Packages
-import dotenv from 'dotenv'
 import feathers from '@feathersjs/client'
 
 // Config
@@ -19,9 +18,6 @@ import { getFeathersError, isObject } from './utils'
  * @file API Initialization
  * @module api
  */
-
-// Configure environment variables
-dotenv.config()
 
 /**
  * @constant {FeathersError} ServicesInitializationError
@@ -62,33 +58,91 @@ WoodmontAPI.hooks({
   before: {
     all: [
       /**
-       * Sanitizes the incoming query.
+       * Sanitizes the incoming authentication object and query.
        *
-       * @param {object} context - Service call information
-       * @param {object} context.params - Service method parameters
-       * @param {object} params.params.query - Query parameters
-       * @returns {object} Updated @param context
+       * @param {object} param0 - Service call information
+       * @param {object} param0.params - Service method parameters
+       * @param {object} param0.params.authentication - API credentials
+       * @param {object} param0.params.query - Query parameters
+       * @returns {object} Updated service context
        */
-      ({ params, ...rest }) => ({
+      ({ params: { authentication, query, ...params }, ...rest }) => ({
         ...rest,
-        params: { ...params, query: isObject(params.query) || {} }
+        params: {
+          ...params,
+          authentication: isObject(authentication) || {},
+          query: isObject(query) || {}
+        }
       }),
 
       /**
-       * Attaches the RENTCafé API credentials to the incoming query based on
-       * service path.
+       * Authenticates the incoming request.
        *
-       * @param {object} context - Service call information
-       * @param {object} context.params - Service method parameters
-       * @param {object} params.params.query - Query parameters
-       * @param {string} context.path - Service name (or path) w/o slashes
-       * @returns {object} Updated @param context
+       * If credentials are not defined in @param param0.params.authentication,
+       * the function will look for credentials in `process.env`, or
+       * `window.env` if calling the function in a browser environment.
+       *
+       * @param {object} param0 - Service call information
+       * @param {object} param0.params - Service method parameters
+       * @param {object} param0.params.authentication - RENTCafé API credentials
+       * @param {string} param0.path - Service initialization path (no slashes)
+       * @returns {object} Updated context
+       */
+      ({
+        params: { authentication, ...params },
+        data,
+        method,
+        path,
+        ...rest
+      }) => {
+        const authErrorMessages = {
+          apiToken: 'Missing RENTCafé API token',
+          companyCode: 'Missing company code',
+          marketingAPIKey: 'Missing RENTCafé Marketing API key',
+          propertyId: 'Missing property ID'
+        }
+
+        Object.keys(authErrorMessages).forEach(key => {
+          if (!authentication[key]) {
+            throw getFeathersError(authErrorMessages[key], {
+              data,
+              params: { authentication, query: params.query },
+              errors: { [key]: null },
+              method,
+              path
+            }, 401)
+          }
+        })
+
+        return {
+          ...rest,
+          params: { ...params, authentication },
+          data,
+          method,
+          path
+        }
+      },
+
+      /**
+       * Attaches the RENTCafé API credentials to the incoming query.
+       *
+       * If credentials are not defined in @param param0.params.authentication,
+       * the function will look for credentials in `process.env`, or
+       * `window.env` if calling the function in a browser environment.
+       *
+       * @param {object} param0 - Service call information
+       * @param {object} param0.params - Service method parameters
+       * @param {object} param0.params.query - Query parameters
+       * @param {string} param0.path - Service initialization path (no slashes)
+       * @returns {object} Updated context
        */
       ({ params, path, ...rest }) => {
-        const apiToken = process.env.apiToken
-        const companyCode = process.env.companyCode
-        const marketingAPIKey = process.env.marketingAPIKey
-        const propertyId = process.env.propertyId
+        const {
+          apiToken,
+          companyCode,
+          marketingAPIKey,
+          propertyId
+        } = params.authentication
 
         if (path === 'apartments' || path === 'floorplans') {
           params.query = Object.assign(params.query, {
@@ -147,6 +201,12 @@ WoodmontAPI.hooks({
         return { ...rest, path, params: { ...params, query, url } }
       }
     ]
+  },
+
+  error({ error, ...rest }) {
+    Logger.error({ WoodmontAPI: error.toJSON ? error.toJSON() : error.message })
+
+    return { error, ...rest }
   }
 })
 

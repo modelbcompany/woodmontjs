@@ -19,7 +19,10 @@ import FindFloorplansMock from
  */
 
 // Configure environment variables
-dotenv.config()
+dotenv.config({ path: '.env.test' })
+
+const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
+const authentication = { apiToken, companyCode, marketingAPIKey, propertyId }
 
 const compareArrayProperties = (array, key, value) => {
   array.forEach(item => expect(item[key]).toBe(value))
@@ -45,7 +48,7 @@ describe('Service: Floorplans', () => {
   })
 
   it('[find] Returns floor plan data', async () => {
-    const floorplans = await Floorplans.find()
+    const floorplans = await Floorplans.find({ authentication })
 
     expect(floorplans).toBeInstanceOf(Array)
     floorplans.map(floorplan => expect(floorplan.FloorplanId).toBeDefined())
@@ -55,6 +58,7 @@ describe('Service: Floorplans', () => {
     const floorplan = FindFloorplansMock[3]
 
     expect((await Floorplans.find({
+      authentication,
       query: { id: floorplan.FloorplanId }
     })).length >= 1).toBeTruthy()
   })
@@ -63,13 +67,19 @@ describe('Service: Floorplans', () => {
     const floorplan = FindFloorplansMock[3]
 
     expect((await Floorplans.find({
+      authentication,
       query: { name: floorplan.FloorplanName }
     })).length >= 1).toBeTruthy()
   })
 
   it('[find] Returns an empty array for bad queries', async () => {
-    const floorplan = await Floorplans.find({ query: { id: '-1' } })
-    const floorplan2 = await Floorplans.find({ query: { name: 'floorplan' } })
+    const floorplan = await Floorplans.find({
+      authentication, query: { id: '-1' }
+    })
+
+    const floorplan2 = await Floorplans.find({
+      authentication, query: { name: 'floorplan' }
+    })
 
     expect(floorplan).toEqual([])
     expect(floorplan2).toEqual(floorplan)
@@ -84,7 +94,7 @@ describe('Service: Apartments', () => {
   })
 
   it('[find] Returns apartment data', async () => {
-    const apartments = await Apartments.find()
+    const apartments = await Apartments.find({ authentication })
 
     expect(apartments).toBeInstanceOf(Array)
     compareArrayProperties(apartments, 'PropertyId', process.env.propertyId)
@@ -94,7 +104,7 @@ describe('Service: Apartments', () => {
     const floorplan = FindFloorplansMock[FindFloorplansMock.length - 13]
 
     compareArrayProperties(await Apartments.find({
-      query: { floorPlanId: floorplan.FloorplanId }
+      authentication, query: { floorPlanId: floorplan.FloorplanId }
     }), 'FloorplanId', floorplan.FloorplanId)
   })
 
@@ -102,7 +112,7 @@ describe('Service: Apartments', () => {
     const apt = FindApartmentsMock[Math.ceil(FindApartmentsMock.length / 2)]
 
     compareArrayProperties(await Apartments.find({
-      query: { numberOfBeds: apt.Beds }
+      authentication, query: { numberOfBeds: apt.Beds }
     }), 'Beds', apt.Beds)
   })
 
@@ -110,13 +120,13 @@ describe('Service: Apartments', () => {
     const apt = FindApartmentsMock[FindApartmentsMock.length - 3]
 
     compareArrayProperties(await Apartments.find({
-      query: { numberOfBaths: apt.Baths }
+      authentication, query: { numberOfBaths: apt.Baths }
     }), 'Baths', apt.Baths)
   })
 
   it('[find] params.query.availableDate', async () => {
     const apartments = await Apartments.find({
-      query: { availableDate: FindApartmentsMock[13].AvailableDate }
+      authentication, query: { availableDate: FindApartmentsMock[13].AvailableDate }
     })
 
     expect(apartments.length >= 1).toBeTruthy()
@@ -132,7 +142,7 @@ describe('Service: Scheduling', () => {
 
   it('[find] Returns available appointments', async () => {
     const { ErrorCode } = await Scheduling.find({
-      query: { requestType: 'AvailableSlots' }
+      authentication, query: { requestType: 'AvailableSlots' }
     })
 
     expect(ErrorCode).toBe(0)
@@ -154,12 +164,13 @@ describe('Service: Scheduling', () => {
       ErrorCode: createApptErrCode,
       Response: { 0: { VoyProspectApptId, VoyProspectId } }
     } = await Scheduling.create(appt, {
-      query: { requestType: 'createleadwithappointment' }
+      authentication, query: { requestType: 'createleadwithappointment' }
     })
 
     expect(createApptErrCode).toBe(0)
 
     const { ErrorCode: cancelApptErrCode } = await Scheduling.remove(null, {
+      authentication,
       data: {
         apptDate: appt.apptDate,
         apptTime: appt.apptTime,

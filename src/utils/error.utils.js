@@ -110,7 +110,7 @@ export const interceptRentCafeResponse = ({ data: res, config, ...rest }) => {
     const error = new RentCafeAPIError(res, { config: { method, url, data } })
 
     Logger.error({ interceptRentCafeResponse: error })
-    throw error.toJSON()
+    throw error
   }
 
   return res

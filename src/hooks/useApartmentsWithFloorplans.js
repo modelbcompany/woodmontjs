@@ -22,29 +22,38 @@ import useFloorplans from './useFloorplans'
  * @param {object} search
  * @returns {object}
  */
-export const useApartmentsWithFloorplans = search => {
-  const { apartments, setApartmentsQuery: setAptQuery } = useApartments(search)
-  const { floorplans } = useFloorplans({})
+export const useApartmentsWithFloorplans = (search, auth) => {
+  const {
+    apartments,
+    apartmentsError,
+    setApartmentsQuery: setAptQuery
+  } = useApartments(search, auth)
+
+  const { floorplans } = useFloorplans({}, auth)
 
   const { array: aptsWithPlans, setArray: setAptsWithPlans } = useArray()
 
   useEffect(() => {
-    (() => {
-      const aptsWithPlans = []
+    const aptsWithPlans = []
 
-      apartments.forEach(apt => aptsWithPlans.push({
-        ...(floorplans.find(floorplan => (
-          floorplan.FloorplanId === apt.FloorplanId
-        )) || {}),
-        ...apt
-      }))
+    apartments.forEach(apt => aptsWithPlans.push({
+      ...(floorplans.find(floorplan => (
+        floorplan.FloorplanId === apt.FloorplanId
+      )) || {}),
+      ...apt
+    }))
 
-      Logger.debug({ hook: true, useApartmentsWithFloorplans: aptsWithPlans })
-      setAptsWithPlans(aptsWithPlans)
-    })()
+    Logger.debug({ useApartmentsWithFloorplans: aptsWithPlans })
+    setAptsWithPlans(aptsWithPlans)
   }, [apartments])
 
-  return { floorplans, apartments, aptsWithPlans, setAptQuery }
+  return {
+    apartments,
+    aptsWithPlans,
+    aptsWithPlansError: apartmentsError,
+    floorplans,
+    setAptQuery
+  }
 }
 
 export default useApartmentsWithFloorplans
