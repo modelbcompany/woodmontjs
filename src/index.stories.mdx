@@ -54,22 +54,31 @@ REST APIs.
 
 The `WoodmontJS` module, however, includes a client-side Feathers application built to proxy requests to the RENTCafé Web and Marketing APIs.
 
-Additionally, the RENTCafé docs referenced during development have been reduced
-to the portions relevant to our services, and are available at the following
-links:
-
-- Marketing API Docs: https://woodmontjs.modelb.now.sh/docs/rentcafe/marketing
-- Web API Docs: https://woodmontjs.modelb.now.sh/docs/rentcafe/web
-
 **Available Services**
 
 - `Apartments`: Returns apartment data
 - `Floorplans`: Returns floorplan data
 - `Scheduling`: Find available appointment slots + make and cancel appointments
 
-[1]: https://docs.feathersjs.com/api/
+**Error Handling**
 
-<br/>
+The RENTCafé APIs return `200` status codes for all responses, even errors. The
+Woodmont API services return [standard `FeathersError` objects][2], as well as a
+[custom error object, `RentCafeAPIError`][3].
+
+The RENTCafé docs referenced during development have been reduced to the portions relevant to our services, and are available at the following
+links:
+
+- Marketing API Docs: https://woodmontjs.modelb.now.sh/docs/rentcafe/marketing
+- Web API Docs: https://woodmontjs.modelb.now.sh/docs/rentcafe/web
+
+RENTCafé error codes can be found in the Web API Reference.
+
+[1]: https://docs.feathersjs.com/api/
+[2]: https://docs.feathersjs.com/api/errors.html#feathers-errors
+[3]: https://github.com/modelbcompany/woodmontjs/blob/master/src/models/RentCafeAPIError.js 
+
+<hr/>
 
 ### Component Library
 
@@ -92,9 +101,13 @@ project. To do so in the browser, add [Babel standalone][1]:
 The warning below will be displayed in the console:
 
 ```log
-13:58:50.053 babel.min.js:24 You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
-u @ babel.min.js:24
+13:58:50.053 babel.min.js:24 You are using the in-browser Babel transformer. Be
+sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+@ babel.min.js:24
 ```
+
+This does not directly impact production, but Babel compilation is on the
+roadmap for this project.
 
 [1]: https://github.com/babel/babel/tree/master/packages/babel-standalone
 
