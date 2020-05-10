@@ -12,14 +12,16 @@
     "apiToken": "@apitoken",
     "companyCode": "@companycode",
     "marketingAPIKey": "@marketingapikey",
-    "propertyId": "@propertyid"
+    "propertyId": "@propertyid",
+    "NODE_ENV": "@node_env"
   },
   "build": {
     "env": {
       "apiToken": "@apitoken",
       "companyCode": "@companycode",
       "marketingAPIKey": "@marketingapikey",
-      "propertyId": "@propertyid"
+      "propertyId": "@propertyid",
+      "NODE_ENV": "@node_env"
     }
   },
   "builds": [
