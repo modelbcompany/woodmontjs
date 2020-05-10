@@ -1,0 +1,95 @@
+<!-- Packages -->
+import { Meta, Typeset } from '@storybook/addon-docs/blocks' 
+
+<!-- Config -->
+import { FAMILIES, SIZES, WEIGHTS } from '../config'
+
+<!-- Initialize -->
+<Meta title='Blocks/Typography' />
+
+export const fontSizes = Object.values(SIZES)  
+
+export const ibm_plex_mono = { 
+  fontFamily: FAMILIES.ibm_plex_mono, 
+  fontSizes 
+}
+
+export const swiss721 = { 
+  fontFamily: FAMILIES.swiss721, 
+  fontSizes 
+}
+
+# Typography
+
+Families: IBM Plex Mono, Swiss 721
+
+<br/>
+
+## Usage
+
+<br/>
+
+### HTML
+
+```html
+<!-- IBM Plex Mono -->
+<link type="text/css" rel="stylesheet"
+  href="//fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;300;400;500;600;700&display=swap" />
+
+<!-- Swiss 721 -->
+<link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/ea5e2124-bbdb-4e91-8a98-9b549b432fdb.css" />
+```
+
+### Sass
+
+```scss
+/// Primary font family
+/// @type {List}
+$primary-font-family: IBM Plex Mono, monospace
+
+/// Secondary font family
+/// @type {List}
+$secondary-font-family: Swiss_721 W01, sans-serif
+```
+
+## Families
+
+### IBM Plex Mono
+
+#### `200`
+
+<Typeset {...ibm_plex_mono} fontWeight={WEIGHTS.thin} />
+
+#### `300`
+
+<Typeset {...ibm_plex_mono} fontWeight={WEIGHTS.light} />
+
+#### `400`
+
+<Typeset {...ibm_plex_mono} fontWeight={WEIGHTS.regular} />
+
+#### `600`
+
+<Typeset {...ibm_plex_mono} fontWeight={WEIGHTS.semibold} />
+
+#### `700`
+
+<Typeset {...ibm_plex_mono} fontWeight={WEIGHTS.bold} />
+
+### Swiss 721
+
+#### `300`
+
+<Typeset {...swiss721} fontWeight={WEIGHTS.light} />
+
+#### `400`
+
+<Typeset {...swiss721} fontWeight={WEIGHTS.regular} />
+
+#### `500`
+
+<Typeset {...swiss721} fontWeight={WEIGHTS.medium} />
+
+#### `700`
+
+<Typeset {...swiss721} fontWeight={WEIGHTS.bold} />

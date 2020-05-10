@@ -1,0 +1,90 @@
+<!-- Packages -->
+import { Meta } from '@storybook/addon-docs/blocks' 
+
+<!-- Initialize -->
+<Meta title='Blocks/Grid System' />
+
+# Grid System
+
+<br/>
+
+## Devices
+
+File: `src/sass/abstracts/variables/_maps.scss`
+
+```scss
+/// Grid configuration by device type
+/// @type Map
+$devices: (
+  'desktop': (
+    'columns': 12,
+    'max-width': 75%
+  ),
+  'tablet': (
+    'columns': 8,
+    'max-width': 85%
+  ),
+  'mobile': (
+    'columns': 4,
+    'max-width': 90%
+  )
+);
+```
+
+## Layout
+
+File: `src/sass/abstracts/variables/_maps.scss`
+
+```scss
+/// Inner grid configuration by breakpoint
+/// @require {function} grid-template-columns
+/// @require {variable} $breakpoint-1920
+/// @require {variable} $breakpoint-1440
+/// @require {variable} $breakpoint-1366
+/// @require {variable} $breakpoint-1024
+/// @require {variable} $breakpoint-834
+/// @require {variable} $breakpoint-768
+/// @require {variable} $breakpoint-414
+/// @require {variable} $breakpoint-375
+/// @require {variable} $breakpoint-320
+/// @type Map
+$grid-layout: (
+  $breakpoint-1920: (
+    'gutter-width': 36,
+    'type': 'desktop',
+  ),
+  $breakpoint-1440: (
+    'gutter-width': 36,
+    'type': 'desktop',
+  ),
+  $breakpoint-1366: (
+    'gutter-width': 36,
+    'type': 'desktop',
+  ),
+  $breakpoint-1024: (
+    'gutter-width': 24,
+    'type': 'tablet',
+  ),
+  $breakpoint-834: (
+    'gutter-width': 24,
+    'type': 'tablet',
+  ),
+  $breakpoint-768: (
+    'gutter-width': 24,
+    'type': 'tablet',
+  ),
+  $breakpoint-414: (
+    'gutter-width': 12,
+    'type': 'mobile',
+  ),
+  $breakpoint-375: (
+    'gutter-width': 12,
+    'type': 'mobile',
+  ),
+  $breakpoint-320: (
+    'gutter-width': 12,
+    'type': 'mobile',
+  ),
+);
+```
+

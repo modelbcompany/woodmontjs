@@ -67,9 +67,10 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
 
     padding: 0 size($magic-number-50p) !important
   @else if $context == submit
-    $cape-palliser: #aa7b3f
+    $cape-palliser: $color-brand-cape-palliser
+    $tussock: $color-brand-tussock
 
-    background: linear-gradient(to right, $cape-palliser, $color-brand-tussock)
+    background: linear-gradient(to right, $cape-palliser, $tussock)
     padding: size($magic-number / 3)
 
   @content
@@ -164,11 +165,10 @@ $btn-padding: size($magic-number / 3) size($magic-number-50p)
     flex-grow: 0.125
     max-width: none
     width: auto
+
+
   +respond-to($breakpoint-960)
     +is-full-width
-
-
-
 
 // Responsive Styles
 

@@ -1,3 +1,6 @@
+// Webpack Configuration
+const webpack = require('../webpack/webpack.config')
+
 /**
  * @file Storybook Configuration
  * @see {@link https://woodmontjs.modelb.now.sh/docs/storybook-config}
@@ -44,6 +47,7 @@ module.exports = {
   stories: [
     '../src/index.stories.mdx',
     '../src/services/**/*.stories.mdx',
+    '../src/blocks/*.stories.mdx',
     '../src/components/**/**/stories/*.(stories|chapters).(js|mdx)'
   ],
 
@@ -61,67 +65,8 @@ module.exports = {
    * @returns {object} Webpack configuration
    */
   webpackFinal: async (config, { configType }) => {
-    // Fixes "Can't resolve 'fs' in ${__dirname}/node_modules/dotenv/lib' error"
-    config.node = { fs: 'empty' }
-
-    config.module.rules.push(
-      {
-        test: /\.jsx?$/i,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              ignore: [
-                './node_modules/*',
-                './public/*',
-                './src/sass/*'
-              ],
-              plugins: [
-                '@babel/plugin-proposal-export-default-from',
-                '@babel/plugin-proposal-nullish-coalescing-operator',
-                '@babel/plugin-proposal-optional-chaining',
-                '@babel/plugin-proposal-throw-expressions'
-              ],
-              presets: [
-                '@babel/preset-env',
-                '@babel/preset-react'
-              ]
-            }
-          }
-        ]
-      }
-    )
-
-    config.module.rules.push(
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-          {
-            loader: 'postcss-loader',
-            options: {
-
-              config: {
-                path: './postcss.config.js'
-              },
-              sourceMap: true
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              data: '@import ../../../sass/global.sass',
-              sassOptions: {
-                includePaths: ['./src/components/**/**/*.sass'],
-                indentedSyntax: true,
-                prependData: `$env: ${process.env.NODE_ENV}`
-              }
-            }
-          }
-        ]
-      }
-    )
+    config.node = webpack.node
+    webpack.module.rules.forEach(rule => config.module.rules.push(rule))
 
     return config
   }

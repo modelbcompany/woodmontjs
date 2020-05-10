@@ -1,5 +1,4 @@
 // Packages
-const Dotenv = require('dotenv-webpack')
 const path = require('path')
 
 /**
@@ -28,8 +27,7 @@ module.exports = {
             options: {
               ignore: [
                 './node_modules/*',
-                './public/*',
-                './src/sass/*'
+                './public/*'
               ],
               plugins: [
                 '@babel/plugin-proposal-export-default-from',
@@ -77,12 +75,11 @@ module.exports = {
     ]
   },
   target: 'web',
-  externals: {},
-  node: {
-    fs: 'empty',
-    process: true
+  externals: {
+    jquery: 'jQuery'
   },
-  plugins: [
-    new Dotenv({})
-  ]
+  node: {
+    // Fixes "Can't resolve 'fs' in ${__dirname}/node_modules/dotenv/lib' error"
+    fs: 'empty'
+  }
 }

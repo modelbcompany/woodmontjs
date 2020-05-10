@@ -6,4 +6,192 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # Scheduling
 
+Returns available appointments, as well as makes and cancels appointments.
+
+```javascript
+const { WoodmontAPI } = WoodmontJS
+const Scheduling = WoodmontAPI.service('scheduling')
+```
+
 <br/>
+
+## Methods
+
+<br/>
+
+### create
+
+Creates an appointment on the leasing staff’s CRM calendar.
+Either adds a guest card or matches and updates an existing card.
+
+```javascript
+  /**
+   * @async
+   * @param {object} data - Request data
+   * @param {string} data.apptDate - Appointment date
+   * @param {string} data.apptTime - Appointment time
+   * @param {string} data.email - Lead email
+   * @param {string} data.phone - Lead phone number
+   * @param {string} data.source - Primary marketing source
+   * @param {object} params - Additional information for the service method
+   * @param {object} param1.query - Query parameters
+   * @param {string} param1.query.companyCode - Company token from RENTCafé
+   * @param {string} param1.query.marketingAPIKey - Yardi API Key
+   * @param {string} param1.query.propertyId - RENTCafé property identifier
+   * @param {string} param1.query.requestType - Marketing API endpoint to
+   * request (without trailing slashes)
+   * @param {string} param1.url - RENTCafé URL to request
+   * @returns {ApptWithLeadResponse | RentCafeError} Appt and lead data
+   */
+  create: async function (data, { query, url }) {}
+```
+
+#### Examples
+
+<br/>
+
+##### Make an Appointment
+
+```javascript
+const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
+
+const appointment = await Scheduling.create({
+    apptDate: '06/13/2020',
+    apptTime: '03:00PM',
+    email: 'devtesting@modelb.com',
+    firstName: 'Model B',
+    lastName: 'Web Team',
+    phone: '1234567896',
+    source: 'DEVELOPMENT'
+  },{
+  authentication: { 
+    apiToken, 
+    companyCode, 
+    marketingAPIKey, 
+    propertyId 
+  }, 
+  query: { 
+    requestType: 'createleadwithappointment' 
+  }
+})
+```
+
+### find
+
+Returns dates and times available for meeting prospects.
+
+```javascript
+  /**
+   * @async
+   * @param {object} params - Additional information for the service method
+   * @param {object} params.query - Query parameters
+   * @param {string} params.query.companyCode - Company token from RENTCafé
+   * @param {string} params.query.marketingAPIKey - Yardi API Key
+   * @param {string} params.query.propertyId - RENTCafé property identifier
+   * @param {string} param0.query.requestType - Marketing API endpoint to
+   * request (without trailing slashes)
+   * @param {string} param0.url - RENTCafé URL to request
+   * @returns {AvailableSlotsResponse | RentCafeError} Available appointments
+   */
+  find: async function ({ query, url }) {}
+```
+
+#### Examples
+
+<br/>
+
+##### Available Appointments
+
+```javascript
+const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
+
+const appointments = await Scheduling.find({
+  authentication: { 
+    apiToken, 
+    companyCode, 
+    marketingAPIKey, 
+    propertyId 
+  }, 
+  query: { 
+    requestType: 'AvailableSlots' 
+  }
+})
+```
+
+### remove
+
+Cancels a scheduled appointment.
+
+```javascript
+  /**
+   * @async
+   * @param {null} id
+   * @param {object} param1 - Additional information for the service method
+   * @param {object} param1.data - Request data
+   * @param {string} param1.data.apptDate - Appointment date
+   * @param {string} param1.data.apptTime - Appointment time
+   * @param {string} param1.data.voyApptId - Voyager Appt ID
+   * @param {string} param1.data.voyProspectId - Voyager prospect ID
+   * @param {object} param1.query - Query parameters
+   * @param {string} param1.query.companyCode - Company token from RENTCafé
+   * @param {string} param1.query.marketingAPIKey - Yardi API Key
+   * @param {string} param1.query.propertyId - RENTCafé property identifier
+   * @param {string} param1.query.requestType - Marketing API endpoint to
+   * request (without trailing slashes)
+   * @param {string} param2.url - RENTCafé URL to request
+   * @returns {CancelledApptResponse | RentCafeError}
+   */
+  remove: async function (id, { data, query, url }) {}
+```
+
+#### Examples
+
+<br/>
+
+##### Cancel an Appointment
+
+```javascript
+const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
+
+const appt = {
+  apptDate: '06/13/2020',
+  apptTime: '03:00PM',
+  email: 'devtesting@modelb.com',
+  firstName: 'Model B',
+  lastName: 'Web Team',
+  phone: '1234567896',
+  source: 'DEVELOPMENT'
+}
+
+const {
+  Response: { 0: { VoyProspectApptId, VoyProspectId } }
+} = await Scheduling.create(appt,{
+  authentication: { 
+    apiToken, 
+    companyCode, 
+    marketingAPIKey, 
+    propertyId 
+  }, 
+  query: { 
+    requestType: 'createleadwithappointment' 
+  }
+})
+
+const cancellation = await Scheduling.remove(null,{
+  authentication: { 
+    apiToken, 
+    companyCode, 
+    marketingAPIKey, 
+    propertyId 
+  },
+  data: {
+    apptDate: appt.apptDate,
+    apptTime: appt.apptTime,
+    voyApptId: VoyProspectApptId,
+    VoyProspectId
+  }
+  query: { 
+    requestType: 'cancelappointment' 
+  }
+})
+```

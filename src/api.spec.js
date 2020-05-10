@@ -149,7 +149,6 @@ describe('Service: Scheduling', () => {
     expect(ErrorCode).toBe(0)
   })
 
-  // ! Change value of `apptDate` after failed tests or an error will be thrown
   it('[create / remove] Creates and cancels an appointment', async () => {
     const appt = {
       apptDate: '06/13/2020',

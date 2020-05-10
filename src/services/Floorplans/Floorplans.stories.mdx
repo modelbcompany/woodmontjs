@@ -6,4 +6,74 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # Floorplans
 
+Returns floorplan data from the RENTCafé Web API.
+
+```javascript
+const { WoodmontAPI } = WoodmontJS
+const Floorplans = WoodmontAPI.service('floorplans')
+```
+
 <br/>
+
+## Methods
+
+<br/>
+
+### find
+
+Returns floor plan data.
+
+Data can be filtered by `id` or `name`, with `id` taking priority.
+
+```javascript
+  /**
+   * @async
+   * @param {object} param0 - Additional information for the service method
+   * @param {object} param0.query - Query parameters
+   * @param {string} param0.query.apiToken - Company token from RENTCafé
+   * @param {string} param0.query.id - Floorplan ID
+   * @param {string} param0.query.name - Floorplan name
+   * @param {string} param0.query.propertyId - RENTCafé property identifier
+   * @param {string} param0.query.requestType - floorPlan
+   * @param {string} param0.url - RENTCafé URL to request
+   * @returns {RentCafeFloorplan[]} RENTCafé floor plan data
+   */
+  find: async function ({ query: { id, name }, url }) {}
+```
+
+#### Examples
+
+<br/>
+
+##### All Floorplans
+
+```javascript
+const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
+
+const floorplans = await Floorplans.find({
+  authentication: { 
+    apiToken, 
+    companyCode, 
+    marketingAPIKey, 
+    propertyId 
+  }
+})
+```
+
+##### Find a Floorplan by ID
+
+```javascript
+const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
+
+const floorplanSearchByID = await Floorplans.find({
+  authentication: { 
+    apiToken, 
+    companyCode, 
+    marketingAPIKey, 
+    propertyId 
+  },
+  query: {
+    id: '3215320'
+  }
+})
+```

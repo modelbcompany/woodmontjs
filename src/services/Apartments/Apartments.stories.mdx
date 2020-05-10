@@ -6,4 +6,79 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # Apartments
 
+Returns apartment data from the RENTCafé Web API.
+
+```javascript
+const { WoodmontAPI } = WoodmontJS
+const Apartments = WoodmontAPI.service('apartments')
+```
+
 <br/>
+
+## Methods
+
+<br/>
+
+### find
+
+Returns apartment data.
+
+Data can be filtered by unit code, available move-in date, floor plan id, number
+of bedrooms and bathrooms, as well as rent range.
+
+```javascript
+{
+  /**
+   * @async
+   * @param {object} param0 - Additional information for the service method
+   * @param {object} param0.query - Query parameters
+   * @param {string} param0.query.apartmentName - Voyager unit code
+   * @param {string} param0.query.apiToken - Company token from RENTCafé
+   * @param {string} param0.query.floorPlanId - RENTCafé floorplan identifier
+   * @param {string} param0.query.numberOfBaths - Number of bathrooms
+   * @param {string} param0.query.numberOfBeds - Number of bedrooms
+   * @param {string} param0.query.rentRange - Monthly rent amount range
+   * @param {string} param0.query.requestType - apartmentAvailability
+   * @param {string} param0.url - RENTCafé URL to request
+   * @returns {Apartment[] | RentCafeError} RENTCafé apartment data
+   */
+  find: async function ({ query, url }) {}
+}
+```
+
+#### Examples
+
+<br/>
+
+##### All Apartments
+
+```javascript
+const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
+
+const apartments = await Apartments.find({
+  authentication: { 
+    apiToken, 
+    companyCode, 
+    marketingAPIKey, 
+    propertyId 
+  }
+})
+```
+
+##### Number of Bedrooms
+
+```javascript
+const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
+
+const threeBedroomApts = await Apartments.find({
+  authentication: { 
+    apiToken, 
+    companyCode, 
+    marketingAPIKey, 
+    propertyId 
+  }, 
+  query: { 
+    numberOfBeds: 3 
+  }
+})
+```

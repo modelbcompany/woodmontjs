@@ -14,8 +14,6 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 ## Introduction
 
-**Attention: This section is under construction.**
-
 WoodmontJS is a React component and client-side RENTCafé API library.
 
 Organized according to the [Atomic Design Methodology][1], components are
@@ -30,13 +28,48 @@ documentation are written in [MDX][4] using [Storybook Docs][5].
 
 ## Usage
 
-WoodmontJS is available via CDN. After adding the script to your page, the `WoodmontJS` module will be exposed.
+WoodmontJS is available via CDN:
 
 ```html
 <!-- WoodmontJS -->
 <script src="https://woodmontjs.modelb.now.sh/scripts/woodmont.min.js">
 </script>
 ```
+
+### Services
+
+After adding the script to your page, the `WoodmontJS` module will be exposed.
+
+To verify, type `window.WoodmontJS` or `WoodmontJS` in the console:
+
+```log
+13:59:06.842 window.WoodmontJS
+13:59:06.845 Module {…}
+```
+
+#### Making API Requests
+
+[Feathers][1] is a web framework for building real-time applications, as well as
+REST APIs. 
+
+The `WoodmontJS` module, however, includes a client-side Feathers application built to proxy requests to the RENTCafé Web and Marketing APIs.
+
+Additionally, the RENTCafé docs referenced during development have been reduced
+to the portions relevant to our services, and are available at the following
+links:
+
+- Marketing API Docs: https://woodmontjs.modelb.now.sh/docs/rentcafe/marketing
+- Web API Docs: https://woodmontjs.modelb.now.sh/docs/rentcafe/web
+
+**Available Services**
+
+- `Apartments`: Returns apartment data
+- `Floorplans`: Returns floorplan data
+- `Scheduling`: Find available appointment slots + make and cancel appointments
+
+[1]: https://docs.feathersjs.com/api/
+
+<br/>
 
 ### Component Library
 
@@ -54,6 +87,13 @@ project. To do so in the browser, add [Babel standalone][1]:
 ```html
 <!-- Babel Standalone -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+```
+
+The warning below will be displayed in the console:
+
+```log
+13:58:50.053 babel.min.js:24 You are using the in-browser Babel transformer. Be sure to precompile your scripts for production - https://babeljs.io/docs/setup/
+u @ babel.min.js:24
 ```
 
 [1]: https://github.com/babel/babel/tree/master/packages/babel-standalone

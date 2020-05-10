@@ -19,6 +19,7 @@ export const ColorPalettes = {
     '$color-status-warning': 'rgba(233, 190, 18, 1)'
   },
   brand: {
+    '$color-brand-cape-palliser': 'rgba(170, 123, 63, 1)',
     '$color-brand-cod-gray': 'rgba(10, 10, 10, 1)',
     '$color-brand-rolling-stone': 'rgba(111, 118, 123, 1)',
     '$color-brand-silver-rust': 'rgba(203, 195, 188, 1)',
@@ -28,16 +29,6 @@ export const ColorPalettes = {
     '$color-react-blue': 'rgba(97, 218, 251, 1)',
     '$color-react-gray': 'rgba(40, 44, 52, 1)'
   }
-}
-
-/**
- * React color palette.
- *
- * @type {Object}
- */
-export const REACT = {
-  '$color-react-blue': 'rgba(97, 218, 251, 1)',
-  '$color-react-gray': 'rgba(40, 44, 52, 1)'
 }
 
 /**

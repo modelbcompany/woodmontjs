@@ -115,7 +115,7 @@ export const Scheduling = {
    * Cancels a scheduled appointment.
    *
    * @async
-   * @param {undefined} id
+   * @param {null} id
    * @param {object} param1 - Additional information for the service method
    * @param {object} param1.data - Request data
    * @param {string} param1.data.apptDate - Appointment date
