@@ -84,8 +84,24 @@ To ensure styles render properly, add the following dependencies:
 ```
 
 ### Rendering Components
- 
-#### WordPress
+
+After adding the required dependencies, render a component.
+
+#### JavaScript
+
+```javascript
+const { WoodmontComponents: { FloorplansTemplate }, ReactDOM } = WoodmontJS
+
+const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
+const RENT_CAFE_AUTH = { apiToken, companyCode, marketingAPIKey, propertyId }
+
+ReactDOM.render(
+  <FloorplansTemplate auth={RENT_CAFE_AUTH} />, 
+  document.getElementById('adt-floorplans')
+)
+```
+
+#### PHP
 
 ```php
 <div id="<?= $FLOORPLANS_TEMPLATE_CONTAINER_ID ?>"></div>
@@ -98,20 +114,4 @@ To ensure styles render properly, add the following dependencies:
     document.getElementById('<?= $FLOORPLANS_TEMPLATE_CONTAINER_ID ?>')
   )
 </script>
-```
-
-#### Via Node
-
-```javascript
-import { WoodmontComponents, ReactDOM } from WoodmontJS
-
-const { FloorplansTemplate } = WoodmontComponents
-
-const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
-const RENT_CAFE_AUTH = { apiToken, companyCode, marketingAPIKey, propertyId }
-
-ReactDOM.render(
-  <FloorplansTemplate auth={RENT_CAFE_AUTH} />, 
-  document.getElementById('adt-floorplans')
-)
 ```
