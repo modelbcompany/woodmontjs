@@ -25,4 +25,9 @@ export default {
  *
  * @returns {FloorplansTemplate}
  */
-export const Default = () => <FloorplansTemplate />
+export const Default = () => {
+  const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
+  const RENT_CAFE_AUTH = { apiToken, companyCode, marketingAPIKey, propertyId }
+
+  return <FloorplansTemplate auth={RENT_CAFE_AUTH} />
+}

@@ -82,3 +82,36 @@ To ensure styles render properly, add the following dependencies:
 <!-- Swiss 721 -->
 <link type="text/css" rel="stylesheet" href="//fast.fonts.net/cssapi/ea5e2124-bbdb-4e91-8a98-9b549b432fdb.css" />
 ```
+
+### Rendering Components
+ 
+#### WordPress
+
+```php
+<div id="<?= $FLOORPLANS_TEMPLATE_CONTAINER_ID ?>"></div>
+
+<script type='text/babel'>
+  const { WoodmontComponents: { FloorplansTemplate }, ReactDOM } = WoodmontJS
+
+  ReactDOM.render(
+    <FloorplansTemplate auth={JSON.parse('<?= $RENT_CAFE_AUTH ?>')} />, 
+    document.getElementById('<?= $FLOORPLANS_TEMPLATE_CONTAINER_ID ?>')
+  )
+</script>
+```
+
+#### Via Node
+
+```javascript
+import { WoodmontComponents, ReactDOM } from WoodmontJS
+
+const { FloorplansTemplate } = WoodmontComponents
+
+const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
+const RENT_CAFE_AUTH = { apiToken, companyCode, marketingAPIKey, propertyId }
+
+ReactDOM.render(
+  <FloorplansTemplate auth={RENT_CAFE_AUTH} />, 
+  document.getElementById('adt-floorplans')
+)
+```

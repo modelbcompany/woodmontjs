@@ -19,8 +19,9 @@ import FindFloorplansMock from
  */
 
 // Configure environment variables
-dotenv.config({ path: '.env.test' })
+dotenv.config()
 
+// ! RENTCafé Authentication
 const { apiToken, companyCode, marketingAPIKey, propertyId } = process.env
 const authentication = { apiToken, companyCode, marketingAPIKey, propertyId }
 

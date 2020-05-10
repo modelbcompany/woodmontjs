@@ -58,19 +58,17 @@ WoodmontAPI.hooks({
   before: {
     all: [
       /**
-       * Sanitizes the incoming authentication object and query.
+       * Sanitizes the incoming query.
        *
        * @param {object} param0 - Service call information
        * @param {object} param0.params - Service method parameters
-       * @param {object} param0.params.authentication - API credentials
        * @param {object} param0.params.query - Query parameters
        * @returns {object} Updated service context
        */
-      ({ params: { authentication, query, ...params }, ...rest }) => ({
+      ({ params: { query, ...params }, ...rest }) => ({
         ...rest,
         params: {
           ...params,
-          authentication: isObject(authentication) || {},
           query: isObject(query) || {}
         }
       }),
@@ -79,14 +77,17 @@ WoodmontAPI.hooks({
        * Authenticates the incoming request.
        *
        * If credentials are not defined in @param param0.params.authentication,
-       * the function will look for credentials in `process.env`, or
-       * `window.env` if calling the function in a browser environment.
+       * a `NotAuthenticated` error will be thrown.
        *
        * @param {object} param0 - Service call information
        * @param {object} param0.params - Service method parameters
        * @param {object} param0.params.authentication - RENTCafé API credentials
-       * @param {string} param0.path - Service initialization path (no slashes)
+       * @param {object} param0.params.authentication.apiToken
+       * @param {object} param0.params.authentication.companyCode
+       * @param {object} param0.params.authentication.marketingAPIKey
+       * @param {object} param0.params.authentication.propertyId
        * @returns {object} Updated context
+       * @throws {FeathersError.NotAuthenticated}
        */
       ({
         params: { authentication, ...params },
@@ -100,6 +101,16 @@ WoodmontAPI.hooks({
           companyCode: 'Missing company code',
           marketingAPIKey: 'Missing RENTCafé Marketing API key',
           propertyId: 'Missing property ID'
+        }
+
+        if (!authentication) {
+          throw getFeathersError('Missing all RENTCafé API credentials', {
+            data,
+            params: { authentication, query: params.query },
+            errors: { authentication: null },
+            method,
+            path
+          }, 401)
         }
 
         Object.keys(authErrorMessages).forEach(key => {
@@ -124,16 +135,18 @@ WoodmontAPI.hooks({
       },
 
       /**
-       * Attaches the RENTCafé API credentials to the incoming query.
-       *
-       * If credentials are not defined in @param param0.params.authentication,
-       * the function will look for credentials in `process.env`, or
-       * `window.env` if calling the function in a browser environment.
+       * Attaches the RENTCafé API credentials to the incoming query based on
+       * service path.
        *
        * @param {object} param0 - Service call information
-       * @param {object} param0.params - Service method parameters
-       * @param {object} param0.params.query - Query parameters
        * @param {string} param0.path - Service initialization path (no slashes)
+       * @param {object} param0.params - Service method parameters
+       * @param {object} param0.params.authentication - RENTCafé API credentials
+       * @param {object} param0.params.authentication.apiToken
+       * @param {object} param0.params.authentication.companyCode
+       * @param {object} param0.params.authentication.marketingAPIKey
+       * @param {object} param0.params.authentication.propertyId
+       * @param {object} param0.params.query - Query parameters
        * @returns {object} Updated context
        */
       ({ params, path, ...rest }) => {
