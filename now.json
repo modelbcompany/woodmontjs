@@ -8,10 +8,18 @@
     "silent": false
   },
   "scope": "modelb",
-  "env": {},
+  "env": {
+    "apiToken": "@apitoken",
+    "companyCode": "@companycode",
+    "marketingAPIKey": "@marketingapikey",
+    "propertyId": "@propertyid"
+  },
   "build": {
     "env": {
-      "NODE_VERSION": "12"
+      "apiToken": "@apitoken",
+      "companyCode": "@companycode",
+      "marketingAPIKey": "@marketingapikey",
+      "propertyId": "@propertyid"
     }
   },
   "builds": [
