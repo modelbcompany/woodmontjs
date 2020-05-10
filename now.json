@@ -9,19 +9,19 @@
   },
   "scope": "modelb",
   "env": {
-    "apiToken": "@apitoken",
-    "companyCode": "@companycode",
-    "marketingAPIKey": "@marketingapikey",
-    "propertyId": "@propertyid",
-    "NODE_ENV": "@node_env"
+    "apiToken": "@apiToken",
+    "companyCode": "@companyCode",
+    "marketingAPIKey": "@marketingAPIKey",
+    "propertyId": "@propertyId",
+    "NODE_ENV": "@NODE_ENV"
   },
   "build": {
     "env": {
-      "apiToken": "@apitoken",
-      "companyCode": "@companycode",
-      "marketingAPIKey": "@marketingapikey",
-      "propertyId": "@propertyid",
-      "NODE_ENV": "@node_env"
+      "apiToken": "@apiToken",
+      "companyCode": "@companyCode",
+      "marketingAPIKey": "@marketingAPIKey",
+      "propertyId": "@propertyId",
+      "NODE_ENV": "@NODE_ENV"
     }
   },
   "builds": [
